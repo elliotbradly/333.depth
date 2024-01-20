@@ -13,6 +13,7 @@ export default boot(async ( dat ) => {
   var win: any = window
   dat.app.provide('SHADE', win.SHADE)
   dat.app.provide('SPACE', win.SPACE)
+  dat.app.provide('DEPTH', win.DEPTH)
   dat.app.provide('MQTT', win.MQTT)
 
   const prt = 8883;
@@ -20,6 +21,7 @@ export default boot(async ( dat ) => {
   const localBit = { idx: 'local', src: local };
 
   var bit = await win.SHADE.hunt( win.SHADE.ActShd.INIT_SHADE, { val: 0, src: local });
-  var bit = await win.SPACE.hunt( win.SPACE.ActSpc.INIT_SPACE, { val: 0, dat: win.MQTT, src: local });
+  var bit = await win.SPACE.hunt( win.SPACE.ActSpc.INIT_SPACE, { val: 0, src: local });
+  var bit = await win.DEPTH.hunt( win.DEPTH.ActDep.INIT_DEPTH, { val: 0, dat: win.MQTT, src: local });
 
 })

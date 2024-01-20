@@ -121,7 +121,7 @@ async function createWindow() {
     }
   })
 
-  mainWindow.setPosition(-950, 250);
+  //mainWindow.setPosition(-950, 250);
 
   //mainWindow.setPosition(950, 250);
   mainWindow.maximize();
