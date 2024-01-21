@@ -24,7 +24,7 @@ export const updateMenu = async (cpy: MenuModel, bal: MenuBit, ste: State) => {
   bit = await ste.bus(ActTrm.WRITE_TERMINAL, { src: "DEPTH PIVOT V1.1", bit: 'local' })
   bit = await ste.bus(ActTrm.WRITE_TERMINAL, { src: "-----------", bit: "local" })
 
-  var lst = [ ActDep.UPDATE_DEPTH, ActDep.OPEN_DEPTH]
+  var lst = [ ActDep.OPEN_DEPTH, ActDep.UPDATE_DEPTH ]
 
   bit = await ste.bus(ActTrm.UPDATE_TERMINAL, { lst })
 

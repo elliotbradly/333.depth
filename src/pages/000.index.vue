@@ -1,8 +1,17 @@
 <template>
+   
+   <button>HI</button>
+   <br>
 
-  
     <canvas id="indexCanvas"> </canvas>
 
+    <br>
+
+    <button>HI</button>
+
+    <br>
+
+    <canvas id="index0Canvas"> </canvas>
 
 </template>
 
@@ -26,13 +35,12 @@ const SHADE = inject('SHADE')
 onMounted(async () => {
 
   
-
   //change the locaton
 
   //window.location.replace("./grid");
 
   mount('on')
-
+  
   //alert(window.electron.store.get('foo'));
 })
 

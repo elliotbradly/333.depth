@@ -11,6 +11,8 @@ export const mount = async (value: HelloWorld) => {
   const DEPTH = inject('DEPTH')
 
   var bit = await DEPTH['hunt'](ActEng.INIT_ENGINE, {});
+  
+  
   instance?.proxy?.$forceUpdate();
 
   return value
