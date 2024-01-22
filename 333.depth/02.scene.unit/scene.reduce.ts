@@ -28,6 +28,9 @@ case Act.DELETE_SCENE:
 case Act.CREATE_SCENE:
  return Buzz.createScene(clone(model), act.bale, state);
  
+case Act.LIST_SCENE:
+ return Buzz.listScene(clone(model), act.bale, state);
+ 
  default:
  return model;
  }

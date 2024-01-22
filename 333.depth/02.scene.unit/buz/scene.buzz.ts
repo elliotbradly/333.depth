@@ -89,8 +89,34 @@ export const createScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
     return cpy;
 };
 
+export const listScene = async (cpy: SceneModel, bal: SceneBit, ste: State) => {
+
+    dat = null
+
+    if (bal.src == 'bus') bit = await ste.bus(ActCol.FETCH_COLLECT, { val: 0, bit: ActScn.CREATE_SCENE })
+    else bit = await ste.hunt(ActCol.FETCH_COLLECT, { val: 0, bit: ActScn.CREATE_SCENE })
+
+    if (bit.clcBit.dat == null) lst = []
+    else dat = bit.clcBit.dat;
+
+    if (dat != null) {
+
+        dat.bitList.forEach((a) => {
+            lst = []
+            lst.push((a.idx))
+        })
+
+        lst
+    }
+
+    if (bal.slv != null) bal.slv({ canBit: { idx: 'list-container', lst } });
+    
+    return cpy;
+};
+
 import { SceneModel } from "../scene.model";
 import SceneBit from "../fce/scene.bit";
 import State from "../../99.core/state";
-import SetBit from "../fce/set.bit"; import { EngineModel } from "333.depth/01.engine.unit/engine.model";
+import SetBit from "../fce/set.bit";
+import { EngineModel } from "333.depth/01.engine.unit/engine.model";
 

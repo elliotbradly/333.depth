@@ -45,9 +45,16 @@ export const CREATE_SCENE = "[Create action] Create Scene";
  constructor(public bale: SceneBit) {}
  }
  
+export const LIST_SCENE = "[List action] List Scene";
+ export class ListScene implements Action {
+ readonly type = LIST_SCENE;
+ constructor(public bale: SceneBit) {}
+ }
+ 
 export type Actions = | InitScene | UpdateScene 
 | ReadScene
 | WriteScene
 | RemoveScene
 | DeleteScene
 | CreateScene
+| ListScene
