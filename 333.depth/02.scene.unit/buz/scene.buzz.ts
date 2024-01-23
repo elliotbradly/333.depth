@@ -53,6 +53,8 @@ export const deleteScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
 };
 export const createScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
 
+    debugger
+
     if (typeof window != "object") return bal.slv({ canBit: { idx: "error-create-container", dat: {} } });
 
     var engMod: EngineModel = ste.value.engine
@@ -67,6 +69,7 @@ export const createScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
 
     try {
         dat.bit = new BABYLON.Scene(engMod.engine as any);
+        //let view = engine.registerView(document.getElementById("renderCanvas1"));
 
     } catch (e) {
         dat.dat = {};
@@ -77,6 +80,11 @@ export const createScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
     dat.bit.createDefaultLight();
 
     dat.bit.createDefaultEnvironment();
+
+    var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 2, segments: 32 }, dat.bit);
+
+    // Move the sphere upward 1/2 its height
+    sphere.position.y = 1;
 
     // console.log("nesting " + JSON.stringify(dat.typ))
 
@@ -109,8 +117,8 @@ export const listScene = async (cpy: SceneModel, bal: SceneBit, ste: State) => {
         lst
     }
 
-    if (bal.slv != null) bal.slv({ canBit: { idx: 'list-container', lst } });
-    
+    if (bal.slv != null) bal.slv({ scnBit: { idx: 'list-scene', lst } });
+
     return cpy;
 };
 

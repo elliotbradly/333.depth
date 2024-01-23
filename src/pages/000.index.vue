@@ -2,12 +2,9 @@
    
    <button>HI</button>
    <br>
-
-    <canvas id="indexCanvas"> </canvas>
-
+    <canvas id="playCanvas"> </canvas>
     <br>
-
-    <button>HI</button>
+    <canvas id="interactiveCanvas"> </canvas>
 
     <br>
 

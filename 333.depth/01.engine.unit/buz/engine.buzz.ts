@@ -25,8 +25,8 @@ export const updateEngine = async (cpy: EngineModel, bal: EngineBit, ste: State)
 
     console.log("rendering")
 
-    bit = await ste.hunt( ActScn.LIST_SCENE, {} )
-    debugger
+    //bit = await ste.hunt( ActScn.LIST_SCENE, {} )
+    
 
 
     //if (scene.activeCamera) {
