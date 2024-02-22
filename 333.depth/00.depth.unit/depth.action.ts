@@ -21,4 +21,11 @@ export class OpenDepth implements Action {
  constructor(public bale: DepthBit) {}
 }
 
-export type Actions = | InitDepth | UpdateDepth | OpenDepth ;
+export const TEST_DEPTH = "[Test action] Test Depth";
+ export class TestDepth implements Action {
+ readonly type = TEST_DEPTH;
+ constructor(public bale: DepthBit) {}
+ }
+ 
+export type Actions = | InitDepth | UpdateDepth | OpenDepth 
+| TestDepth

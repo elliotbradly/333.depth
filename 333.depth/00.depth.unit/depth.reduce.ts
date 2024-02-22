@@ -16,6 +16,9 @@ export function reducer(model: DepthModel = new DepthModel(), act: Act.Actions, 
         case Act.INIT_DEPTH:
             return Buzz.initDepth(clone(model), act.bale, state);
 
+case Act.TEST_DEPTH:
+ return Buzz.testDepth(clone(model), act.bale, state);
+ 
         default:
             return model;
     }

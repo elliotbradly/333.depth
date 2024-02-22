@@ -53,10 +53,7 @@ export const deleteScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
 };
 export const createScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
 
-    debugger
-
-    if (typeof window != "object") return bal.slv({ canBit: { idx: "error-create-container", dat: {} } });
-
+    
     var engMod: EngineModel = ste.value.engine
     //you have a source visage
     //now you wish to update a bit of the source visage
@@ -67,29 +64,7 @@ export const createScene = (cpy: SceneModel, bal: SceneBit, ste: State) => {
     }
 
 
-    try {
-        dat.bit = new BABYLON.Scene(engMod.engine as any);
-        //let view = engine.registerView(document.getElementById("renderCanvas1"));
-
-    } catch (e) {
-        dat.dat = {};
-    }
-
-    dat.bit.createDefaultCamera(true, true, true);
-
-    dat.bit.createDefaultLight();
-
-    dat.bit.createDefaultEnvironment();
-
-    var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 2, segments: 32 }, dat.bit);
-
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 1;
-
-    // console.log("nesting " + JSON.stringify(dat.typ))
-
-    //if (bal.src != null) bit = await ste.hunt(ActVsg.NEST_VISAGE, { src: bal.src, dat })
-
+    
     if (bal.slv != null) return bal.slv({ scnBit: { idx: "create-scene", dat } });
 
 

@@ -1,3 +1,4 @@
+
 import * as ActMnu from "../../98.menu.unit/menu.action";
 import * as ActBus from "../../99.bus.unit/bus.action";
 import * as ActDep from "../../00.depth.unit/depth.action";
@@ -6,6 +7,7 @@ import * as ActSpc from "../../act/space.action"
 import * as ActPvt from "../../act/pivot.action";
 import * as ActVrt from "../../act/vurt.action";
 import * as ActDsk from "../../act/disk.action";
+import * as ActCtl from "../../act/control.action";
 
 var SHADE = global.SHADE
 var SPACE = global.SPACE
@@ -65,6 +67,14 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
     return cpy;
 };
 
+export const testDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
+
+    bit = await ste.bus(ActCtl.TEST_CONTROL, {})
+    bal.slv({ depBit: { idx: "test-depth" } });
+
+    return cpy;
+};
+
 
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
 
@@ -72,4 +82,3 @@ import { DepthModel } from "../depth.model";
 import DepthBit from "../fce/depth.bit";
 import State from "../../99.core/state";
 
-import * as doT from "dot";
