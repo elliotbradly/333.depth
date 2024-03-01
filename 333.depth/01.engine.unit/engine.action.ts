@@ -15,4 +15,11 @@ export class UpdateEngine implements Action {
  constructor(public bale: EngineBit) {}
 }
 
-export type Actions = | InitEngine | UpdateEngine ;
+export const MOVEMENT_ENGINE = "[Movement action] Movement Engine";
+ export class MovementEngine implements Action {
+ readonly type = MOVEMENT_ENGINE;
+ constructor(public bale: EngineBit) {}
+ }
+ 
+export type Actions = | InitEngine | UpdateEngine 
+| MovementEngine

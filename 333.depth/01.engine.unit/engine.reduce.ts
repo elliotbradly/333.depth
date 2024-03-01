@@ -13,6 +13,9 @@ export function reducer(model: EngineModel = new EngineModel(), act: Act.Actions
  case Act.INIT_ENGINE:
  return Buzz.initEngine(clone(model), act.bale, state);
 
+case Act.MOVEMENT_ENGINE:
+ return Buzz.movementEngine(clone(model), act.bale, state);
+ 
  default:
  return model;
  }
