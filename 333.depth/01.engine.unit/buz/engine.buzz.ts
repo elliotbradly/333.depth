@@ -20,12 +20,9 @@ export const updateEngine = async (cpy: EngineModel, bal: EngineBit, ste: State)
 
     //bit = await ste.hunt( ActScn.LIST_SCENE, {} )
 
-
-
     //if (scene.activeCamera) {
     //    scene.render();
     // }
-
 
     return cpy;
 };
