@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.listColor = exports.matchColor = exports.degreeColor = exports.selectColor = exports.fetchColor = exports.updateColor = exports.readColor = exports.initColor = void 0;
+var color_buzz_1 = require("./buz/color.buzz");
+Object.defineProperty(exports, "initColor", { enumerable: true, get: function () { return color_buzz_1.initColor; } });
+var color_buzz_2 = require("./buz/color.buzz");
+Object.defineProperty(exports, "readColor", { enumerable: true, get: function () { return color_buzz_2.readColor; } });
+var color_buzz_3 = require("./buz/color.buzz");
+Object.defineProperty(exports, "updateColor", { enumerable: true, get: function () { return color_buzz_3.updateColor; } });
+var color_buzz_4 = require("./buz/color.buzz");
+Object.defineProperty(exports, "fetchColor", { enumerable: true, get: function () { return color_buzz_4.fetchColor; } });
+var color_buzz_5 = require("./buz/color.buzz");
+Object.defineProperty(exports, "selectColor", { enumerable: true, get: function () { return color_buzz_5.selectColor; } });
+var color_buzz_6 = require("./buz/color.buzz");
+Object.defineProperty(exports, "degreeColor", { enumerable: true, get: function () { return color_buzz_6.degreeColor; } });
+var color_buzz_7 = require("./buz/color.buzz");
+Object.defineProperty(exports, "matchColor", { enumerable: true, get: function () { return color_buzz_7.matchColor; } });
+var color_buzz_8 = require("./buz/color.buzz");
+Object.defineProperty(exports, "listColor", { enumerable: true, get: function () { return color_buzz_8.listColor; } });
+//# sourceMappingURL=color.buzzer.js.map
