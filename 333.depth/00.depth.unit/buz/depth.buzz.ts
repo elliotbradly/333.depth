@@ -2,6 +2,8 @@
 import * as ActMnu from "../../98.menu.unit/menu.action";
 import * as ActBus from "../../99.bus.unit/bus.action";
 import * as ActDep from "../../00.depth.unit/depth.action";
+import * as ActEng from "../../01.engine.unit/engine.action";
+
 import * as ActSpc from "../../act/space.action"
 
 import * as ActPvt from "../../act/pivot.action";
@@ -17,7 +19,7 @@ var bit, val, idx, dex, lst, dat;
 export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
 
-    if (bal.dat != null) bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActDep], dat: bal.dat, src: bal.src })
+    if (bal.dat != null) bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActDep, ActEng], dat: bal.dat, src: bal.src })
 
     if (bal.val == 1) patch(ste, ActMnu.INIT_MENU, bal);
 

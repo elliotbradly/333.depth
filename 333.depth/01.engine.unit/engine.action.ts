@@ -21,5 +21,12 @@ export const MOVEMENT_ENGINE = "[Movement action] Movement Engine";
  constructor(public bale: EngineBit) {}
  }
  
+export const OPEN_ENGINE = "[Open action] Open Engine";
+ export class OpenEngine implements Action {
+ readonly type = OPEN_ENGINE;
+ constructor(public bale: EngineBit) {}
+ }
+ 
 export type Actions = | InitEngine | UpdateEngine 
 | MovementEngine
+| OpenEngine

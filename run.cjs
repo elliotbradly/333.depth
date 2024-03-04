@@ -53,7 +53,9 @@ const init = async (prt) => {
   console.log("inits");
 
   const local = "mqtt://localhost:" + prt;
-  const localBit = { idx: "local", src: local };
+  //const localBit = { idx: "local", src: local };
+
+  const localBit = { idx: 'local', src: 'ws://swamp-fly-448d63614f75.herokuapp.com/' };
 
   DEPTH = require(path.resolve("./dist/333.depth/hunt"));
   DEPTH_ACTION = require(path.resolve("./dist/333.depth/00.depth.unit/depth.action"));

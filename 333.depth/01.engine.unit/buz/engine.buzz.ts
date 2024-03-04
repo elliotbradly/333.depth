@@ -1,4 +1,5 @@
 
+
 import * as ActScn from '../../02.scene.unit/scene.action'
 
 import * as ActEng from '../engine.action'
@@ -33,6 +34,18 @@ export const movementEngine = async (cpy: EngineModel, bal: EngineBit, ste: Stat
 
     bit = await ste.bus(ActRpg.PRESS_RPGMAKER, { src: bal.src })
     bal.slv({ engBit: { idx: "movement-engine", dat: {} } });
+
+    return cpy;
+};
+
+export const openEngine = (cpy: EngineModel, bal: EngineBit, ste: State) => {
+    
+
+    console.log("open the engine")
+
+    
+    bal.slv({ engBit: { idx: "open-engine", val:1 } });
+
 
     return cpy;
 };
