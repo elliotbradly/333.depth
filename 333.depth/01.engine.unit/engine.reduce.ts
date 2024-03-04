@@ -19,6 +19,9 @@ case Act.MOVEMENT_ENGINE:
 case Act.OPEN_ENGINE:
  return Buzz.openEngine(clone(model), act.bale, state);
  
+case Act.CLOSE_ENGINE:
+ return Buzz.closeEngine(clone(model), act.bale, state);
+ 
  default:
  return model;
  }

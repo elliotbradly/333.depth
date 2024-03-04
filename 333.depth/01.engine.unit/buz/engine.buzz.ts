@@ -1,5 +1,4 @@
 
-
 import * as ActScn from '../../02.scene.unit/scene.action'
 
 import * as ActEng from '../engine.action'
@@ -41,14 +40,22 @@ export const movementEngine = async (cpy: EngineModel, bal: EngineBit, ste: Stat
 export const openEngine = (cpy: EngineModel, bal: EngineBit, ste: State) => {
     
 
-    console.log("open the engine")
-
-    
+    console.log("open the engine")    
     bal.slv({ engBit: { idx: "open-engine", val:1 } });
 
 
     return cpy;
 };
+
+export const closeEngine = (cpy: EngineModel, bal:EngineBit, ste: State) => {
+ 
+    
+    
+    console.log("close the engine")    
+    bal.slv({ engBit: { idx: "close-engine", val:1 } });
+
+    return cpy;
+    };
 
 
 import { EngineModel } from "../engine.model";

@@ -27,6 +27,13 @@ export const OPEN_ENGINE = "[Open action] Open Engine";
  constructor(public bale: EngineBit) {}
  }
  
+export const CLOSE_ENGINE = "[Close action] Close Engine";
+ export class CloseEngine implements Action {
+ readonly type = CLOSE_ENGINE;
+ constructor(public bale: EngineBit) {}
+ }
+ 
 export type Actions = | InitEngine | UpdateEngine 
 | MovementEngine
 | OpenEngine
+| CloseEngine
