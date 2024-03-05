@@ -49,8 +49,6 @@ export const openEngine = (cpy: EngineModel, bal: EngineBit, ste: State) => {
 
 export const closeEngine = (cpy: EngineModel, bal:EngineBit, ste: State) => {
  
-    
-    
     console.log("close the engine")    
     bal.slv({ engBit: { idx: "close-engine", val:1 } });
 
