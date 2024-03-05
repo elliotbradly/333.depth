@@ -72,7 +72,9 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
 //depth is the portal to control
 export const testDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
-    bit = await ste.bus(ActCtl.TEST_CONTROL, {})
+    console.log("test the depths")
+
+    //bit = await ste.bus(ActCtl.TEST_CONTROL, {})
     bal.slv({ depBit: { idx: "test-depth" } });
 
     return cpy;
