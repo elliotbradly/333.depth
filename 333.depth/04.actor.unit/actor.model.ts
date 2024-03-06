@@ -1,4 +1,4 @@
-import Actor from "./fce/Actor.interface";
+import Actor from "./fce/actor.interface";
 import ActorBit from "./fce/actor.interface";
 
 export class ActorModel implements Actor {

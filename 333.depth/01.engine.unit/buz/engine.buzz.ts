@@ -40,7 +40,7 @@ export const movementEngine = async (cpy: EngineModel, bal: EngineBit, ste: Stat
 export const openEngine = (cpy: EngineModel, bal: EngineBit, ste: State) => {
     
 
-    console.log("open the engine")    
+    console.log("OOPEN THE ENGINE " + JSON.stringify( bal ) )    
     bal.slv({ engBit: { idx: "open-engine", val:1 } });
 
 

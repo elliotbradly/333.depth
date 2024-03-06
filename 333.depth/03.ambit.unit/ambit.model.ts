@@ -1,4 +1,4 @@
-import Ambit from "./fce/Ambit.interface";
+import Ambit from "./fce/ambit.interface";
 import AmbitBit from "./fce/ambit.interface";
 
 export class AmbitModel implements Ambit {
