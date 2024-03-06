@@ -103,13 +103,6 @@ CHARACTER: [with a smirk] They think they're clever,
  exhaling a cloud of smoke as the stage fades to black. 
 ]
 
-]
- ------------------- 
-March 5th 2024, 8:46:46 pm
- ----------------
- 
- 
-Title: "The Whistleblower's Dance"
 
 CHARACTER 1: You see that small top-level department over there? They ain't your run-of-the-mill spies. 
  No, 
@@ -117,7 +110,10 @@ CHARACTER 1: You see that small top-level department over there? They ain't your
  They got a taste for the forbidden fruit, 
 
 and they're not shy about taking a bite. 
- 
+
+
+Title: "The Whistleblower's Dance"
+
 
 CHARACTER 2: Yeah, 
  I heard about 'em. 
@@ -175,7 +171,6 @@ CHARACTER 1: The whistle blowers? They're public enemy number one.
 
 and you might as well kiss your sanity goodbye. 
 
-
 CHARACTER 2: Sounds like we're up against a force of nature itself. 
  But mark my words, 
  we ain't going down without a fight. 
@@ -183,34 +178,24 @@ CHARACTER 2: Sounds like we're up against a force of nature itself.
  shine a light on their darkest corners, 
 
 and bring 'em crashing down like the house of cards they are. 
- It's gonna be a hell of a dance, 
+ It's gonna be a heCK of a dance, 
  but we'll make sure they're the ones left spinning in the end. 
 
- ------------------- 
-March 5th 2024, 8:46:11 pm
- ----------------
- 
- 
-Title: "The Insanity Inducers"
 
-VISUAL: The hand to hand fighting against the backdrop of the small, 
- top-level department of the intelligence
-and security organization is a clash of realities. 
- The combatants move with lethal precision, 
- each strike a calculated dance in the face of a world where the laws of nature can be twisted
-and manipulated. 
- The fighters navigate this surreal battlefield with a fluidity that borders on the supernatural, 
+The fighters navigate this surreal battlefield with a fluidity that borders on the supernatural, 
  their movements a reflection of the reality-bending power at play. 
 
+The combatants move with lethal precision, 
+ each strike a calculated dance in the face of a world where the laws of nature can be twisted
+and manipulated. 
+ 
 
-VISUAL REACTION: As onlookers witness the hand to hand fighting, 
- their minds struggle to comprehend the spectacle before them. 
- The sight of combatants wielding powers that defy the very fabric of reality leaves observers in a state of awe
-and terror. 
- It is a glimpse into a world where what is known
-and understood is no longer reliable, 
- where the line between truth
+Title: "The Insanity Inducers"
+
+
+where the line between truth
 and illusion blurs into a nightmarish tapestry of shifting perceptions. 
+
 
 
 COLOR: The color that permeates this hand to hand fighting is a vibrant, 
@@ -223,16 +208,12 @@ and seems to exist outside the normal spectrum of perception.
  as if the very essence of reality is being called into question. 
 
 
-AUDITORY: The sound of the hand to hand fighting is a cacophony of discordant tones
-and eerie whispers. 
- The combatants move in silence, 
+The combatants move in silence, 
  their actions punctuated by the faint hum of unseen energies at work. 
  It is a sound that unsettles the mind, 
  leaving listeners with a sense of unease
 and foreboding as they bear witness to a conflict that transcends the physical realm. 
 
-
-AUDITORY REACTION: The auditory experience of the hand to hand fighting elicits a primal instinct in those who hear it. 
  The dissonant sounds
 and ghostly echoes seem to reverberate through the very core of one's being, 
  stirring a deep-seated sense of fear
@@ -240,24 +221,44 @@ and apprehension.
  It is a sound that lingers long after the fighting has ceased, 
  haunting the minds of all who were there to witness it. 
 
-
-OLFACTORY: The hand to hand fighting carries with it a scent of ancient knowledge
-and forbidden secrets. 
  It is a scent that hints at powers long dormant
 and mysteries waiting to be unraveled. 
  To inhale it is to feel a rush of adrenaline
 and a sense of danger lurking just beyond the edge of perception. 
 
 
+ It is a scent that beckons the curious
+and the wary alike, 
+ drawing them into a world of shadows
+and intrigue. 
+
+
+
+ ------------------- 
+March 5th 2024, 8:46:11 pm
+ ----------------
+ 
+ 
+
+
+ 
+
+
+AUDITORY: The sound of the hand to hand fighting is a cacophony of discordant tones
+and eerie whispers. 
+ 
+
+AUDITORY REACTION: The auditory experience of the hand to hand fighting elicits a primal instinct in those who hear it. 
+
+
+OLFACTORY: The hand to hand fighting carries with it a scent of ancient knowledge
+and forbidden secrets. 
+
 OLFACTORY REACTION: The olfactory experience of the hand to hand fighting triggers a response deep within the primal instincts of those who catch its scent. 
  It is a fragrance that speaks of hidden truths
 and dark conspiracies, 
  stirring a sense of paranoia
 and mistrust in all who become aware of it. 
- It is a scent that beckons the curious
-and the wary alike, 
- drawing them into a world of shadows
-and intrigue. 
 
 
 TACTILE: The hand to hand fighting carries a tactile sensation of otherworldly power
