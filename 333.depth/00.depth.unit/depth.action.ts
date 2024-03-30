@@ -27,5 +27,19 @@ export const TEST_DEPTH = "[Test action] Test Depth";
  constructor(public bale: DepthBit) {}
  }
  
+export const COMMIT_DEPTH = "[Commit action] Commit Depth";
+ export class CommitDepth implements Action {
+ readonly type = COMMIT_DEPTH;
+ constructor(public bale: DepthBit) {}
+ }
+ 
+export const RELOAD_DEPTH = "[Reload action] Reload Depth";
+ export class ReloadDepth implements Action {
+ readonly type = RELOAD_DEPTH;
+ constructor(public bale: DepthBit) {}
+ }
+ 
 export type Actions = | InitDepth | UpdateDepth | OpenDepth 
 | TestDepth
+| CommitDepth
+| ReloadDepth

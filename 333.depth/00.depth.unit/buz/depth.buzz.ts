@@ -10,11 +10,12 @@ import * as ActPvt from "../../act/pivot.action";
 import * as ActVrt from "../../act/vurt.action";
 import * as ActDsk from "../../act/disk.action";
 import * as ActCtl from "../../act/control.action";
+import * as ActGit from "../../act/github.action";
 
 var SHADE = global.SHADE
 var SPACE = global.SPACE
 
-var bit, val, idx, dex, lst, dat;
+var bit, val, idx, dex, lst, dat, src;
 
 export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
@@ -45,28 +46,47 @@ export const openDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
 export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
-    const { exec } = require('child_process');
+    const { exec } = require("child_process");
 
-    exec('tsc -b 333.depth', async (err, stdout, stderr) => {
+    exec("tsc -b 333.depth", async (err, stdout, stderr) => {
         if (err) {
             console.error(`exec error: ${err}`);
         }
 
-        bit = await ste.bus(ActPvt.BUNDLE_PIVOT, { src: "333.depth" });
+        lst = [];
 
-        bit = await ste.bus(ActDsk.READ_DISK, { src: './work/333.depth.js' })
+        bit = await ste.bus(ActPvt.BUNDLE_PIVOT, { src: "333.depth" });
+        lst.push(bit)
+
+        bit = await ste.bus(ActDsk.READ_DISK, { src: "./work/333.depth.js" });
         var depth = bit.dskBit.dat;
 
-        bit = await ste.bus(ActDsk.WRITE_DISK, { src: './public/jsx/333.depth.js', dat: depth })
+        //bit = await ste.bus(ActDsk.WRITE_DISK, { src: "./public/jsx/122.blender.js", dat: blend });
+        //lst.push(bit)
 
+        src = "../service/render.com/333.depth.js"
+        bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: depth });
+        lst.push(bit)
+
+        
+        bit = await ste.bus(ActDsk.READ_DISK, { src: "./0.AlligatorEarth.js" });
+        var alligator = bit.dskBit.dat;
+
+        src = "../service/render.com/app.js"
+        bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: alligator });
+        lst.push(bit)
+
+        bit = await ste.bus(ActDsk.COPY_DISK, { idx:'./901.store/', src: "../service/render.com/901.store" });
+        lst.push( bit )
+
+        
         setTimeout(() => {
-            if (bal.slv != null) bal.slv({ depBit: { idx: "update-depth" } });
+            bal.slv({ blnBit: { idx: "update-blender", lst } });
+            return cpy;
         }, 3);
-
     });
 
-
-    return cpy;
+    
 };
 
 //depth is the portal to control
@@ -81,7 +101,27 @@ export const testDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 };
 
 
+export const commitDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
+
+    dat = { lst: ['../', '../', './333.depth'] }
+    lst = ['../', './service', './render.com'];
+    bit = await ste.bus(ActGit.COMMIT_GITHUB, { idx: '333.depth', lst, src: " from 333.depth", dat });
+    
+    lst = bit.gitBit.lst;
+
+    bal.slv({ depBit: { idx: "commit-depth", lst } });
+
+    return cpy;
+};
+
+export const reloadDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
+    debugger
+    return cpy;
+};
+
+
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
+
 
 import { DepthModel } from "../depth.model";
 import DepthBit from "../fce/depth.bit";

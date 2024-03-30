@@ -13,7 +13,6 @@ export class UpdateMenu implements Action {
   constructor(public bale: MenuBit) { }
 }
 
-
 export const TEST_MENU = "[Menu action] Test Menu";
 export class TestMenu implements Action {
   readonly type = TEST_MENU;
@@ -50,6 +49,12 @@ export const VISAGE_MENU = "[Visage action] Visage Menu";
  constructor(public bale: MenuBit) {}
  }
 
+ export const PRINT_MENU = "[Visage action] Print Menu";
+ export class PrintMenu implements Action {
+ readonly type = PRINT_MENU;
+ constructor(public bale: MenuBit) {}
+ }
+
 
 
 
@@ -58,3 +63,4 @@ export type Actions = InitMenu | UpdateMenu | TestMenu | CloseMenu
 | VisageMenu
 | ContainerMenu
 | TextMenu
+| PrintMenu

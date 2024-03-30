@@ -1,7 +1,9 @@
 
 export default interface MenuBit {
-    idx: string;
-    src?: string;
-    lst?: any;
+    idx:string;
+    src?:string;
+    val?:number;
+    dat?:any;
+    slv?:Function;
 }
 

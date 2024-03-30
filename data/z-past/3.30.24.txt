@@ -1,0 +1,176 @@
+var STORE = require("./901.store");
+
+var ActSocket = require("./901.store/96.socket.unit/socket.action");
+
+STORE.hunt( ActSocket.INIT_SOCKET, {});
+
+
+//const WebSocket = require("ws");
+//const PORT = process.env.PORT || 3000;
+//const wss = new WebSocket.Server({ port: PORT });
+//wss.on("connection", (ws) => {
+//  ws.on("message", (message) => {
+//    console.log(`Received message => ${message}`);
+//  });
+//  ws.send("Hello! Message From Server!!");
+//});
+
+//import express from "express";
+//import { createServer } from "node:http";
+//import { fileURLToPath } from "node:url";
+//import { dirname, join } from "node:path";
+//import { Server } from "socket.io";
+
+//import sqlite3 from "sqlite3";
+//import { open } from "sqlite";
+
+//import { availableParallelism } from "node:os";
+//import cluster from "node:cluster";
+//import { createAdapter, setupPrimary } from "@socket.io/cluster-adapter";
+
+//if (cluster.isPrimary) {
+//  const numCPUs = availableParallelism();
+//  for (let i = 0; i < numCPUs; i++) {
+//    cluster.fork({
+//      PORT: 3000 + i,
+//    });
+//  }
+
+//  setupPrimary();
+//} else {
+//  const db = await open({
+//    filename: "alligator-earth.db",
+//    driver: sqlite3.Database,
+// });
+
+// await db.exec(`
+//   CREATE TABLE IF NOT EXISTS messages (
+//     id INTEGER PRIMARY KEY AUTOINCREMENT,
+//     client_offset TEXT UNIQUE,
+//     content TEXT
+//  );
+//`);
+
+// const PORT = process.env.PORT || 3000;
+
+//const app = express();
+//const server = createServer(app);
+
+// const io = new Server( PORT);
+
+//server.listen(PORT, () => {
+// console.log("server running at http://localhost:3000");
+//});
+
+//const __dirname = dirname(fileURLToPath(import.meta.url));
+
+//app.get("/", (req, res) => {
+//  res.sendFile(join(__dirname, "index.html"));
+//});
+
+//io.on("connection", async (socket) => {
+
+//  socket.emit("chat message");
+//socket.on("chat message", async (msg, clientOffset, callback) => {
+
+//let result;
+//try {
+//  result = await db.run("INSERT INTO messages (content, client_offset) VALUES (?, ?)", msg, clientOffset);
+//} catch (e) {
+//  if (e.errno === 19 /* SQLITE_CONSTRAINT */) {
+//    callback();
+//  } else {
+// nothing to do, just let the client retry
+//  }
+// return;
+// }
+// io.emit("chat message", msg, result.lastID);
+// callback();
+//});
+
+//if (!socket.recovered) {
+// try {
+//   await db.each("SELECT id, content FROM messages WHERE id > ?", [socket.handshake.auth.serverOffset || 0], (_err, row) => {
+
+// });
+//} catch (e) {
+// something went wrong
+// }
+// }
+//  });
+
+//const port = process.env.PORT;
+
+//server.listen(port, () => {
+//  console.log(`server running at http://localhost:${port}`);
+//});
+//}
+
+//3/30-24
+
+//older
+
+//const express = require("express");
+
+//const path = require("path");
+//const cors = require("cors");
+
+//require("dotenv").config();
+
+//const app = express();
+//const PORT = process.env.PORT || 3001;
+
+//var bit;
+//var opened = false;
+
+//app.use(express.json());
+
+//app
+//  .use(express.static(path.join(__dirname, "public")))
+//  .use(
+//    cors({
+//      origin: "*",
+//    })
+// )
+//  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+//var expressWs = require("express-ws")(app);
+
+//require("./routes/00.index")(app);
+
+//app.ws("/echo", function (ws, req) {
+//  ws.on("message", function (msg) {
+//    ws.send(msg);
+//  });
+//});
+
+//require("./333.depth");
+//require("../002.space/002.space/000.quest.space");
+
+//const MQTT = require("async-mqtt");
+//var local = "ws://swamp-fly-448d63614f75.herokuapp.com/";
+
+//DEPTH.hunt(DEPTH.ActDep.INIT_DEPTH, { val: 0, dat: MQTT, src: local });
+
+
+
+
+    //const { exec } = require('child_process');
+
+    //exec('tsc -b 333.depth', async (err, stdout, stderr) => {
+    //    if (err) {
+    //        console.error(`exec error: ${err}`);
+    //    }
+
+    //    bit = await ste.bus(ActPvt.BUNDLE_PIVOT, { src: "333.depth" });
+
+    //    bit = await ste.bus(ActDsk.READ_DISK, { src: './work/333.depth.js' })
+    //    var depth = bit.dskBit.dat;
+
+    //    bit = await ste.bus(ActDsk.WRITE_DISK, { src: './public/jsx/333.depth.js', dat: depth })
+
+    //    setTimeout(() => {
+    //        if (bal.slv != null) bal.slv({ depBit: { idx: "update-depth" } });
+    //    }, 3);
+
+    //});

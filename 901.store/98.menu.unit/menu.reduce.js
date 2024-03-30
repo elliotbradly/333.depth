@@ -19,6 +19,8 @@ function reducer(model = new menu_model_1.MenuModel(), act, state) {
             return Buzz.printMenu(clone(model), act.bale, state);
         case Act.SUPABASE_MENU:
             return Buzz.supabaseMenu(clone(model), act.bale, state);
+        case Act.SOCKET_MENU:
+            return Buzz.socketMenu(clone(model), act.bale, state);
         default:
             return model;
     }

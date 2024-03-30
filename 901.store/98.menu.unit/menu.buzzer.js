@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.supabaseMenu = exports.printMenu = exports.shadeMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
+exports.socketMenu = exports.supabaseMenu = exports.printMenu = exports.shadeMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
 var _00_menu_buzz_1 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "initMenu", { enumerable: true, get: function () { return _00_menu_buzz_1.initMenu; } });
 var _00_menu_buzz_2 = require("./buz/00.menu.buzz");
@@ -15,4 +15,6 @@ var _00_menu_buzz_6 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "printMenu", { enumerable: true, get: function () { return _00_menu_buzz_6.printMenu; } });
 var menu_supabase_1 = require("./buz/menu.supabase");
 Object.defineProperty(exports, "supabaseMenu", { enumerable: true, get: function () { return menu_supabase_1.supabaseMenu; } });
+var menu_socket_1 = require("./buz/menu.socket");
+Object.defineProperty(exports, "socketMenu", { enumerable: true, get: function () { return menu_socket_1.socketMenu; } });
 //# sourceMappingURL=menu.buzzer.js.map

@@ -19,6 +19,12 @@ export function reducer(model: DepthModel = new DepthModel(), act: Act.Actions, 
 case Act.TEST_DEPTH:
  return Buzz.testDepth(clone(model), act.bale, state);
  
+case Act.COMMIT_DEPTH:
+ return Buzz.commitDepth(clone(model), act.bale, state);
+ 
+case Act.RELOAD_DEPTH:
+ return Buzz.reloadDepth(clone(model), act.bale, state);
+ 
         default:
             return model;
     }
