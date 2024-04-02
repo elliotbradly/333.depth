@@ -9,7 +9,9 @@ const initSocket = (cpy, bal, ste) => {
         this.isAlive = true;
         this.send("heartbeat");
     }
-    wss.on('open', () => { console.log("are you open"); });
+    wss.on('open', () => {
+        console.log("are you open");
+    });
     wss.on("connection", (ws) => {
         ws.isAlive = true;
         ws.on('error', console.error);
@@ -17,7 +19,7 @@ const initSocket = (cpy, bal, ste) => {
         ws.on("message", (message) => {
             console.log(`Received message => ${message}`);
         });
-        ws.send("connect to STORE SOCKET");
+        ws.send("Hello! Message From Server!!");
     });
     const interval = setInterval(function ping() {
         wss.clients.forEach(function each(ws) {

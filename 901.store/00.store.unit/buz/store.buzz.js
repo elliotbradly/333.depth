@@ -4,10 +4,9 @@ exports.executeStore = exports.generateStore = exports.closeStore = exports.depl
 const ActMnu = require("../../98.menu.unit/menu.action");
 const ActBus = require("../../99.bus.unit/bus.action");
 const ActStr = require("../store.action");
-const ActDsk = require("../../act/disk.action");
 const ActCns = require("../../act/console.action");
 const ActPvt = require("../../act/pivot.action");
-var bit, val, idx, dex, lst, dat, src;
+var bit, val, idx, dex, lst, dat;
 const initStore = async (cpy, bal, ste) => {
     if (bal.dat != null)
         bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActStr], dat: bal.dat, src: bal.src });
@@ -19,45 +18,10 @@ const initStore = async (cpy, bal, ste) => {
 };
 exports.initStore = initStore;
 const updateStore = async (cpy, bal, ste) => {
-    var lstMsg = [];
     bit = await ste.bus(ActPvt.UPDATE_PIVOT, { src: '901.store' });
-    lstMsg = lstMsg.concat(bit.pvtBit.lst);
-    bit = await ste.bus(ActDsk.INDEX_DISK, { src: '../../' });
-    lst = bit.dskBit.lst;
-    var dex = lst.length - 1;
-    var output = [];
-    var nextDir = async () => {
-        if (dex < 0) {
-            output;
-            src = '../998.work/work/901.store/';
-            bit = await ste.bus(ActPvt.REPLACE_PIVOT, { src, lst: output });
-            lstMsg = lstMsg.concat(bit.pvtBit.lst);
-            bal.slv({ ctlBit: { idx: "update-store", lst: lstMsg } });
-            return cpy;
-        }
-        var now = lst[dex];
-        var check = '../../' + now;
-        if (now == 'artefact') {
-            dex -= 1;
-            await nextDir();
-            return;
-        }
-        bit = await ste.bus(ActDsk.TYPE_DISK, { src: '../../' + now });
-        if (bit.dskBit.src != 'directory') {
-            dex -= 1;
-            await nextDir();
-            return;
-        }
-        bit = await ste.bus(ActDsk.INDEX_DISK, { src: '../../' + now });
-        bit.dskBit.lst.forEach((a) => {
-            if (a != '901.store')
-                return;
-            output.push('../../' + now);
-        });
-        dex -= 1;
-        await nextDir();
-    };
-    await nextDir();
+    lst = bit.pvtBit.lst;
+    bal.slv({ ctlBit: { idx: "update-store", lst } });
+    return cpy;
 };
 exports.updateStore = updateStore;
 const openStore = async (cpy, bal, ste) => {
