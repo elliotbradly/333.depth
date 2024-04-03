@@ -4,3 +4,4 @@ global.MQTT = require("async-mqtt");
 
 global.DEPTH.ActDep = require("../dist/333.depth/00.depth.unit/depth.action");
 global.DEPTH.ActEng = require("../dist/333.depth/01.engine.unit/engine.action");
+global.DEPTH.ActSok = require("../dist/333.depth/96.socket.unit/socket.action");
