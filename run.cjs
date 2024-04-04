@@ -63,12 +63,11 @@ const init = async (prt) => {
     DEPTH = require(path.resolve('./dist/333.depth/hunt'));
     DEPTH_ACTION = require(path.resolve('./dist/333.depth/00.depth.unit/depth.action'));
 
-
     CONTROL = require(path.resolve('./900.control/index'));
     CONTROL_ACTION = require(path.resolve('./900.control/00.control.unit/control.action'));
 
-    STORE = require(path.resolve('./901.store/index'));
-    STORE_ACTION = require(path.resolve('./901.store/00.store.unit/store.action'));
+    //STORE = require(path.resolve('./901.store/index'));
+    //STORE_ACTION = require(path.resolve('./901.store/00.store.unit/store.action'));
 
     PIVOT = require(path.resolve('./999.pivot/index'));
     PIVOT_ACTION = require(path.resolve('./999.pivot/00.pivot.unit/pivot.action'));
@@ -79,7 +78,7 @@ const init = async (prt) => {
     if (pvt == false) {
 
         await TERMINAL.hunt(TERMINAL_ACTION.INIT_TERMINAL, { dat: MQTT, src: local });
-        await STORE.hunt( STORE_ACTION.INIT_STORE, {  dat: MQTT, src: local });
+        //await STORE.hunt( STORE_ACTION.INIT_STORE, {  dat: MQTT, src: local });
         await CONTROL.hunt( CONTROL_ACTION.INIT_CONTROL, {  dat: MQTT, src: local });
         await PIVOT.hunt(PIVOT_ACTION.INIT_PIVOT, { dat: MQTT, src: local });
         await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 1, dat: MQTT, src: [localBit] });

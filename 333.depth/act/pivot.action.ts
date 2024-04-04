@@ -9,3 +9,5 @@ export const LIST_PIVOT = "[Patch action] List Pivot";
 export const CREATE_PIVOT = "[Patch action] Create Pivot";
 export const CONTAINS_PIVOT = "[Patch action] Contains Pivot";
 export const BUNDLE_PIVOT = "[Patch action] Bundle Pivot";
+export const REPLACE_PIVOT = "[Patch action] Replace Pivot";
+export const SHIP_PIVOT = "[Patch action] Ship Pivot";

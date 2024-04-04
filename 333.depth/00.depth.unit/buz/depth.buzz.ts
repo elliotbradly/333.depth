@@ -2,7 +2,8 @@
 import * as ActMnu from "../../98.menu.unit/menu.action";
 import * as ActBus from "../../99.bus.unit/bus.action";
 import * as ActDep from "../../00.depth.unit/depth.action";
-import * as ActEng from "../../01.engine.unit/engine.action";
+import * as ActSok from "../../96.socket.unit/socket.action";
+
 
 import * as ActSpc from "../../act/space.action"
 
@@ -21,14 +22,14 @@ export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
     console.log("init-depth")
 
-    if (bal.dat != null) bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActDep, ActEng], dat: bal.dat, src: bal.src })
+    if (bal.dat != null) bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActDep], dat: bal.dat, src: bal.src })
 
     if (bal.val == 1) patch(ste, ActMnu.INIT_MENU, bal);
 
-    if (bal.val == 0) {
-        console.log("init-socket")
-        //bit = await ste.hunt(ActSok.INIT_SOCKET, {})
-    }
+    //if (bal.val == 0) {
+    //    console.log("init-socket")
+    //    bit = await ste.hunt(ActSok.INIT_SOCKET, {})
+    //}
 
     //ste.bus(ActSpc.READY_SPACE, {})
 
@@ -61,19 +62,27 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
         lst = [];
 
-        bit = await ste.bus(ActPvt.BUNDLE_PIVOT, { src: "333.depth" });
+        bit = await ste.bus(ActPvt.SHIP_PIVOT, { src: "333.depth" });
         lst.push(bit)
 
-        bit = await ste.bus(ActDsk.READ_DISK, { src: "./work/333.depth.js" });
-        var depth = bit.dskBit.dat;
+        bit = await ste.bus(ActDsk.ENSURE_DISK, { src: "../service/render.com/333.depth" });
+        
+        //copy it over 
+        
+        bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/333.depth/', idx: "../service/render.com/333.depth" });
+        lst.push(bit)
+
+        
+
+        //bit = await ste.bus(ActDsk.READ_DISK, { src: "./work/333.depth.js" });
+        //var depth = bit.dskBit.dat;
 
         //bit = await ste.bus(ActDsk.WRITE_DISK, { src: "./public/jsx/122.blender.js", dat: blend });
         //lst.push(bit)
 
-        src = "../service/render.com/333.depth.js"
-        bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: depth });
-        lst.push(bit)
-
+        //src = "../service/render.com/333.depth.js"
+        //bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: depth });
+        //lst.push(bit)
 
         bit = await ste.bus(ActDsk.READ_DISK, { src: "./0.AlligatorEarth.js" });
         var alligator = bit.dskBit.dat;
@@ -82,8 +91,8 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
         bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: alligator });
         lst.push(bit)
 
-        bit = await ste.bus(ActDsk.COPY_DISK, { idx: './901.store/', src: "../service/render.com/901.store" });
-        lst.push(bit)
+        //bit = await ste.bus(ActDsk.COPY_DISK, { idx: './901.store/', src: "../service/render.com/901.store" });
+        //lst.push(bit)
 
 
         setTimeout(() => {
