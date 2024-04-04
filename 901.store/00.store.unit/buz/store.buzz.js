@@ -4,10 +4,12 @@ exports.executeStore = exports.generateStore = exports.closeStore = exports.depl
 const ActMnu = require("../../98.menu.unit/menu.action");
 const ActBus = require("../../99.bus.unit/bus.action");
 const ActStr = require("../store.action");
+const ActDsk = require("../../act/disk.action");
 const ActCns = require("../../act/console.action");
 const ActPvt = require("../../act/pivot.action");
-var bit, val, idx, dex, lst, dat;
+var bit, val, idx, dex, lst, dat, src;
 const initStore = async (cpy, bal, ste) => {
+    console.log("init store");
     if (bal.dat != null)
         bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActStr], dat: bal.dat, src: bal.src });
     if (bal.val == 1)
@@ -18,10 +20,13 @@ const initStore = async (cpy, bal, ste) => {
 };
 exports.initStore = initStore;
 const updateStore = async (cpy, bal, ste) => {
-    bit = await ste.bus(ActPvt.UPDATE_PIVOT, { src: '901.store' });
-    lst = bit.pvtBit.lst;
-    bal.slv({ ctlBit: { idx: "update-store", lst } });
-    return cpy;
+    var lstMsg = [];
+    bit = await ste.bus(ActPvt.SHIP_PIVOT, { src: '901.store' });
+    lstMsg = lstMsg.concat(bit.pvtBit.lst);
+    idx = "../../333.depth/901.store/";
+    bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/901.store/', idx });
+    lstMsg = lstMsg.concat(bit.pvtBit);
+    bal.slv({ ctlBit: { idx: "update-store", lst: lstMsg } });
 };
 exports.updateStore = updateStore;
 const openStore = async (cpy, bal, ste) => {

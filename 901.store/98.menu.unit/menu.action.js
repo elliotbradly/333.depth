@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContainerMenu = exports.CONTAINER_MENU = exports.SocketMenu = exports.SOCKET_MENU = exports.SupabaseMenu = exports.SUPABASE_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.PrintMenu = exports.PRINT_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
+exports.ContainerMenu = exports.CONTAINER_MENU = exports.SupabaseMenu = exports.SUPABASE_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.PrintMenu = exports.PRINT_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
 exports.INIT_MENU = "[Menu action] Init Menu";
 class InitMenu {
     constructor(bale) {
@@ -49,14 +49,6 @@ class SupabaseMenu {
     }
 }
 exports.SupabaseMenu = SupabaseMenu;
-exports.SOCKET_MENU = "[Menu action] Socket Menu";
-class SocketMenu {
-    constructor(bale) {
-        this.bale = bale;
-        this.type = exports.SOCKET_MENU;
-    }
-}
-exports.SocketMenu = SocketMenu;
 exports.CONTAINER_MENU = "[Visage action] Container Menu";
 class ContainerMenu {
     constructor(bale) {

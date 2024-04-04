@@ -29,17 +29,13 @@ var updateStore = async (ste) => {
     bit = await ste.hunt(ActMnu.PRINT_MENU, bitUp);
 };
 const updateMenu = async (cpy, bal, ste) => {
-    lst = [ActMnu.SUPABASE_MENU, ActMnu.SOCKET_MENU, ActStr.UPDATE_STORE];
+    lst = [ActMnu.SUPABASE_MENU, ActStr.UPDATE_STORE];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 5, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
     switch (src) {
         case ActMnu.SUPABASE_MENU:
             bit = await ste.hunt(ActMnu.SUPABASE_MENU, {});
-            bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
-            break;
-        case ActMnu.SOCKET_MENU:
-            bit = await ste.hunt(ActMnu.SOCKET_MENU, {});
             bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
             break;
         case ActStr.GENERATE_STORE:
