@@ -91,8 +91,8 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
         bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: alligator });
         lst.push(bit)
 
-        //bit = await ste.bus(ActDsk.COPY_DISK, { idx: './901.store/', src: "../service/render.com/901.store" });
-        //lst.push(bit)
+        bit = await ste.bus(ActDsk.COPY_DISK, { src: './901.store/', idx: "../service/render.com/901.store" });
+        lst.push(bit)
 
 
         setTimeout(() => {
