@@ -60,8 +60,8 @@ const updateDepth = (cpy, bal, ste) => {
         src = "../service/render.com/app.js";
         bit = await ste.bus(ActDsk.WRITE_DISK, { src, dat: alligator });
         lst.push(bit);
-        //bit = await ste.bus(ActDsk.COPY_DISK, { idx: './901.store/', src: "../service/render.com/901.store" });
-        //lst.push(bit)
+        bit = await ste.bus(ActDsk.COPY_DISK, { src: './901.store/', idx: "../service/render.com/901.store" });
+        lst.push(bit);
         setTimeout(() => {
             bal.slv({ blnBit: { idx: "update-blender", lst } });
             return cpy;

@@ -1,7 +1,9 @@
 var FS = require("fs");
 
+var bit;
+
 console.log("----------------------");
-console.log("starting up the server");
+console.log("starting up the server v0>01");
 console.log("----------------------");
 
 const PORT = 1333;
@@ -11,7 +13,10 @@ const MQTT = require("async-mqtt");
 var DEPTH = require("./333.depth")
 var DEPTH_ACTION = require("./333.depth/00.depth.unit/depth.action")
 var SOCKET_ACTION = require("./333.depth/96.socket.unit/socket.action")
-var SOCKET_BUZZ = require("./333.depth/96.socket.unit/buz/socket.buzz")
+
+var STORE = require("./901.store")
+var STORE_ACTION = require("./901.store/00.store.unit/store.action")
+
 
 var init = async (prt) => {
   const local = "mqtt://localhost:" + prt;
@@ -25,7 +30,12 @@ var init = async (prt) => {
 
   server.listen(PORT, async () => {
 
-    await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 0, dat: MQTT, src: [localBit] });
+    bit = await STORE.hunt( STORE_ACTION.INIT_STORE, {  dat: MQTT, src: local });
+    console.log( JSON.stringify(bit))
+
+    bit = await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 0, dat: MQTT, src: [localBit] });
+    console.log( JSON.stringify(bit))
+    
     console.log('server started and listening on port ', PORT)
     
   })
