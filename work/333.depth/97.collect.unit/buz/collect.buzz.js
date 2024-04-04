@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatCollect = exports.dotCollect = exports.emptyCollect = exports.deleteCollect = exports.modelCollect = exports.getCollect = exports.putCollect = exports.removeCollect = exports.createCollect = exports.writeCollect = exports.readCollect = exports.fetchCollect = exports.updateCollect = exports.initCollect = void 0;
+exports.listCollect = exports.formatCollect = exports.dotCollect = exports.emptyCollect = exports.deleteCollect = exports.modelCollect = exports.getCollect = exports.putCollect = exports.removeCollect = exports.createCollect = exports.writeCollect = exports.readCollect = exports.fetchCollect = exports.updateCollect = exports.initCollect = void 0;
 const ActCol = require("../../97.collect.unit/collect.action");
 var bit, lst, dat, idx, val, src, dex;
 const initCollect = (cpy, bal, ste) => {
@@ -56,6 +56,7 @@ const writeCollect = async (cpy, bal, ste) => {
         bal.slv({ rskBit: { idx: "write-collect-err", src: 'no-bit' } });
     var cabBit = cpy.caboodleBitList[cpy.caboodleBits[type]];
     bal.idx;
+    val = 0;
     if (cabBit.bits[bal.idx] == null) {
         bit = await ste.hunt(bal.bit, { idx: bal.idx, src: bal.src, dat: bal.dat });
         var objDat = bit[Object.keys(bit)[0]];
@@ -72,6 +73,7 @@ const writeCollect = async (cpy, bal, ste) => {
         cabBit.bits[idx] = dat.dex;
     }
     else {
+        val = 1;
         var cabDat = cabBit.bitList[cabBit.bits[bal.idx]];
         bal.dat;
         for (var key in bal.dat) {
@@ -86,7 +88,7 @@ const writeCollect = async (cpy, bal, ste) => {
     if ((dat == null) && (bal.slv != null))
         bal.slv({ rskBit: { idx: "write-collect-err", src: 'no-dat' } });
     if (bal.slv != null)
-        bal.slv({ clcBit: { idx: "write-collect", dat } });
+        bal.slv({ clcBit: { idx: "write-collect", val, dat } });
     return cpy;
 };
 exports.writeCollect = writeCollect;
@@ -191,6 +193,19 @@ const formatCollect = (cpy, bal, ste) => {
     return cpy;
 };
 exports.formatCollect = formatCollect;
+const listCollect = (cpy, bal, ste) => {
+    var type = bal.bit.split(' ').slice(-1).pop().toLowerCase();
+    if (cpy.caboodleBits[type] == null)
+        (0, exports.createCollect)(cpy, { idx: type }, ste);
+    var cabBit = cpy.caboodleBitList[cpy.caboodleBits[type]];
+    lst = [];
+    cabBit.bitList.forEach((a) => {
+        lst.push((a.idx));
+    });
+    bal.slv({ colBit: { idx: "list-collect", lst } });
+    return cpy;
+};
+exports.listCollect = listCollect;
 const S = require("string");
 const doT = require("dot");
 //# sourceMappingURL=collect.buzz.js.map

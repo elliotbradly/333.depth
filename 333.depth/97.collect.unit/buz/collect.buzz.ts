@@ -1,3 +1,4 @@
+
 import * as ActCol from "../../97.collect.unit/collect.action";
 
 var bit, lst, dat, idx, val, src, dex
@@ -65,6 +66,8 @@ export const writeCollect = async (cpy: CollectModel, bal: CollectBit, ste: Stat
 
       bal.idx
 
+      val = 0;
+
 
       if (cabBit.bits[bal.idx] == null) {
 
@@ -87,9 +90,9 @@ export const writeCollect = async (cpy: CollectModel, bal: CollectBit, ste: Stat
 
       } else {
 
-            var cabDat = cabBit.bitList[cabBit.bits[bal.idx]]
+            val = 1;
 
-            
+            var cabDat = cabBit.bitList[cabBit.bits[bal.idx]]
 
             bal.dat
 
@@ -106,7 +109,7 @@ export const writeCollect = async (cpy: CollectModel, bal: CollectBit, ste: Stat
 
       if ((dat == null) && (bal.slv != null)) bal.slv({ rskBit: { idx: "write-collect-err", src: 'no-dat' } });
 
-      if (bal.slv != null) bal.slv({ clcBit: { idx: "write-collect", dat } });
+      if (bal.slv != null) bal.slv({ clcBit: { idx: "write-collect", val, dat } });
 
       return cpy;
 };
@@ -153,7 +156,7 @@ export const removeCollect = async (cpy: CollectModel, bal: CollectBit, ste: Sta
 
       delete cabBit.bits[bal.idx]
       var itm = cabBit.bitList.splice(dex, 1)
-      
+
       cabBit.dex -= 1
 
       if (bal.slv != null) bal.slv({ clcBit: { idx: "remove-collect", dat: itm[0] } });
@@ -198,17 +201,17 @@ export const emptyCollect = (cpy: CollectModel, bal: CollectBit, ste: State) => 
 };
 
 export const dotCollect = (cpy: CollectModel, bal: CollectBit, ste: State) => {
-      
+
       var gel = bal.dat;
       var out = [];
-    
+
       bal.src.split("\n").forEach((a, b) => {
-        if (a.includes('//') == true) return
-        var doTCompiled = doT.template(a);
-        var outLine = doTCompiled(gel);
-        out.push(outLine);
+            if (a.includes('//') == true) return
+            var doTCompiled = doT.template(a);
+            var outLine = doTCompiled(gel);
+            out.push(outLine);
       });
-    
+
       if (bal.slv != null) bal.slv({ colBit: { idx: "dot-vurt", lst: out, src: out.join('\n') } });
 
       return cpy;
@@ -234,6 +237,25 @@ export const formatCollect = (cpy: CollectModel, bal: CollectBit, ste: State) =>
       dat = [idx, out]
 
       bal.slv({ colBit: { idx: "format-collect", dat } });
+      return cpy;
+};
+
+export const listCollect = (cpy: CollectModel, bal: CollectBit, ste: State) => {
+
+      var type = bal.bit.split(' ').slice(-1).pop().toLowerCase();
+      if (cpy.caboodleBits[type] == null) createCollect(cpy, { idx: type }, ste)
+
+      var cabBit: CaboodleBit = cpy.caboodleBitList[cpy.caboodleBits[type]]
+
+      lst = []
+
+      cabBit.bitList.forEach((a) => {
+            lst.push((a.idx))
+      })
+
+
+      bal.slv({ colBit: { idx: "list-collect", lst } });
+
       return cpy;
 };
 

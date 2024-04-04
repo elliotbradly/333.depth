@@ -35,6 +35,8 @@ function reducer(model = new collect_model_1.CollectModel(), act, state) {
             return Buzz.formatCollect(clone(model), act.bale, state);
         case Act.DOT_COLLECT:
             return Buzz.dotCollect(clone(model), act.bale, state);
+        case Act.LIST_COLLECT:
+            return Buzz.listCollect(clone(model), act.bale, state);
         default:
             return model;
     }

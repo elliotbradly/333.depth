@@ -89,6 +89,12 @@ export const FORMAT_COLLECT = "[Format action] Format Collect";
  constructor(public bale: CollectBit) {}
  }
  
+export const LIST_COLLECT = "[List action] List Collect";
+ export class ListCollect implements Action {
+ readonly type = LIST_COLLECT;
+ constructor(public bale: CollectBit) {}
+ }
+ 
 export type Actions = | InitCollect | UpdateCollect 
 | ReadCollect
 | WriteCollect
@@ -102,3 +108,4 @@ export type Actions = | InitCollect | UpdateCollect
 | PutCollect
 | FormatCollect
 | DotCollect
+| ListCollect
