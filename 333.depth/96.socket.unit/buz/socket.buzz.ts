@@ -21,6 +21,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
     const wss = new WebSocket.Server({ port: PORT });
 
     function heartbeat() {
+        console.log("sending heartbeat")
         this.isAlive = true;
         this.send("heartbeat")
     }
@@ -28,14 +29,21 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
     wss.on('open', () => { console.log("are you open") });
 
     wss.on("connection", async (ws) => {
+
+        var uuid = uuidv4();
+        ws.idx = uuid;
+
         ws.on('pong', heartbeat);
 
-        idx = uuidv4();
-        ws.idx = idx;
+        ws.on("close", async () => {
+            bit = await ste.hunt(ActSok.REMOVE_SOCKET, { idx: uuid });
+            console.log("closing..." + uuid)
+            uuid = null
+        });
 
         console.log(ws.idx + ' connnected...')
 
-        bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx, dat: { bit: ws } });
+        bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
     });
 
     const interval = setInterval(async function ping() {
@@ -49,67 +57,29 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         var nextSocket = async () => {
 
-            if (dex < 0) {
-                //console.log("complete next socket")
-                return;
-            }
+            if (dex < 0) { return }
 
             var now = colLst[dex];
 
-            var sokBit = await ste.hunt(ActSok.READ_SOCKET, { idx:now })
+            var sokBit = await ste.hunt(ActSok.READ_SOCKET, { idx: now })
             sokBit = sokBit.sokBit;
-            var alive = sokBit.dat.bit.isAlive
-
-            console.log( 'alive: ' + now + ' ::: ' + alive )
 
             dex -= 1
-
-            count +=1;
+            count += 1;
 
             await nextSocket()
         }
 
         await nextSocket()
 
+        console.log("count " + count)
 
-       // colLst.forEach((sokBit) => {
-
-           // count += 1;
-
-          //  console.log('checking...' + sokBit)
-
-            //if (ws.isAlive === false) {
-            //    console.log("remove socket ")
-            //    return ws.terminate();
-            //}
-
-            //ws.isAlive = false;
-            //ws.ping();
-        //});
-
-        // wss.clients.forEach(function each(ws) {
-
-        //     count += 1;
-
-        //     console.log('checking...' + ws.isAlive )
-
-        //     if (ws.isAlive === false) {
-        //         console.log("remove socket ")
-        //         return ws.terminate();
-        //     }
-
-        //    ws.isAlive = false;
-        //   ws.ping();
-        //});
-
-        console.log('size...' + count)
-
-    }, 10000);
+    }, 6000);
 
 
-    //wss.on('close', function close() {
-    //    clearInterval(interval);
-    //});
+    wss.on('close', function close() {
+        clearInterval(interval);
+    });
 
     bal.slv({ intBit: { idx: "init-socket" } });
     return cpy;
@@ -132,10 +102,6 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 };
 
 export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State) => {
-
-    console.log("create socket ::: " + bal.idx)
-    console.log("socket data ::: " + bal.dat)
-    console.log("socket bit ::: " + bal.dat.bit)
 
     //if ( bal.dat == null ) bal.dat = {}
 
@@ -169,7 +135,7 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var dat: SockBit = { idx: bal.idx, src: 'create', bit };
 
-    //bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
+    bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
 
     bal.slv({ sokBit: { idx: "create-socket", dat } });
     return cpy;
@@ -212,15 +178,19 @@ export const removeSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
 export const deleteSocket = async (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
+    console.log("delete a socket")
+
     bit = await ste.hunt(ActSok.READ_SOCKET, { idx: bal.idx });
     dat = bit.sokBit;
 
-    console.log("delete a socket")
+    console.log("remove socket ::: " + dat.idx)
+    console.log("socket data ::: " + dat.dat)
+    console.log("socket bit ::: " + dat.dat.bit)
 
-    //var graphic = dat.bit;
-    //graphic.destroy()
-    //dat.bit = null
+    if (dat.dat.bit.terminate != null) dat.dat.bit.terminate()
 
+    if ((dat.dat != null) && (dat.dat.bit != null)) dat.dat.bit = null
+    if (dat.dat != null) dat.dat = null
 
     bal.slv({ sokBit: { idx: "delete-socket", dat } });
     return cpy;
