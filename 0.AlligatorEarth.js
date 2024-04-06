@@ -17,6 +17,8 @@ var SOCKET_ACTION = require("./333.depth/96.socket.unit/socket.action")
 var STORE = require("./901.store")
 var STORE_ACTION = require("./901.store/00.store.unit/store.action")
 
+var EARTH = require("./811.earth")
+var EARTH_ACTION = require("./811.earth/00.earth.unit/earth.action")
 
 var init = async (prt) => {
   const local = "mqtt://localhost:" + prt;
@@ -29,6 +31,9 @@ var init = async (prt) => {
   const server = require('net').createServer(aedes.handle)
 
   server.listen(PORT, async () => {
+
+    bit = await EARTH.hunt( EARTH_ACTION.INIT_EARTH, {  dat: MQTT, src: local });
+    console.log( JSON.stringify(bit))
 
     bit = await STORE.hunt( STORE_ACTION.INIT_STORE, {  dat: MQTT, src: local });
     console.log( JSON.stringify(bit))
@@ -43,9 +48,7 @@ var init = async (prt) => {
 
 };
 
-
 init( PORT )
-
 
 //const httpServer = require("http").createServer();
 //const ws = require("websocket-stream");
