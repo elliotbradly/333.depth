@@ -1,3 +1,4 @@
+
 import * as ActCol from '../../97.collect.unit/collect.action';
 
 var bit, lst, dat, idx, val, src, dex;
@@ -80,6 +81,8 @@ export const writeCollect = async (
 
   bal.idx;
 
+  val = 0;
+
   if (cabBit.bits[bal.idx] == null) {
     bit = await ste.hunt(bal.bit, { idx: bal.idx, src: bal.src, dat: bal.dat });
     var objDat = bit[Object.keys(bit)[0]];
@@ -101,6 +104,8 @@ export const writeCollect = async (
 
     bal.dat;
 
+    val = 1;
+
     for (var key in bal.dat) {
       if (cabDat == null) cabDat = {};
       cabDat[key] = bal.dat[key];
@@ -114,7 +119,7 @@ export const writeCollect = async (
   if (dat == null && bal.slv != null)
     bal.slv({ rskBit: { idx: 'write-collect-err', src: 'no-dat' } });
 
-  if (bal.slv != null) bal.slv({ clcBit: { idx: 'write-collect', dat } });
+  if (bal.slv != null) bal.slv({ clcBit: { idx: 'write-collect', val, dat } });
 
   return cpy;
 };
@@ -274,10 +279,45 @@ export const listCollect = (cpy: CollectModel, bal: CollectBit, ste: State) => {
   lst = [];
 
   cabBit.bitList.forEach((a) => {
-    lst.push(a.idx);
+    
+    if ( a.idx != null ) lst.push(a.idx)
+    if ( a.id != null ) lst.push(a.id)
+
   });
 
   bal.slv({ clcBit: { idx: 'list-collect', lst } });
+
+  return cpy;
+};
+
+export const hashCollect = (cpy: CollectModel, bal: CollectBit, ste: State) => {
+
+  if (bal.src == null) bal.src = ''
+  lst = bal.src.split('\n')
+
+  dat = {}
+
+  lst.forEach((a) => {
+
+    a = S(a).collapseWhitespace().s
+    if (a.length < 3) return
+
+    var hold = a.split(':')
+
+    var dom = hold[0]
+    var sub = hold[1]
+
+    var now = sub.split(',')
+
+    now.forEach( ( b,c )=>{
+      now[c] = S(b).collapseWhitespace().s
+    })
+
+    dat[dom] = now
+
+  })
+
+  bal.slv({ clcBit: { idx: 'hash-collect', dat } });
 
   return cpy;
 };
