@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listClock = exports.blockClock = exports.pushClock = exports.deleteClock = exports.createClock = exports.removeClock = exports.writeClock = exports.readClock = exports.updateClock = exports.initClock = void 0;
+exports.testClock = exports.listClock = exports.blockClock = exports.pushClock = exports.deleteClock = exports.createClock = exports.removeClock = exports.writeClock = exports.readClock = exports.updateClock = exports.initClock = void 0;
 const ActCol = require("../../97.collect.unit/collect.action");
 const ActClk = require("../clock.action");
 var bit, val, idx, dex, lst, dat;
@@ -162,8 +162,10 @@ const pushClock = async (cpy, bal, ste) => {
 exports.pushClock = pushClock;
 const blockClock = async (cpy, bal, ste) => {
     var url = 'https://cardano-mainnet.blockfrost.io/api/v0/blocks/latest/';
-    //var blockfrost = process.env.BLOCKFROST;
-    var blockfrost = 'mainnetiCuBCFNLf9ZP4z8lC4hEtGzMA61AuSc1';
+    if (bal.idx == null) {
+        return bal.slv({ clkBit: { idx: "block-clock-error", src: 'no-blockfrost-idx' } });
+    }
+    var blockfrost = bal.idx;
     fetch(url, {
         method: 'GET',
         headers: { 'project_id': blockfrost },
@@ -184,9 +186,9 @@ const blockClock = async (cpy, bal, ste) => {
         //can we convert some some time
         //going to give it the time of the response
         //covert to label
-        bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx: bal.idx });
-        var clk = bit.clkBit.dat;
-        debugger;
+        //bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx: bal.idx })
+        //var clk:TicBit = bit.clkBit.dat;
+        //debugger
         return bal.slv({ clkBit: { idx: "block-clock", val, dex, dat } });
     })
         .catch(err => {
@@ -216,6 +218,11 @@ const listClock = async (cpy, bal, ste) => {
     return cpy;
 };
 exports.listClock = listClock;
+const testClock = (cpy, bal, ste) => {
+    debugger;
+    return cpy;
+};
+exports.testClock = testClock;
 const luxon_1 = require("luxon");
 //pnpm i --save-dev @types/luxon
 //# sourceMappingURL=clock.buzz.js.map

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.clockMenu = void 0;
+const ActMnu = require("../menu.action");
 const ActClk = require("../../05.clock.unit/clock.action");
 const ActTrm = require("../../act/terminal.action");
 const ActCns = require("../../act/console.action");
@@ -30,9 +31,7 @@ var print = async (ste, bit) => {
 };
 const clockMenu = async (cpy, bal, ste) => {
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
-    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "Arena MENU V0" });
-    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
-    lst = [ActClk.UPDATE_CLOCK, ActClk.WRITE_CLOCK, ActClk.BLOCK_CLOCK];
+    lst = [ActClk.BLOCK_CLOCK, ActClk.TEST_CLOCK, ActClk.UPDATE_CLOCK, ActClk.WRITE_CLOCK];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
@@ -53,6 +52,9 @@ const clockMenu = async (cpy, bal, ste) => {
             print(ste, bit);
             (0, exports.clockMenu)(cpy, bal, ste);
             break;
+        case ActClk.TEST_CLOCK:
+            debugger;
+            break;
         case ActClk.WRITE_CLOCK:
             bit = await ste.bus(ActTrm.INPUT_TERMINAL, { lst: ["", "", "idx clock..."] });
             idx = bit.trmBit.src;
@@ -61,15 +63,17 @@ const clockMenu = async (cpy, bal, ste) => {
             (0, exports.clockMenu)(cpy, bal, ste);
             break;
         case ActClk.BLOCK_CLOCK:
-            if (simIDX == null) {
-                simIDX = 'sim00';
-                bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx: simIDX });
-            }
-            setInterval(async () => {
-                bit = await ste.hunt(ActClk.BLOCK_CLOCK, { idx: simIDX });
-                print(ste, bit);
-                (0, exports.clockMenu)(cpy, bal, ste);
-            }, 1000);
+            //if (simIDX == null) {
+            //    simIDX = 'sim00';
+            //    bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx: simIDX })
+            //}
+            bit = await ste.hunt(ActClk.BLOCK_CLOCK, { idx: 'mainnetiCuBCFNLf9ZP4z8lC4hEtGzMA61AuSc1' });
+            bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
+            //setInterval(async () => {
+            //    print(ste, bit)
+            //    clockMenu(cpy, bal, ste)
+            //}, 1000)
+            (0, exports.clockMenu)(cpy, bal, ste);
             break;
         default:
             bit = await await ste.bus(ActTrm.CLOSE_TERMINAL, {});

@@ -25,6 +25,8 @@ function reducer(model = new clock_model_1.ClockModel(), act, state) {
             return Buzz.blockClock(clone(model), act.bale, state);
         case Act.LIST_CLOCK:
             return Buzz.listClock(clone(model), act.bale, state);
+        case Act.TEST_CLOCK:
+            return Buzz.testClock(clone(model), act.bale, state);
         default:
             return model;
     }

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListClock = exports.LIST_CLOCK = exports.BlockClock = exports.BLOCK_CLOCK = exports.DeleteClock = exports.DELETE_CLOCK = exports.CreateClock = exports.CREATE_CLOCK = exports.RemoveClock = exports.REMOVE_CLOCK = exports.WriteClock = exports.WRITE_CLOCK = exports.ReadClock = exports.READ_CLOCK = exports.UpdateClock = exports.UPDATE_CLOCK = exports.InitClock = exports.INIT_CLOCK = void 0;
+exports.TestClock = exports.TEST_CLOCK = exports.ListClock = exports.LIST_CLOCK = exports.BlockClock = exports.BLOCK_CLOCK = exports.DeleteClock = exports.DELETE_CLOCK = exports.CreateClock = exports.CREATE_CLOCK = exports.RemoveClock = exports.REMOVE_CLOCK = exports.WriteClock = exports.WRITE_CLOCK = exports.ReadClock = exports.READ_CLOCK = exports.UpdateClock = exports.UPDATE_CLOCK = exports.InitClock = exports.INIT_CLOCK = void 0;
 // Clock actions
 exports.INIT_CLOCK = "[Clock action] Init Clock";
 class InitClock {
@@ -74,4 +74,12 @@ class ListClock {
     }
 }
 exports.ListClock = ListClock;
+exports.TEST_CLOCK = "[Test action] Test Clock";
+class TestClock {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.TEST_CLOCK;
+    }
+}
+exports.TestClock = TestClock;
 //# sourceMappingURL=clock.action.js.map

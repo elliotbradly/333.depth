@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listClock = exports.blockClock = exports.deleteClock = exports.createClock = exports.removeClock = exports.writeClock = exports.readClock = exports.updateClock = exports.initClock = void 0;
+exports.testClock = exports.listClock = exports.blockClock = exports.deleteClock = exports.createClock = exports.removeClock = exports.writeClock = exports.readClock = exports.updateClock = exports.initClock = void 0;
 var clock_buzz_1 = require("./buz/clock.buzz");
 Object.defineProperty(exports, "initClock", { enumerable: true, get: function () { return clock_buzz_1.initClock; } });
 var clock_buzz_2 = require("./buz/clock.buzz");
@@ -19,4 +19,6 @@ var clock_buzz_8 = require("./buz/clock.buzz");
 Object.defineProperty(exports, "blockClock", { enumerable: true, get: function () { return clock_buzz_8.blockClock; } });
 var clock_buzz_9 = require("./buz/clock.buzz");
 Object.defineProperty(exports, "listClock", { enumerable: true, get: function () { return clock_buzz_9.listClock; } });
+var clock_buzz_10 = require("./buz/clock.buzz");
+Object.defineProperty(exports, "testClock", { enumerable: true, get: function () { return clock_buzz_10.testClock; } });
 //# sourceMappingURL=clock.buzzer.js.map

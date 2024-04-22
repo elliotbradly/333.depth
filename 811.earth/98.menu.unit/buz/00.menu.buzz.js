@@ -26,7 +26,7 @@ const initMenu = async (cpy, bal, ste) => {
 };
 exports.initMenu = initMenu;
 const updateMenu = async (cpy, bal, ste) => {
-    lst = [ActMnu.PLAY_MENU, ActMnu.CLOCK_MENU, ActMnu.ARENA_MENU, ActMnu.AMBIT_MENU, ActErt.UPDATE_EARTH];
+    lst = [ActMnu.CLOCK_MENU, ActMnu.PLAY_MENU, ActMnu.ARENA_MENU, ActMnu.AMBIT_MENU, ActErt.UPDATE_EARTH];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
@@ -75,7 +75,7 @@ const printMenu = async (cpy, bal, ste) => {
     var itm = JSON.stringify(dat);
     lst = itm.split(",");
     lst.forEach((a) => ste.bus(ActCns.UPDATE_CONSOLE, { idx: "cns00", src: a }));
-    ste.bus(ActCns.UPDATE_CONSOLE, { idx: "cns00", src: "------------" });
+    //ste.bus(ActCns.UPDATE_CONSOLE, { idx: "cns00", src: "------------" });
     bal.slv({ mnuBit: { idx: "print-menu", dat: itm } });
 };
 exports.printMenu = printMenu;
