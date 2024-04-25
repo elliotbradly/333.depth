@@ -31,29 +31,29 @@ var print = async (ste, bit) => {
 };
 const clockMenu = async (cpy, bal, ste) => {
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
-    lst = [ActClk.BLOCK_CLOCK, ActClk.TEST_CLOCK, ActClk.UPDATE_CLOCK, ActClk.WRITE_CLOCK];
+    lst = [ActClk.UPDATE_CLOCK, ActClk.TEST_CLOCK, ActClk.BLOCK_CLOCK, ActClk.WRITE_CLOCK];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
     switch (src) {
-        case ActClk.UPDATE_CLOCK:
-            bit = await ste.hunt(ActClk.LIST_CLOCK, {});
-            lst = bit.clkBit.lst;
-            bit = await ste.bus(ActTrm.WRITE_TERMINAL, { val: 4, src: JSON.stringify(bit), bit: 'local' });
-            if (lst.length == 0) {
-                bit = await ste.bus(ActTrm.WRITE_TERMINAL, { src: "NO CLOCKS DISCOVERED...", bit: 'local' });
-                setTimeout(() => { (0, exports.clockMenu)(cpy, bal, ste); }, 1333);
-                return;
-            }
-            bit = await ste.bus(ActTrm.UPDATE_TERMINAL, { lst });
-            bit = bit.trmBit;
-            var idx = lst[bit.val];
-            bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx, clk: { min: 33 } });
-            print(ste, bit);
+        case ActClk.TEST_CLOCK:
+            var idx = 'clk00';
+            bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx });
+            bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
             (0, exports.clockMenu)(cpy, bal, ste);
             break;
-        case ActClk.TEST_CLOCK:
-            debugger;
+        case ActClk.UPDATE_CLOCK:
+            var idx = 'clk00';
+            var dat = { idx };
+            dat.yrs = 1;
+            dat.mth = 1;
+            dat.hrs = 1;
+            dat.day = 1;
+            dat.min = 1;
+            dat.sec = 1;
+            bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx, dat });
+            bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
+            (0, exports.clockMenu)(cpy, bal, ste);
             break;
         case ActClk.WRITE_CLOCK:
             bit = await ste.bus(ActTrm.INPUT_TERMINAL, { lst: ["", "", "idx clock..."] });
@@ -79,6 +79,7 @@ const clockMenu = async (cpy, bal, ste) => {
             bit = await await ste.bus(ActTrm.CLOSE_TERMINAL, {});
             break;
     }
+    (0, exports.clockMenu)(cpy, bal, ste);
     return cpy;
 };
 exports.clockMenu = clockMenu;
