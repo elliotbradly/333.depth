@@ -25,9 +25,9 @@ export class CloseMenu implements Action {
   constructor(public bale: MenuBit) { }
 }
 
-export const SHADE_MENU = "[Shade action] Shade Menu";
- export class ShadeMenu implements Action {
- readonly type = SHADE_MENU;
+export const REALITY_MENU = "[Reality action] Reality Menu";
+ export class RealityMenu implements Action {
+ readonly type = REALITY_MENU;
  constructor(public bale: MenuBit) {}
  }
 
@@ -59,7 +59,7 @@ export const VISAGE_MENU = "[Visage action] Visage Menu";
 
 
 export type Actions = InitMenu | UpdateMenu | TestMenu | CloseMenu
-| ShadeMenu
+| RealityMenu
 | VisageMenu
 | ContainerMenu
 | TextMenu
