@@ -33,11 +33,14 @@ var updateDepth = async (ste) => {
     bit = await ste.hunt(ActMnu.PRINT_MENU, bitUp);
 };
 const updateMenu = async (cpy, bal, ste) => {
-    lst = [ActDep.UPDATE_DEPTH, ActDep.RELOAD_DEPTH, ActDep.COMMIT_DEPTH];
+    lst = [ActDep.UPDATE_DEPTH, ActDep.RELOAD_DEPTH, ActDep.COMMIT_DEPTH, ActMnu.REALITY_MENU];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
     switch (src) {
+        case ActMnu.REALITY_MENU:
+            bit = await ste.hunt(ActMnu.REALITY_MENU, {});
+            break;
         case ActDep.COMMIT_DEPTH:
             bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: 'commit depth....' });
             bit = await ste.hunt(ActDep.COMMIT_DEPTH, {});

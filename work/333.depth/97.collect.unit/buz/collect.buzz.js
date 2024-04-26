@@ -86,7 +86,7 @@ const writeCollect = async (cpy, bal, ste) => {
             cabDat[key] = bal.dat[key];
         }
         cabBit.bitList[cabBit.bits[bal.idx]] = cabDat;
-        dat = cabBit;
+        dat = cabDat;
         //!!! SUPER IMPORTANT
     }
     if (dat == null && bal.slv != null)

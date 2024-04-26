@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrintMenu = exports.PRINT_MENU = exports.TextMenu = exports.TEXT_MENU = exports.ContainerMenu = exports.CONTAINER_MENU = exports.VisageMenu = exports.VISAGE_MENU = exports.ShadeMenu = exports.SHADE_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
+exports.PrintMenu = exports.PRINT_MENU = exports.TextMenu = exports.TEXT_MENU = exports.ContainerMenu = exports.CONTAINER_MENU = exports.VisageMenu = exports.VISAGE_MENU = exports.RealityMenu = exports.REALITY_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
 exports.INIT_MENU = "[Menu action] Init Menu";
 class InitMenu {
     constructor(bale) {
@@ -33,14 +33,14 @@ class CloseMenu {
     }
 }
 exports.CloseMenu = CloseMenu;
-exports.SHADE_MENU = "[Shade action] Shade Menu";
-class ShadeMenu {
+exports.REALITY_MENU = "[Reality action] Reality Menu";
+class RealityMenu {
     constructor(bale) {
         this.bale = bale;
-        this.type = exports.SHADE_MENU;
+        this.type = exports.REALITY_MENU;
     }
 }
-exports.ShadeMenu = ShadeMenu;
+exports.RealityMenu = RealityMenu;
 exports.VISAGE_MENU = "[Visage action] Visage Menu";
 class VisageMenu {
     constructor(bale) {

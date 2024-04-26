@@ -15,6 +15,8 @@ function reducer(model = new menu_model_1.MenuModel(), act, state) {
             return Buzz.testMenu(clone(model), act.bale, state);
         case Act.CLOSE_MENU:
             return Buzz.closeMenu(clone(model), act.bale, state);
+        case Act.REALITY_MENU:
+            return Buzz.realityMenu(clone(model), act.bale, state);
         case Act.PRINT_MENU:
             return Buzz.printMenu(clone(model), act.bale, state);
         default:
