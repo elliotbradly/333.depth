@@ -1,6 +1,8 @@
 import * as ActMnu from "../../98.menu.unit/menu.action";
 import * as ActBus from "../../99.bus.unit/bus.action";
 import * as ActDep from "../../00.depth.unit/depth.action";
+import * as ActRel from "../../01.reality.unit/reality.action";
+
 import * as ActSok from "../../96.socket.unit/socket.action";
 
 import * as ActSpc from "../../act/space.action"
@@ -30,6 +32,13 @@ export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
     //}
 
     //ste.bus(ActSpc.READY_SPACE, {})
+
+    setTimeout ( async ()=>{
+
+        bit = await ste.hunt( ActRel.OPEN_REALITY, {})
+
+
+    }, 3333)
 
     if (bal.slv != null) bal.slv({ intBit: { idx: "init-depth" } });
 

@@ -5,4 +5,8 @@ export class RealityModel implements Reality {
  //idx:string;
  //realityBitList: RealityBit[] = [];
  //realityBits: any = {};
+
+ interval:any;
+
+ 
 }
