@@ -39,7 +39,14 @@ export const RELOAD_DEPTH = "[Reload action] Reload Depth";
  constructor(public bale: DepthBit) {}
  }
  
+export const LOG_DEPTH = "[Log action] Log Depth";
+ export class LogDepth implements Action {
+ readonly type = LOG_DEPTH;
+ constructor(public bale: DepthBit) {}
+ }
+ 
 export type Actions = | InitDepth | UpdateDepth | OpenDepth 
 | TestDepth
 | CommitDepth
 | ReloadDepth
+| LogDepth

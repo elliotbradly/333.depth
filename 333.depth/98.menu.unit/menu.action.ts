@@ -55,6 +55,12 @@ export const SOCKET_MENU = "[Menu action] Socket Menu";
  constructor(public bale: MenuBit) {}
  }
 
+ export const LOG_MENU = "[Visage action] Log Menu";
+ export class LogMenu implements Action {
+ readonly type = LOG_MENU;
+ constructor(public bale: MenuBit) {}
+ }
+
 
 
 
@@ -64,3 +70,4 @@ export type Actions = InitMenu | UpdateMenu | TestMenu | CloseMenu
 | ContainerMenu
 | TextMenu
 | PrintMenu
+| LogMenu

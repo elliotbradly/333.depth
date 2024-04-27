@@ -14,10 +14,7 @@ import * as ActDsk from "../../act/disk.action";
 import * as ActCtl from "../../act/control.action";
 import * as ActGit from "../../act/github.action";
 
-
 var bit, val, idx, dex, lst, dat, src;
-
-
 
 export const initReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
     debugger
@@ -25,9 +22,11 @@ export const initReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
 };
 
 
-export const openReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
+export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
-    console.log("opening reality")
+    ste.hunt( ActDep.LOG_DEPTH, {src: "opening reality"  } )
+
+    bit = await ste.hunt( ActSok.INIT_SOCKET, {})
 
     if (cpy.interval != null) clearInterval(cpy.interval)
 

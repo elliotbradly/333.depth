@@ -24,7 +24,12 @@ export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
     if (bal.dat != null) bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActDep], dat: bal.dat, src: bal.src })
 
-    if (bal.val == 1) patch(ste, ActMnu.INIT_MENU, bal);
+    if (bal.val == 1) {
+        patch(ste, ActMnu.INIT_MENU, bal);
+        cpy.local = true;
+    }
+
+
 
     //if (bal.val == 0) {
     //    console.log("init-socket")
@@ -34,7 +39,7 @@ export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
     //ste.bus(ActSpc.READY_SPACE, {})
 
     //setTimeout ( async ()=>{
-     //   bit = await ste.hunt( ActRel.OPEN_REALITY, {})
+    //   bit = await ste.hunt( ActRel.OPEN_REALITY, {})
     //}, 3333)
 
     if (bal.slv != null) bal.slv({ intBit: { idx: "init-depth" } });
@@ -70,13 +75,13 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
         lst.push(bit)
 
         bit = await ste.bus(ActDsk.ENSURE_DISK, { src: "../service/render.com/333.depth" });
-        
+
         //copy it over 
-        
+
         bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/333.depth/', idx: "../service/render.com/333.depth" });
         lst.push(bit)
 
-        
+
 
         //bit = await ste.bus(ActDsk.READ_DISK, { src: "./work/333.depth.js" });
         //var depth = bit.dskBit.dat;
@@ -138,6 +143,17 @@ export const commitDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) =>
 
 export const reloadDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
     debugger
+    return cpy;
+};
+
+export const logDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
+    
+    if ( cpy.local == false ) console.log( bal.src)
+    else {
+        patch(ste, ActMnu.LOG_MENU, bal);
+    }
+
+    bal.slv({ depBit: { idx: "log-depth"} });
     return cpy;
 };
 

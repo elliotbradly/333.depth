@@ -140,6 +140,12 @@ export const createMenu = (cpy: MenuModel, bal: MenuBit, ste: State) => {
   return cpy;
 };
 
+export const logMenu = (cpy: MenuModel, bal: MenuBit, ste: State) => {
+  ste.bus(ActCns.UPDATE_CONSOLE, { idx: "cns00", src: bal.src });
+  bal.slv({ mnuBit: { idx: "log-menu" } });
+  return cpy;
+};
+
 export const printMenu = async (cpy: MenuModel, bal: MenuBit, ste: State) => {
   dat = bal;
   if (dat == null) return bal.slv({ mnuBit: { idx: "print-menu", dat } });
@@ -159,7 +165,6 @@ import { MenuModel } from "../menu.model";
 import MenuBit from "../fce/menu.bit";
 import State from "../../99.core/state";
 //import { HexmapModel } from "../../03.hexmap.unit/hexmap.model";
-
 
 import * as Grid from '../../val/grid';
 import * as Align from '../../val/align'

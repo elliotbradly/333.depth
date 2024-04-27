@@ -25,6 +25,9 @@ case Act.COMMIT_DEPTH:
 case Act.RELOAD_DEPTH:
  return Buzz.reloadDepth(clone(model), act.bale, state);
  
+case Act.LOG_DEPTH:
+ return Buzz.logDepth(clone(model), act.bale, state);
+ 
         default:
             return model;
     }

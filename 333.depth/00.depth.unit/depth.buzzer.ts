@@ -4,3 +4,4 @@ export { openDepth  } from "./buz/depth.buzz";
 export { testDepth  } from "./buz/depth.buzz";
 export { commitDepth  } from "./buz/depth.buzz";
 export { reloadDepth  } from "./buz/depth.buzz";
+export { logDepth  } from "./buz/depth.buzz";
