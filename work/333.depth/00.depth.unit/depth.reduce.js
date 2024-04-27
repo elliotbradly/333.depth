@@ -19,6 +19,8 @@ function reducer(model = new depth_model_1.DepthModel(), act, state) {
             return Buzz.commitDepth(clone(model), act.bale, state);
         case Act.RELOAD_DEPTH:
             return Buzz.reloadDepth(clone(model), act.bale, state);
+        case Act.LOG_DEPTH:
+            return Buzz.logDepth(clone(model), act.bale, state);
         default:
             return model;
     }

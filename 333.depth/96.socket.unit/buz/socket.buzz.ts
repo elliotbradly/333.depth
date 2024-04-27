@@ -1,5 +1,7 @@
 import * as ActMnu from "../../98.menu.unit/menu.action";
 
+
+import * as ActRel from "../../01.reality.unit/reality.action";
 import * as ActDep from "../../00.depth.unit/depth.action";
 
 import * as ActSok from "../../96.socket.unit/socket.action";
@@ -63,7 +65,12 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         var nextSocket = async () => {
 
-            if (dex < 0) { return }
+            if (dex < 0) { 
+               
+                if ( count != 0 ) ste.hunt(ActRel.UPDATE_REALITY, {})
+                
+                return 
+            }
 
             var now = colLst[dex];
 

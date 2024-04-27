@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReloadDepth = exports.RELOAD_DEPTH = exports.CommitDepth = exports.COMMIT_DEPTH = exports.TestDepth = exports.TEST_DEPTH = exports.OpenDepth = exports.OPEN_DEPTH = exports.UpdateDepth = exports.UPDATE_DEPTH = exports.InitDepth = exports.INIT_DEPTH = void 0;
+exports.LogDepth = exports.LOG_DEPTH = exports.ReloadDepth = exports.RELOAD_DEPTH = exports.CommitDepth = exports.COMMIT_DEPTH = exports.TestDepth = exports.TEST_DEPTH = exports.OpenDepth = exports.OPEN_DEPTH = exports.UpdateDepth = exports.UPDATE_DEPTH = exports.InitDepth = exports.INIT_DEPTH = void 0;
 // Depth actions
 exports.INIT_DEPTH = "[Depth action] Init Depth";
 class InitDepth {
@@ -50,4 +50,12 @@ class ReloadDepth {
     }
 }
 exports.ReloadDepth = ReloadDepth;
+exports.LOG_DEPTH = "[Log action] Log Depth";
+class LogDepth {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.LOG_DEPTH;
+    }
+}
+exports.LogDepth = LogDepth;
 //# sourceMappingURL=depth.action.js.map

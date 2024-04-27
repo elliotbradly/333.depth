@@ -11,7 +11,7 @@ const ActDsk = require("../../act/disk.action");
 var bit, val, idx, dex, lst, dat;
 const initEarth = async (cpy, bal, ste) => {
     if (bal.dat != null)
-        bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActErt, ActAmb], dat: bal.dat, src: bal.src });
+        bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActErt, ActAmb, ActClk], dat: bal.dat, src: bal.src });
     //bit = await ste.hunt(ActClr.INIT_COLOR, { lst: bal.lst, bit: bal.bit, dat: bal.dat })
     if (bal.val == 1) {
         setTimeout(() => {

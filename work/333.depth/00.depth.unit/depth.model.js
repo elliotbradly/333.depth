@@ -4,6 +4,7 @@ exports.DepthModel = void 0;
 class DepthModel {
     constructor() {
         this.idx = '333.depth';
+        this.local = false;
         //idx:string;
         //depthBitList: DepthBit[] = [];
         //depthBits: any = {};

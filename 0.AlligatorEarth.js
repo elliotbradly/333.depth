@@ -13,6 +13,7 @@ const MQTT = require("async-mqtt");
 var DEPTH = require("./333.depth")
 var DEPTH_ACTION = require("./333.depth/00.depth.unit/depth.action")
 var SOCKET_ACTION = require("./333.depth/96.socket.unit/socket.action")
+var REALITY_ACTION = require("./333.depth/01.reality.unit/reality.action")
 
 var STORE = require("./901.store")
 var STORE_ACTION = require("./901.store/00.store.unit/store.action")
@@ -25,7 +26,7 @@ var init = async (prt) => {
   const localBit = { idx: "local", src: local };
 
   //SOCKET_BUZZ.initSocket(null, null, null)
-  await DEPTH.hunt(SOCKET_ACTION.INIT_SOCKET, { val: 0 });
+  
 
   const aedes = require("aedes")();
   const server = require('net').createServer(aedes.handle)
@@ -40,6 +41,8 @@ var init = async (prt) => {
 
     bit = await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 0, dat: MQTT, src: [localBit] });
     console.log( JSON.stringify(bit))
+
+    bit = await DEPTH.hunt(REALITY_ACTION.OPEN_REALITY, { val: 0 });
     
     console.log('server started and listening on port ', PORT)
     

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reloadDepth = exports.commitDepth = exports.testDepth = exports.updateDepth = exports.openDepth = exports.initDepth = void 0;
+exports.logDepth = exports.reloadDepth = exports.commitDepth = exports.testDepth = exports.updateDepth = exports.openDepth = exports.initDepth = void 0;
 const ActMnu = require("../../98.menu.unit/menu.action");
 const ActBus = require("../../99.bus.unit/bus.action");
 const ActDep = require("../../00.depth.unit/depth.action");
@@ -14,8 +14,10 @@ const initDepth = async (cpy, bal, ste) => {
     console.log("init-depth");
     if (bal.dat != null)
         bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActDep], dat: bal.dat, src: bal.src });
-    if (bal.val == 1)
+    if (bal.val == 1) {
         patch(ste, ActMnu.INIT_MENU, bal);
+        cpy.local = true;
+    }
     //if (bal.val == 0) {
     //    console.log("init-socket")
     //    bit = await ste.hunt(ActSok.INIT_SOCKET, {})
@@ -96,5 +98,15 @@ const reloadDepth = (cpy, bal, ste) => {
     return cpy;
 };
 exports.reloadDepth = reloadDepth;
+const logDepth = (cpy, bal, ste) => {
+    if (cpy.local == false)
+        console.log(bal.src);
+    else {
+        patch(ste, ActMnu.LOG_MENU, bal);
+    }
+    bal.slv({ depBit: { idx: "log-depth" } });
+    return cpy;
+};
+exports.logDepth = logDepth;
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
 //# sourceMappingURL=depth.buzz.js.map

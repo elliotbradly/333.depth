@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrintMenu = exports.PRINT_MENU = exports.TextMenu = exports.TEXT_MENU = exports.ContainerMenu = exports.CONTAINER_MENU = exports.SocketMenu = exports.SOCKET_MENU = exports.RealityMenu = exports.REALITY_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
+exports.LogMenu = exports.LOG_MENU = exports.PrintMenu = exports.PRINT_MENU = exports.TextMenu = exports.TEXT_MENU = exports.ContainerMenu = exports.CONTAINER_MENU = exports.SocketMenu = exports.SOCKET_MENU = exports.RealityMenu = exports.REALITY_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
 exports.INIT_MENU = "[Menu action] Init Menu";
 class InitMenu {
     constructor(bale) {
@@ -73,4 +73,12 @@ class PrintMenu {
     }
 }
 exports.PrintMenu = PrintMenu;
+exports.LOG_MENU = "[Visage action] Log Menu";
+class LogMenu {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.LOG_MENU;
+    }
+}
+exports.LogMenu = LogMenu;
 //# sourceMappingURL=menu.action.js.map

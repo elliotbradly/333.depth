@@ -37,8 +37,9 @@ const clockMenu = async (cpy, bal, ste) => {
     src = bit.chcBit.src;
     switch (src) {
         case ActClk.TEST_CLOCK:
-            var idx = 'clk00';
-            bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx });
+            idx = 'clk00';
+            var clk = { idx, yrs: 1978, mth: 4, day: 11 };
+            bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx, clk });
             bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
             (0, exports.clockMenu)(cpy, bal, ste);
             break;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.printMenu = exports.createMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
+exports.printMenu = exports.logMenu = exports.createMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
 const ActMnu = require("../menu.action");
 const ActDep = require("../../00.depth.unit/depth.action");
 //import * as ActFoc from "../../01.focus.unit/focus.action";
@@ -106,6 +106,12 @@ const createMenu = (cpy, bal, ste) => {
     return cpy;
 };
 exports.createMenu = createMenu;
+const logMenu = (cpy, bal, ste) => {
+    ste.bus(ActCns.UPDATE_CONSOLE, { idx: "cns00", src: bal.src });
+    bal.slv({ mnuBit: { idx: "log-menu" } });
+    return cpy;
+};
+exports.logMenu = logMenu;
 const printMenu = async (cpy, bal, ste) => {
     dat = bal;
     if (dat == null)

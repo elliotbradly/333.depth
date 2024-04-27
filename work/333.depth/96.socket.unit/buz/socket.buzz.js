@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.closeSocket = exports.connectSocket = exports.deleteSocket = exports.removeSocket = exports.writeSocket = exports.readSocket = exports.createSocket = exports.updateSocket = exports.initSocket = void 0;
+const ActDep = require("../../00.depth.unit/depth.action");
 const ActSok = require("../../96.socket.unit/socket.action");
 const ActCol = require("../../97.collect.unit/collect.action");
 const ActCsk = require("../../act/clientsocket.action");
@@ -14,17 +15,17 @@ const initSocket = (cpy, bal, ste) => {
         this.isAlive = true;
         this.send("heartbeat");
     }
-    wss.on('open', () => { console.log("are you open"); });
+    wss.on('open', () => { ste.hunt(ActDep.LOG_DEPTH, { src: "are you open" }); });
     wss.on("connection", async (ws) => {
         var uuid = (0, uuid_1.v4)();
         ws.idx = uuid;
         ws.on('pong', heartbeat);
         ws.on("close", async () => {
             bit = await ste.hunt(ActSok.REMOVE_SOCKET, { idx: uuid });
-            console.log("closing..." + uuid);
+            ste.hunt(ActDep.LOG_DEPTH, { src: "closing..." + uuid });
             uuid = null;
         });
-        console.log(ws.idx + ' connnected...');
+        ste.hunt(ActDep.LOG_DEPTH, { src: ws.idx + ' connnected...' });
         bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
     });
     const interval = setInterval(async function ping() {
@@ -44,7 +45,7 @@ const initSocket = (cpy, bal, ste) => {
             await nextSocket();
         };
         await nextSocket();
-        console.log("count " + count);
+        ste.hunt(ActDep.LOG_DEPTH, { src: "count " + count });
     }, 6000);
     wss.on('close', function close() {
         clearInterval(interval);
@@ -57,7 +58,7 @@ const updateSocket = async (cpy, bal, ste) => {
     var data = bal.dat;
     bit = await ste.hunt(ActSok.READ_SOCKET, { idx: bal.idx });
     dat = bit.sokBit;
-    console.log("update socket ::: " + JSON.stringify(bal));
+    ste.hunt(ActDep.LOG_DEPTH, { src: "update socket ::: " + JSON.stringify(bal) });
     if (data.visible != null)
         dat.bit.visible = data.visible;
     bal.slv({ sokBit: { idx: "update-socket", dat } });
@@ -84,7 +85,7 @@ const createSocket = async (cpy, bal, ste) => {
     bit.isAlive = true;
     bit.on('error', console.error);
     bit.on("message", (msg) => {
-        console.log("incoming message " + msg);
+        ste.hunt(ActDep.LOG_DEPTH, { src: "incoming message " + msg });
         //    patch(ste, ActSok.WRITE_SOCKET, { idx: bal.idx, src: msg })
     });
     var dat = { idx: bal.idx, src: 'create', bit };
@@ -123,12 +124,12 @@ const removeSocket = async (cpy, bal, ste) => {
 };
 exports.removeSocket = removeSocket;
 const deleteSocket = async (cpy, bal, ste) => {
-    console.log("delete a socket");
+    ste.hunt(ActDep.LOG_DEPTH, { src: "delete a socket" });
     bit = await ste.hunt(ActSok.READ_SOCKET, { idx: bal.idx });
     dat = bit.sokBit;
-    console.log("remove socket ::: " + dat.idx);
-    console.log("socket data ::: " + dat.dat);
-    console.log("socket bit ::: " + dat.dat.bit);
+    ste.hunt(ActDep.LOG_DEPTH, { src: "remove socket ::: " + dat.idx });
+    ste.hunt(ActDep.LOG_DEPTH, { src: "socket data ::: " + dat.dat });
+    ste.hunt(ActDep.LOG_DEPTH, { src: "socket bit ::: " + dat.dat.bit });
     if (dat.dat.bit.terminate != null)
         dat.dat.bit.terminate();
     if ((dat.dat != null) && (dat.dat.bit != null))

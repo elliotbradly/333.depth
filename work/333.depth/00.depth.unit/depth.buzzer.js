@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reloadDepth = exports.commitDepth = exports.testDepth = exports.openDepth = exports.updateDepth = exports.initDepth = void 0;
+exports.logDepth = exports.reloadDepth = exports.commitDepth = exports.testDepth = exports.openDepth = exports.updateDepth = exports.initDepth = void 0;
 var depth_buzz_1 = require("./buz/depth.buzz");
 Object.defineProperty(exports, "initDepth", { enumerable: true, get: function () { return depth_buzz_1.initDepth; } });
 var depth_buzz_2 = require("./buz/depth.buzz");
@@ -13,4 +13,6 @@ var depth_buzz_5 = require("./buz/depth.buzz");
 Object.defineProperty(exports, "commitDepth", { enumerable: true, get: function () { return depth_buzz_5.commitDepth; } });
 var depth_buzz_6 = require("./buz/depth.buzz");
 Object.defineProperty(exports, "reloadDepth", { enumerable: true, get: function () { return depth_buzz_6.reloadDepth; } });
+var depth_buzz_7 = require("./buz/depth.buzz");
+Object.defineProperty(exports, "logDepth", { enumerable: true, get: function () { return depth_buzz_7.logDepth; } });
 //# sourceMappingURL=depth.buzzer.js.map
