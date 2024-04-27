@@ -59,6 +59,8 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
     ste.hunt( ActDep.LOG_DEPTH, {src: JSON.stringify(bit) } ) 
 
+    
+
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
 
