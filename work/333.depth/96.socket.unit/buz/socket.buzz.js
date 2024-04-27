@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.closeSocket = exports.connectSocket = exports.deleteSocket = exports.removeSocket = exports.writeSocket = exports.readSocket = exports.createSocket = exports.updateSocket = exports.initSocket = void 0;
+const ActRel = require("../../01.reality.unit/reality.action");
 const ActDep = require("../../00.depth.unit/depth.action");
 const ActSok = require("../../96.socket.unit/socket.action");
 const ActCol = require("../../97.collect.unit/collect.action");
 const ActCsk = require("../../act/clientsocket.action");
 var bit, val, idx, dex, lst, dat, src;
 const initSocket = (cpy, bal, ste) => {
+    var depthMod = ste.value.depth;
     const WebSocket = require("ws");
     const PORT = process.env.PORT || 1000;
     const wss = new WebSocket.Server({ port: PORT });
@@ -35,6 +37,8 @@ const initSocket = (cpy, bal, ste) => {
         var dex = colLst.length - 1;
         var nextSocket = async () => {
             if (dex < 0) {
+                if (count != 0 || depthMod.local == true)
+                    ste.hunt(ActRel.UPDATE_REALITY, {});
                 return;
             }
             var now = colLst[dex];

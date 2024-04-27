@@ -49,9 +49,19 @@ export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State
 };
 
 
-export const updateReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
+export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
     
     ste.hunt( ActDep.LOG_DEPTH, {src: "update reality"  } )
+
+
+    require("dotenv").config();
+
+    bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
+    ste.hunt( ActDep.LOG_DEPTH, {src: JSON.stringify(bit) } ) 
+
+    //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
+
+
 
     bal.slv({ sokBit: { idx: "update-reality" } });
     return cpy;

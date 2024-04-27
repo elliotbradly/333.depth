@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateReality = exports.openReality = exports.initReality = void 0;
-const ActRel = require("../../01.reality.unit/reality.action");
 const ActDep = require("../../00.depth.unit/depth.action");
 const ActSok = require("../../96.socket.unit/socket.action");
 const ActClk = require("../../act/clock.action");
@@ -20,13 +19,20 @@ const openReality = async (cpy, bal, ste) => {
     bit = await ste.hunt(ActSok.INIT_SOCKET, {});
     if (cpy.interval != null)
         clearInterval(cpy.interval);
-    cpy.interval = setInterval(async () => {
-        bit = ste.hunt(ActRel.UPDATE_REALITY, {});
-    }, 333);
+    //cpy.interval = setInterval(async () => {
+    //    bit = ste.hunt(ActRel.UPDATE_REALITY, {})
+    //}, 333)
+    bal.slv({ sokBit: { idx: "create-reality" } });
     return cpy;
 };
 exports.openReality = openReality;
-const updateReality = (cpy, bal, ste) => {
+const updateReality = async (cpy, bal, ste) => {
+    ste.hunt(ActDep.LOG_DEPTH, { src: "update reality" });
+    require("dotenv").config();
+    bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST });
+    ste.hunt(ActDep.LOG_DEPTH, { src: JSON.stringify(bit) });
+    //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
+    bal.slv({ sokBit: { idx: "update-reality" } });
     return cpy;
 };
 exports.updateReality = updateReality;

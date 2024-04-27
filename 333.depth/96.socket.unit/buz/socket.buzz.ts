@@ -18,6 +18,8 @@ var bit, val, idx, dex, lst, dat, src;
 
 export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
+    var depthMod:DepthModel = ste.value.depth;
+
     const WebSocket = require("ws");
 
     const PORT = process.env.PORT || 1000;
@@ -67,7 +69,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
             if (dex < 0) { 
                
-                if ( count != 0 ) ste.hunt(ActRel.UPDATE_REALITY, {})
+                if ( count != 0 || depthMod.local == true ) ste.hunt(ActRel.UPDATE_REALITY, {})
                 
                 return 
             }
@@ -226,4 +228,5 @@ import SocketBit from "../fce/socket.bit";
 import State from "../../99.core/state";
 import SockBit from "../fce/sock.bit";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';import { DepthModel } from "333.depth/00.depth.unit/depth.model";
+
