@@ -29,8 +29,8 @@ const initSocket = (cpy, bal, ste) => {
     });
     const interval = setInterval(async function ping() {
         var count = 0;
-        var colBit = await ste.hunt(ActCol.LIST_COLLECT, { bit: ActSok.CREATE_SOCKET });
-        var colLst = colBit.colBit.lst;
+        var clcBit = await ste.hunt(ActCol.LIST_COLLECT, { bit: ActSok.CREATE_SOCKET });
+        var colLst = clcBit.clcBit.lst;
         var dex = colLst.length - 1;
         var nextSocket = async () => {
             if (dex < 0) {

@@ -33,12 +33,9 @@ export const initDepth = async (cpy: DepthModel, bal: DepthBit, ste: State) => {
 
     //ste.bus(ActSpc.READY_SPACE, {})
 
-    setTimeout ( async ()=>{
-
-        bit = await ste.hunt( ActRel.OPEN_REALITY, {})
-
-
-    }, 3333)
+    //setTimeout ( async ()=>{
+     //   bit = await ste.hunt( ActRel.OPEN_REALITY, {})
+    //}, 3333)
 
     if (bal.slv != null) bal.slv({ intBit: { idx: "init-depth" } });
 

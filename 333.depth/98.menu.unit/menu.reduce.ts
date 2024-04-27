@@ -21,6 +21,9 @@ export function reducer(model: MenuModel = new MenuModel(), act: Act.Actions, st
     case Act.REALITY_MENU:
       return Buzz.realityMenu(clone(model), act.bale, state);
 
+    case Act.SOCKET_MENU:
+      return Buzz.socketMenu(clone(model), act.bale, state);
+
     case Act.PRINT_MENU:
       return Buzz.printMenu(clone(model), act.bale, state);
 

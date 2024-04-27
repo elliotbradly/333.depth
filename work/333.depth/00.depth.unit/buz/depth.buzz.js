@@ -4,7 +4,6 @@ exports.reloadDepth = exports.commitDepth = exports.testDepth = exports.updateDe
 const ActMnu = require("../../98.menu.unit/menu.action");
 const ActBus = require("../../99.bus.unit/bus.action");
 const ActDep = require("../../00.depth.unit/depth.action");
-const ActRel = require("../../01.reality.unit/reality.action");
 const ActPvt = require("../../act/pivot.action");
 const ActDsk = require("../../act/disk.action");
 const ActGit = require("../../act/github.action");
@@ -22,9 +21,9 @@ const initDepth = async (cpy, bal, ste) => {
     //    bit = await ste.hunt(ActSok.INIT_SOCKET, {})
     //}
     //ste.bus(ActSpc.READY_SPACE, {})
-    setTimeout(async () => {
-        bit = await ste.hunt(ActRel.OPEN_REALITY, {});
-    }, 3333);
+    //setTimeout ( async ()=>{
+    //   bit = await ste.hunt( ActRel.OPEN_REALITY, {})
+    //}, 3333)
     if (bal.slv != null)
         bal.slv({ intBit: { idx: "init-depth" } });
     return cpy;

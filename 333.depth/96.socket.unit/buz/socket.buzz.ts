@@ -20,6 +20,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
     const wss = new WebSocket.Server({ port: PORT });
 
+
     function heartbeat() {
         console.log("sending heartbeat")
         this.isAlive = true;
@@ -50,8 +51,9 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         var count = 0
 
-        var colBit = await ste.hunt(ActCol.LIST_COLLECT, { bit: ActSok.CREATE_SOCKET })
-        var colLst = colBit.colBit.lst
+        var clcBit = await ste.hunt(ActCol.LIST_COLLECT, { bit: ActSok.CREATE_SOCKET })
+
+        var colLst = clcBit.clcBit.lst
 
         var dex = colLst.length - 1;
 

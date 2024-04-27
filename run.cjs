@@ -3,7 +3,7 @@ const fs = require('fs');
 const MQTT = require('async-mqtt');
 const { program } = require('commander');
 
-const PORT = 1001;
+const PORT = 1333;
 const wsPort = 8883;
 
 let SHADE;
