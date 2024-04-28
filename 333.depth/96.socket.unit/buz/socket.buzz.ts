@@ -19,6 +19,7 @@ var bit, val, idx, dex, lst, dat, src;
 export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
     var depthMod:DepthModel = ste.value.depth;
+    var realityMod:RealityModel = ste.value.reality;
 
     const WebSocket = require("ws");
 
@@ -74,9 +75,11 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
                 return 
             }
 
-            var now = colLst[dex];
+            var itm = colLst[dex];
 
-            var sokBit = await ste.hunt(ActSok.READ_SOCKET, { idx: now })
+            var now = realityMod.now;
+
+            var sokBit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: itm, dat:{now} })
             sokBit = sokBit.sokBit;
 
             dex -= 1
@@ -105,7 +108,14 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
     var data = bal.dat
 
     bit = await ste.hunt(ActSok.READ_SOCKET, { idx: bal.idx });
-    dat = bit.sokBit;
+    dat = bit.sokBit.dat;
+
+    var socket = dat.bit;
+
+
+    var outData = { idx: bal.idx, dat:data } 
+    
+    socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData} ));
 
     ste.hunt( ActDep.LOG_DEPTH, {src: "update socket ::: " + JSON.stringify(bal) } )
 
@@ -228,4 +238,5 @@ import SockBit from "../fce/sock.bit";
 
 import { v4 as uuidv4 } from 'uuid';
 import { DepthModel } from "333.depth/00.depth.unit/depth.model";
+import { RealityModel } from "333.depth/01.reality.unit/reality.model";
 

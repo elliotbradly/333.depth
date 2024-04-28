@@ -36,7 +36,15 @@ const updateReality = async (cpy, bal, ste) => {
         return;
     }
     var msg = bit.clkBit.dex + ' :::: ' + block.score;
-    ste.hunt(ActDep.LOG_DEPTH, { src: msg });
+    //ste.hunt(ActDep.LOG_DEPTH, { src: msg })
+    var idx = 'clk00';
+    var dat = { idx };
+    dat.min = 1 * block.score;
+    dat.sec = 1 * block.score;
+    bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat });
+    var clock = bit.clkBit.dat;
+    ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm });
+    cpy.now = clock.frm;
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
     bal.slv({ sokBit: { idx: "update-reality", val: 1 } });
     return cpy;

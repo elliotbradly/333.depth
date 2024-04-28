@@ -9,6 +9,7 @@ const ActCsk = require("../../act/clientsocket.action");
 var bit, val, idx, dex, lst, dat, src;
 const initSocket = (cpy, bal, ste) => {
     var depthMod = ste.value.depth;
+    var realityMod = ste.value.reality;
     const WebSocket = require("ws");
     const PORT = process.env.PORT || 1000;
     const wss = new WebSocket.Server({ port: PORT });
@@ -41,15 +42,16 @@ const initSocket = (cpy, bal, ste) => {
                     ste.hunt(ActRel.UPDATE_REALITY, {});
                 return;
             }
-            var now = colLst[dex];
-            var sokBit = await ste.hunt(ActSok.READ_SOCKET, { idx: now });
+            var itm = colLst[dex];
+            var now = realityMod.now;
+            var sokBit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: itm, dat: { now } });
             sokBit = sokBit.sokBit;
             dex -= 1;
             count += 1;
             await nextSocket();
         };
         await nextSocket();
-        ste.hunt(ActDep.LOG_DEPTH, { src: "count " + count });
+        //ste.hunt( ActDep.LOG_DEPTH, {src: "count " + count } )
     }, 3000);
     wss.on('close', function close() {
         clearInterval(interval);
@@ -61,7 +63,10 @@ exports.initSocket = initSocket;
 const updateSocket = async (cpy, bal, ste) => {
     var data = bal.dat;
     bit = await ste.hunt(ActSok.READ_SOCKET, { idx: bal.idx });
-    dat = bit.sokBit;
+    dat = bit.sokBit.dat;
+    var socket = dat.bit;
+    var outData = { idx: bal.idx, dat: data };
+    socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData }));
     ste.hunt(ActDep.LOG_DEPTH, { src: "update socket ::: " + JSON.stringify(bal) });
     if (data.visible != null)
         dat.bit.visible = data.visible;
