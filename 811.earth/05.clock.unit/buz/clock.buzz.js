@@ -240,15 +240,29 @@ const blockClock = async (cpy, bal, ste) => {
         .then(response => response.json())
         .then(async (response) => {
         const rsp = response;
+        var diff;
         if (rsp.epoch_slot == cpy.slot) {
             cpy.tick = false;
         }
         else {
             cpy.tick = true;
+            var dt1 = luxon_1.DateTime.fromSeconds(cpy.slotTime);
+            var dt2 = luxon_1.DateTime.fromSeconds(rsp.time);
+            diff = dt1.diff(dt2, ["seconds"]);
+            //console.log(diff.toObject())
+            //we need to calculate a time difference 
+            //and we will call it score
             cpy.slot = rsp.epoch_slot;
+            cpy.slotTime = rsp.time;
+            var obj = diff.toObject();
+            for (var key in obj) {
+                obj[key] *= -1;
+            }
+            cpy.score = obj.seconds;
         }
         val = cpy.tick;
         dex = cpy.slot;
+        rsp.score = cpy.score;
         dat = JSON.stringify(rsp);
         //can we convert some some time
         //going to give it the time of the response

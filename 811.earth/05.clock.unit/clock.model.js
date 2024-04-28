@@ -5,6 +5,7 @@ class ClockModel {
     constructor() {
         this.tick = true;
         this.slot = 0;
+        this.slotTime = 0;
         //idx:string;
         //clockBitList: ClockBit[] = [];
         //clockBits: any = {};

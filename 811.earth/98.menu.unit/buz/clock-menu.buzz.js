@@ -68,7 +68,8 @@ const clockMenu = async (cpy, bal, ste) => {
             //    simIDX = 'sim00';
             //    bit = await ste.hunt(ActClk.WRITE_CLOCK, { idx: simIDX })
             //}
-            bit = await ste.hunt(ActClk.BLOCK_CLOCK, { idx: 'mainnetiCuBCFNLf9ZP4z8lC4hEtGzMA61AuSc1' });
+            require("dotenv").config();
+            bit = await ste.hunt(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST });
             bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
             //setInterval(async () => {
             //    print(ste, bit)

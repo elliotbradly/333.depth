@@ -51,21 +51,25 @@ export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State
 
 export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
     
-    ste.hunt( ActDep.LOG_DEPTH, {src: "update reality"  } )
-
+    //ste.hunt( ActDep.LOG_DEPTH, {src: "update reality"  } )
 
     require("dotenv").config();
 
     bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
-    ste.hunt( ActDep.LOG_DEPTH, {src: JSON.stringify(bit) } ) 
+    var block:BlockBit = JSON.parse( bit.clkBit.dat ) ;
 
-    
+    if ( bit.clkBit.val == false || block.score > 1000 ){
+        bal.slv({ sokBit: { idx: "update-reality", val:0 } });
+        return 
+    }
+
+    var msg = bit.clkBit.dex + ' :::: ' + block.score
+    ste.hunt( ActDep.LOG_DEPTH, {src: msg } ) 
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
 
-
-    bal.slv({ sokBit: { idx: "update-reality" } });
+    bal.slv({ sokBit: { idx: "update-reality", val:1 } });
     return cpy;
 };
 
@@ -75,3 +79,5 @@ import { RealityModel } from "../reality.model";
 import RealityBit from "../fce/reality.bit";
 import State from "../../99.core/state";
 import TicBit from "333.depth/fce/tic.bit";
+import {BlockBit} from "333.depth/fce/block.bit"
+

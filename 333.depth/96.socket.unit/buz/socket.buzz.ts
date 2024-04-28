@@ -89,7 +89,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         ste.hunt( ActDep.LOG_DEPTH, {src: "count " + count } )
 
-    }, 6000);
+    }, 3000);
 
 
     wss.on('close', function close() {

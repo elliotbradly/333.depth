@@ -50,7 +50,7 @@ const initSocket = (cpy, bal, ste) => {
         };
         await nextSocket();
         ste.hunt(ActDep.LOG_DEPTH, { src: "count " + count });
-    }, 6000);
+    }, 3000);
     wss.on('close', function close() {
         clearInterval(interval);
     });
