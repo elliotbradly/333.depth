@@ -74,9 +74,11 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
 
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
     var clock:TicBit = bit.clkBit.dat
+
     ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
 
-    cpy.now = clock.frm
+    cpy.now = clock.now
+    cpy.timecode = clock.frm
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 

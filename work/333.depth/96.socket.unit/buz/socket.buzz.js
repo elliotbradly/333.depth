@@ -44,7 +44,8 @@ const initSocket = (cpy, bal, ste) => {
             }
             var itm = colLst[dex];
             var now = realityMod.now;
-            var sokBit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: itm, dat: { now } });
+            var cde = realityMod.timecode;
+            var sokBit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: itm, dat: { now, cde } });
             sokBit = sokBit.sokBit;
             dex -= 1;
             count += 1;

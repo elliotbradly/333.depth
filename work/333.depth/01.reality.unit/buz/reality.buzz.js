@@ -44,7 +44,8 @@ const updateReality = async (cpy, bal, ste) => {
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat });
     var clock = bit.clkBit.dat;
     ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm });
-    cpy.now = clock.frm;
+    cpy.now = clock.now;
+    cpy.timecode = clock.frm;
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
     bal.slv({ sokBit: { idx: "update-reality", val: 1 } });
     return cpy;
