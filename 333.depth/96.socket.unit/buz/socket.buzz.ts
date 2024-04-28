@@ -87,7 +87,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         await nextSocket()
 
-        ste.hunt( ActDep.LOG_DEPTH, {src: "count " + count } )
+        //ste.hunt( ActDep.LOG_DEPTH, {src: "count " + count } )
 
     }, 3000);
 
@@ -219,8 +219,6 @@ export const closeSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
     return cpy;
 };
 
-
-
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
 
 import { SocketModel } from "../socket.model";
@@ -228,5 +226,6 @@ import SocketBit from "../fce/socket.bit";
 import State from "../../99.core/state";
 import SockBit from "../fce/sock.bit";
 
-import { v4 as uuidv4 } from 'uuid';import { DepthModel } from "333.depth/00.depth.unit/depth.model";
+import { v4 as uuidv4 } from 'uuid';
+import { DepthModel } from "333.depth/00.depth.unit/depth.model";
 

@@ -7,6 +7,7 @@ export class RealityModel implements Reality {
  //realityBits: any = {};
 
  interval:any;
+ now:string
 
  
 }

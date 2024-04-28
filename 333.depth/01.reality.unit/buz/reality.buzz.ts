@@ -25,15 +25,15 @@ export const initReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
 export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
-    ste.hunt( ActDep.LOG_DEPTH, {src: "opening reality"  } )
+    ste.hunt(ActDep.LOG_DEPTH, { src: "opening reality" })
 
     idx = 'clk00'
     var clk: TicBit = { idx, yrs: 1978, mth: 4, day: 11 }
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
-    ste.hunt( ActDep.LOG_DEPTH, {src: JSON.stringify(bit) } ) 
+    ste.hunt(ActDep.LOG_DEPTH, { src: JSON.stringify(bit) })
 
-    bit = await ste.hunt( ActSok.INIT_SOCKET, {})
+    bit = await ste.hunt(ActSok.INIT_SOCKET, {})
 
     if (cpy.interval != null) clearInterval(cpy.interval)
 
@@ -50,26 +50,38 @@ export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State
 
 
 export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
-    
+
     //ste.hunt( ActDep.LOG_DEPTH, {src: "update reality"  } )
 
     require("dotenv").config();
 
     bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
-    var block:BlockBit = JSON.parse( bit.clkBit.dat ) ;
+    var block: BlockBit = JSON.parse(bit.clkBit.dat);
 
-    if ( bit.clkBit.val == false || block.score > 1000 ){
-        bal.slv({ sokBit: { idx: "update-reality", val:0 } });
-        return 
+    if (bit.clkBit.val == false || block.score > 1000) {
+        bal.slv({ sokBit: { idx: "update-reality", val: 0 } });
+        return
     }
 
     var msg = bit.clkBit.dex + ' :::: ' + block.score
-    ste.hunt( ActDep.LOG_DEPTH, {src: msg } ) 
+    //ste.hunt(ActDep.LOG_DEPTH, { src: msg })
+
+    var idx = 'clk00';
+
+    var dat: TicBit = { idx }
+    dat.min = 1 * block.score;
+    dat.sec = 1 * block.score;
+
+    bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
+    var clock:TicBit = bit.clkBit.dat
+    ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
+
+    cpy.now = clock.frm
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
 
-    bal.slv({ sokBit: { idx: "update-reality", val:1 } });
+    bal.slv({ sokBit: { idx: "update-reality", val: 1 } });
     return cpy;
 };
 
@@ -79,5 +91,5 @@ import { RealityModel } from "../reality.model";
 import RealityBit from "../fce/reality.bit";
 import State from "../../99.core/state";
 import TicBit from "333.depth/fce/tic.bit";
-import {BlockBit} from "333.depth/fce/block.bit"
+import { BlockBit } from "333.depth/fce/block.bit"
 
