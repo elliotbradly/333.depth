@@ -20,14 +20,11 @@ const initBeing = async (cpy, bal, ste) => {
 exports.initBeing = initBeing;
 const updateBeing = async (cpy, bal, ste) => {
     var lstMsg = [];
-    debugger;
     bit = await ste.bus(ActPvt.SHIP_PIVOT, { src: '814.being' });
     lstMsg = lstMsg.concat(bit.pvtBit.lst);
-    debugger;
     idx = "../811.earth/814.being/";
     bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/814.being/', idx });
     lstMsg = lstMsg.concat(bit.pvtBit);
-    debugger;
     bal.slv({ beeBit: { idx: "update-being", lst: lstMsg } });
     return cpy;
 };
