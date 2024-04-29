@@ -21,6 +21,13 @@ var STORE_ACTION = require("./901.store/00.store.unit/store.action")
 var EARTH = require("./811.earth")
 var EARTH_ACTION = require("./811.earth/00.earth.unit/earth.action")
 
+var SPACE = require("./812.space")
+var SPACE_ACTION = require("./812.space/00.space.unit/space.action")
+
+var BEING = require("./814.being")
+var BEING_ACTION = require("./814.being/00.being.unit/being.action")
+
+
 var init = async (prt) => {
   const local = "mqtt://localhost:" + prt;
   const localBit = { idx: "local", src: local };
@@ -37,6 +44,12 @@ var init = async (prt) => {
     console.log( JSON.stringify(bit))
 
     bit = await STORE.hunt( STORE_ACTION.INIT_STORE, {  dat: MQTT, src: local });
+    console.log( JSON.stringify(bit))
+
+    bit = await SPACE.hunt( SPACE_ACTION.INIT_SPACE, {  dat: MQTT, src: local });
+    console.log( JSON.stringify(bit))
+
+    bit = await BEING.hunt( BEING_ACTION.INIT_BEING, {  dat: MQTT, src: local });
     console.log( JSON.stringify(bit))
 
     bit = await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 0, dat: MQTT, src: [localBit] });
