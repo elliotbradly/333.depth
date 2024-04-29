@@ -15,26 +15,8 @@ function reducer(model = new menu_model_1.MenuModel(), act, state) {
             return Buzz.testMenu(clone(model), act.bale, state);
         case Act.CLOSE_MENU:
             return Buzz.closeMenu(clone(model), act.bale, state);
-        case Act.FOCUS_MENU:
-            return Buzz.focusMenu(clone(model), act.bale, state);
         case Act.CREATE_MENU:
             return Buzz.createMenu(clone(model), act.bale, state);
-        case Act.HEXMAP_MENU:
-            return Buzz.hexmapMenu(clone(model), act.bale, state);
-        case Act.MAPRPG_MENU:
-            return Buzz.maprpgMenu(clone(model), act.bale, state);
-        case Act.CREATE_HEXMAP_MENU:
-            return Buzz.createHexmapMenu(clone(model), act.bale, state);
-        case Act.RENDER_MENU:
-            return Buzz.renderMenu(clone(model), act.bale, state);
-        case Act.YIELD_MENU:
-            return Buzz.yieldMenu(clone(model), act.bale, state);
-        case Act.FOCUS_PLAY_MENU:
-            return Buzz.focusPlayMenu(clone(model), act.bale, state);
-        case Act.UPDATE_FOCUS_PLAY_MENU:
-            return Buzz.updateFocusPlayMenu(clone(model), act.bale, state);
-        case Act.GEOJSON_MENU:
-            return Buzz.geojsonMenu(clone(model), act.bale, state);
         case Act.PRINT_MENU:
             return Buzz.printMenu(clone(model), act.bale, state);
         default:

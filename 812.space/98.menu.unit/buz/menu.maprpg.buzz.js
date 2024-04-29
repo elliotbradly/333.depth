@@ -1,30 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.yieldMenu = void 0;
-const ActFoc = require("../../01.focus.unit/focus.action");
-const ActMap = require("../../03.hexmap.unit/hexmap.action");
+exports.maprpgMenu = void 0;
+const ActMnu = require("../menu.action");
+const ActMpr = require("../../04.maprpg.unit/maprpg.action");
+const ActChc = require("../../act/choice.action");
 const ActCns = require("../../act/console.action");
-var bit, lst, dex, idx, dat;
-const yieldMenu = async (cpy, bal, ste) => {
-    bit = await ste.hunt(ActMap.SHAPE_HEXMAP, { idx, dat: { frm: SHAPE.RECTANGLE, w: 5, H: 5 } });
-    bit = await ste.hunt(ActMap.WRITE_HEXMAP, { idx: "hexmap00", dat: { bit: { grid: bit.mapBit.dat.dat.bit } } });
-    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: JSON.stringify(bit.mapBit.dat) });
-    bit = await ste.hunt(ActFoc.WRITE_FOCUS, { idx: 'foc00', src: 'hexmap00', dat: { typ: FOCUS.AVAS } });
-    var avas = bit.focBit.dat;
-    bit = await ste.hunt(ActFoc.WRITE_FOCUS, { idx: 'foc01', src: 'hexmap00', dat: { typ: FOCUS.AVAS } });
-    var avas = bit.focBit.dat;
-    bit = await ste.hunt(ActFoc.WRITE_FOCUS, { idx: 'foc02', src: 'hexmap00', dat: { typ: FOCUS.AVAS } });
-    var avas = bit.focBit.dat;
-    bit = await ste.hunt(ActFoc.LIST_FOCUS, { src: FOCUS.AVAS });
-    lst = bit.focBit.lst;
-    lst.forEach(async (a) => {
-        bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: 'yeilding: ' + JSON.stringify(a) });
-    });
-    bal.slv({ intBit: { idx: "yield-menu" } });
-    return cpy;
+const ActGrd = require("../../act/grid.action");
+const ActDsk = require("../../act/disk.action");
+var bit, lst, dex, idx, dat, src;
+const maprpgMenu = async (cpy, bal, ste) => {
+    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
+    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "MapRPG Menu" });
+    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
+    lst = [ActMpr.LOAD_MAPRPG, ActMpr.WRITE_MAPRPG, ActMnu.UPDATE_MENU];
+    bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
+    bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
+    src = bit.chcBit.src;
+    switch (src) {
+        case ActMpr.LOAD_MAPRPG:
+            bit = await ste.bus(ActDsk.INDEX_DISK, { src: './data/maprpg/' });
+            lst = bit.dskBit.lst;
+            bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
+            bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
+            src = bit.chcBit.src;
+            bit = await ste.hunt(ActMpr.LOAD_MAPRPG, { src });
+            bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "Loaded.. " + bit.mprBit.src });
+            //bit = await ste.hunt(ActMnu.PRINT_MENU, bit.mprBit.src)
+            break;
+        case ActMpr.WRITE_MAPRPG:
+            bit = await ste.hunt(ActMpr.WRITE_MAPRPG, { src });
+            break;
+        case ActMnu.UPDATE_MENU:
+            bit = await ste.hunt(ActMnu.UPDATE_MENU, {});
+            break;
+    }
+    bit = await ste.hunt(ActMnu.MAPRPG_MENU, {});
+    cpy;
 };
-exports.yieldMenu = yieldMenu;
+exports.maprpgMenu = maprpgMenu;
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
-const SHAPE = require("../../val/shape");
-const FOCUS = require("../../val/focus");
+const Color = require("../../val/console-color");
+const Align = require("../../val/align");
 //# sourceMappingURL=menu.maprpg.buzz.js.map

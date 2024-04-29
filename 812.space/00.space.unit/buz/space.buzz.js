@@ -34,7 +34,7 @@ const updateSpace = async (cpy, bal, ste) => {
     var lstMsg = [];
     bit = await ste.bus(ActPvt.SHIP_PIVOT, { src: '812.space' });
     lstMsg = lstMsg.concat(bit.pvtBit.lst);
-    idx = "../../333.depth/812.space/";
+    idx = "../811.earth/812.space/";
     bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/812.space/', idx });
     lstMsg = lstMsg.concat(bit.pvtBit);
     bal.slv({ spcBit: { idx: "update-space", lst: lstMsg } });

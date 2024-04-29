@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.geojsonMenu = exports.renderMenu = exports.createHexmapMenu = exports.hexmapMenu = exports.yieldMenu = exports.createMenu = exports.updateFocusPlayMenu = exports.focusPlayMenu = exports.focusMenu = exports.printMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
+exports.geojsonMenu = exports.renderMenu = exports.createHexmapMenu = exports.maprpgMenu = exports.hexmapMenu = exports.yieldMenu = exports.createMenu = exports.updateFocusPlayMenu = exports.focusPlayMenu = exports.focusMenu = exports.printMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
 var _00_menu_buzz_1 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "initMenu", { enumerable: true, get: function () { return _00_menu_buzz_1.initMenu; } });
 var _00_menu_buzz_2 = require("./buz/00.menu.buzz");
@@ -23,6 +23,8 @@ var menu_yield_buzz_1 = require("./buz/menu.yield.buzz");
 Object.defineProperty(exports, "yieldMenu", { enumerable: true, get: function () { return menu_yield_buzz_1.yieldMenu; } });
 var menu_hexmap_buzz_1 = require("./buz/menu.hexmap.buzz");
 Object.defineProperty(exports, "hexmapMenu", { enumerable: true, get: function () { return menu_hexmap_buzz_1.hexmapMenu; } });
+var menu_maprpg_buzz_1 = require("./buz/menu.maprpg.buzz");
+Object.defineProperty(exports, "maprpgMenu", { enumerable: true, get: function () { return menu_maprpg_buzz_1.maprpgMenu; } });
 var menu_create_hexmap_buzz_1 = require("./buz/menu.create-hexmap.buzz");
 Object.defineProperty(exports, "createHexmapMenu", { enumerable: true, get: function () { return menu_create_hexmap_buzz_1.createHexmapMenu; } });
 var menu_render_buzz_1 = require("./buz/menu.render.buzz");

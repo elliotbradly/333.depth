@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrintMenu = exports.PRINT_MENU = exports.GeojsonMenu = exports.GEOJSON_MENU = exports.YieldMenu = exports.YIELD_MENU = exports.RenderMenu = exports.RENDER_MENU = exports.CreateHexmapMenu = exports.CREATE_HEXMAP_MENU = exports.MaprpgMenu = exports.MAPRPG_MENU = exports.HexmapMenu = exports.HEXMAP_MENU = exports.CreateMenu = exports.CREATE_MENU = exports.UpdateFocusPlayMenu = exports.UPDATE_FOCUS_PLAY_MENU = exports.FocusPlayMenu = exports.FOCUS_PLAY_MENU = exports.FocusMenu = exports.FOCUS_MENU = exports.TimeMenu = exports.TIME_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
+exports.PrintMenu = exports.PRINT_MENU = exports.YieldMenu = exports.YIELD_MENU = exports.RenderMenu = exports.RENDER_MENU = exports.CreateHexmapMenu = exports.CREATE_HEXMAP_MENU = exports.HexmapMenu = exports.HEXMAP_MENU = exports.CreateMenu = exports.CREATE_MENU = exports.UpdateFocusPlayMenu = exports.UPDATE_FOCUS_PLAY_MENU = exports.FocusPlayMenu = exports.FOCUS_PLAY_MENU = exports.FocusMenu = exports.FOCUS_MENU = exports.TimeMenu = exports.TIME_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
 exports.INIT_MENU = "[Menu action] Init Menu";
 class InitMenu {
     constructor(bale) {
@@ -81,14 +81,6 @@ class HexmapMenu {
     }
 }
 exports.HexmapMenu = HexmapMenu;
-exports.MAPRPG_MENU = "[Hexmap action] MapRpg Menu";
-class MaprpgMenu {
-    constructor(bale) {
-        this.bale = bale;
-        this.type = exports.MAPRPG_MENU;
-    }
-}
-exports.MaprpgMenu = MaprpgMenu;
 exports.CREATE_HEXMAP_MENU = "[Hexmap action] Create Hexmap Menu";
 class CreateHexmapMenu {
     constructor(bale) {
@@ -113,14 +105,6 @@ class YieldMenu {
     }
 }
 exports.YieldMenu = YieldMenu;
-exports.GEOJSON_MENU = "[Render action] Geosjson Menu";
-class GeojsonMenu {
-    constructor(bale) {
-        this.bale = bale;
-        this.type = exports.GEOJSON_MENU;
-    }
-}
-exports.GeojsonMenu = GeojsonMenu;
 exports.PRINT_MENU = "[Render action] Print Menu";
 class PrintMenu {
     constructor(bale) {

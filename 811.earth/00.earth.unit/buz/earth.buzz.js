@@ -30,6 +30,12 @@ const updateEarth = async (cpy, bal, ste) => {
     idx = "../../333.depth/811.earth/";
     bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/811.earth/', idx });
     lstMsg = lstMsg.concat(bit.pvtBit);
+    idx = "../../333.depth/812.space/";
+    bit = await ste.bus(ActDsk.COPY_DISK, { src: './812.space/', idx });
+    lstMsg = lstMsg.concat(bit.pvtBit);
+    idx = "../../333.depth/814.being/";
+    bit = await ste.bus(ActDsk.COPY_DISK, { src: './814.being/', idx });
+    lstMsg = lstMsg.concat(bit.pvtBit);
     bal.slv({ ertBit: { idx: "update-earth", lst: lstMsg } });
     return cpy;
 };

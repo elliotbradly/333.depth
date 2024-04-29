@@ -19,7 +19,7 @@ const initMenu = async (cpy, bal, ste) => {
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 4, y: 0, xSpan: 7, ySpan: 12 });
     bit = await ste.bus(ActCns.WRITE_CONSOLE, { idx: 'cns00', src: "", dat: { net: bit.grdBit.dat, src: "alligaor0" } });
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
-    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "Space PIVOT V0" });
+    bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "Spaced PIVOT V0" });
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
     (0, exports.updateMenu)(cpy, bal, ste);
     return cpy;
@@ -27,7 +27,7 @@ const initMenu = async (cpy, bal, ste) => {
 exports.initMenu = initMenu;
 const updateMenu = async (cpy, bal, ste) => {
     //lst = [ActPvt.CLOUD_PIVOT, ActPvt.UPDATE_PIVOT, ActPvt.OPEN_PIVOT, ActPvt.EDIT_PIVOT, ActSpc.MERGE_SPACE, ActMnu.FOCUS_MENU, ActMnu.HEXMAP_MENU, , ActMnu.RENDER_MENU]
-    lst = [ActSpc.UPDATE_SPACE, ActMnu.HEXMAP_MENU, ActMnu.FOCUS_MENU, ActMnu.YIELD_MENU, ActMnu.GEOJSON_MENU];
+    lst = [ActSpc.UPDATE_SPACE, ActMnu.MAPRPG_MENU, ActMnu.HEXMAP_MENU, ActMnu.FOCUS_MENU, ActMnu.YIELD_MENU, ActMnu.GEOJSON_MENU];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
@@ -40,6 +40,9 @@ const updateMenu = async (cpy, bal, ste) => {
             break;
         case ActMnu.HEXMAP_MENU:
             bit = await ste.hunt(ActMnu.HEXMAP_MENU, {});
+            break;
+        case ActMnu.MAPRPG_MENU:
+            bit = await ste.hunt(ActMnu.MAPRPG_MENU, {});
             break;
         case ActMnu.FOCUS_MENU:
             bit = await ste.hunt(ActMnu.FOCUS_MENU, {});
