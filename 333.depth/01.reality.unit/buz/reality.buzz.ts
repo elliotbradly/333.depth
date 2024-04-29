@@ -55,22 +55,24 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
 
     require("dotenv").config();
 
-    bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
-    var block: BlockBit = JSON.parse(bit.clkBit.dat);
+    //bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
+    //var block: BlockBit = JSON.parse(bit.clkBit.dat);
 
-    if (bit.clkBit.val == false || block.score > 1000) {
-        bal.slv({ sokBit: { idx: "update-reality", val: 0 } });
-        return
-    }
+    //if (bit.clkBit.val == false || block.score > 1000) {
+    //    bal.slv({ sokBit: { idx: "update-reality", val: 0 } });
+    //    return
+   // }
 
-    var msg = bit.clkBit.dex + ' :::: ' + block.score
+    //var msg = bit.clkBit.dex + ' :::: ' + block.score
     //ste.hunt(ActDep.LOG_DEPTH, { src: msg })
+
+    var score = 3;
 
     var idx = 'clk00';
 
     var dat: TicBit = { idx }
-    dat.min = 1 * block.score;
-    dat.sec = 1 * block.score;
+    dat.min = 1 *  score;
+    dat.sec = 3 *  score;
 
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
     var clock:TicBit = bit.clkBit.dat
