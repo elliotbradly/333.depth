@@ -14,7 +14,7 @@ const initBeing = async (cpy, bal, ste) => {
     if (bal.val == 1)
         patch(ste, ActMnu.INIT_MENU, bal);
     if (bal.slv != null)
-        bal.slv({ intBit: { idx: "init-space" } });
+        bal.slv({ intBit: { idx: "init-being" } });
     return cpy;
 };
 exports.initBeing = initBeing;
