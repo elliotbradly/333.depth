@@ -106,6 +106,12 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
         bit = await ste.bus(ActDsk.COPY_DISK, { src: './811.earth/', idx: "../service/render.com/811.earth" });
         lst.push(bit)
 
+        bit = await ste.bus(ActDsk.COPY_DISK, { src: './812.space/', idx: "../service/render.com/812.space" });
+        lst.push(bit)
+
+        bit = await ste.bus(ActDsk.COPY_DISK, { src: './814.being/', idx: "../service/render.com/814.being" });
+        lst.push(bit)
+
 
         setTimeout(() => {
             bal.slv({ blnBit: { idx: "update-blender", lst } });
