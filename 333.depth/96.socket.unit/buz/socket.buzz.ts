@@ -159,6 +159,8 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var dat: SockBit = { idx: bal.idx, src: 'create', bit };
 
+    // open the player 
+
     bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
 
     bal.slv({ sokBit: { idx: "create-socket", dat } });
