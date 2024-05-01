@@ -63,8 +63,8 @@ const init = async (prt) => {
     DEPTH = require(path.resolve('./dist/333.depth/hunt'));
     DEPTH_ACTION = require(path.resolve('./dist/333.depth/00.depth.unit/depth.action'));
 
-    EARTH = require(path.resolve('./811.earth/index'));
-    EARTH_ACTION = require(path.resolve('./811.earth/00.earth.unit/earth.action'));
+    ORB = require(path.resolve('./811.orb/index'));
+    ORB_ACTION = require(path.resolve('./811.orb/00.orb.unit/orb.action'));
 
     CONTROL = require(path.resolve('./900.control/index'));
     CONTROL_ACTION = require(path.resolve('./900.control/00.control.unit/control.action'));
@@ -81,7 +81,7 @@ const init = async (prt) => {
     if (pvt == false) {
 
         await TERMINAL.hunt(TERMINAL_ACTION.INIT_TERMINAL, { dat: MQTT, src: local });
-        await EARTH.hunt( EARTH_ACTION.INIT_EARTH, {  dat: MQTT, src: local });
+        await ORB.hunt( ORB_ACTION.INIT_ORB, {  dat: MQTT, src: local });
         await STORE.hunt( STORE_ACTION.INIT_STORE, {  dat: MQTT, src: local });
         
         await CONTROL.hunt( CONTROL_ACTION.INIT_CONTROL, {  dat: MQTT, src: local });

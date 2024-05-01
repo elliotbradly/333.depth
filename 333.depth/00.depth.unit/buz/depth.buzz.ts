@@ -103,7 +103,7 @@ export const updateDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
         bit = await ste.bus(ActDsk.COPY_DISK, { src: './901.store/', idx: "../service/render.com/901.store" });
         lst.push(bit)
 
-        bit = await ste.bus(ActDsk.COPY_DISK, { src: './811.earth/', idx: "../service/render.com/811.earth" });
+        bit = await ste.bus(ActDsk.COPY_DISK, { src: './811.orb/', idx: "../service/render.com/811.orb" });
         lst.push(bit)
 
         bit = await ste.bus(ActDsk.COPY_DISK, { src: './812.space/', idx: "../service/render.com/812.space" });
