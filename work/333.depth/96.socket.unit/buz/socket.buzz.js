@@ -99,6 +99,13 @@ const createSocket = async (cpy, bal, ste) => {
         //    patch(ste, ActSok.WRITE_SOCKET, { idx: bal.idx, src: msg })
     });
     var dat = { idx: bal.idx, src: 'create', bit };
+    //enter the arena 
+    //get starting location
+    //get starting x 
+    //get starting y 
+    //see if player exists
+    // open the player
+    // send that data 
     bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
     bal.slv({ sokBit: { idx: "create-socket", dat } });
     return cpy;

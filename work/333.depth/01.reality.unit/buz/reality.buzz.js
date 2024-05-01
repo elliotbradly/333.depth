@@ -29,18 +29,19 @@ exports.openReality = openReality;
 const updateReality = async (cpy, bal, ste) => {
     //ste.hunt( ActDep.LOG_DEPTH, {src: "update reality"  } )
     require("dotenv").config();
-    bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST });
-    var block = JSON.parse(bit.clkBit.dat);
-    if (bit.clkBit.val == false || block.score > 1000) {
-        bal.slv({ sokBit: { idx: "update-reality", val: 0 } });
-        return;
-    }
-    var msg = bit.clkBit.dex + ' :::: ' + block.score;
+    //bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
+    //var block: BlockBit = JSON.parse(bit.clkBit.dat);
+    //if (bit.clkBit.val == false || block.score > 1000) {
+    //    bal.slv({ sokBit: { idx: "update-reality", val: 0 } });
+    //    return
+    // }
+    //var msg = bit.clkBit.dex + ' :::: ' + block.score
     //ste.hunt(ActDep.LOG_DEPTH, { src: msg })
+    var score = 3;
     var idx = 'clk00';
     var dat = { idx };
-    dat.min = 1 * block.score;
-    dat.sec = 1 * block.score;
+    dat.min = 1 * score;
+    dat.sec = 3 * score;
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat });
     var clock = bit.clkBit.dat;
     ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm });

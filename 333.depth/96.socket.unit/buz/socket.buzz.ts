@@ -159,7 +159,16 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var dat: SockBit = { idx: bal.idx, src: 'create', bit };
 
-    // open the player 
+    //enter the arena 
+    
+
+    //get starting location
+    //get starting x 
+    //get starting y 
+    //see if player exists
+
+    // open the player
+    // send that data 
 
     bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
 
