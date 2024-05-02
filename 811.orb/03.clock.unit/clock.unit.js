@@ -11,13 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typescript_ioc_1 = require("typescript-ioc");
 const state_1 = require("../99.core/state");
-let EarthUnit = class EarthUnit {
+let ClockUnit = class ClockUnit {
     constructor(state) {
     }
 };
-EarthUnit = __decorate([
+ClockUnit = __decorate([
     typescript_ioc_1.Singleton,
     __metadata("design:paramtypes", [state_1.default])
-], EarthUnit);
-exports.default = EarthUnit;
-//# sourceMappingURL=earth.unit.js.map
+], ClockUnit);
+exports.default = ClockUnit;
+//# sourceMappingURL=clock.unit.js.map

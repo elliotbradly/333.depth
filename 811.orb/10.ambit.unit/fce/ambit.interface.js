@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=sim.bit.js.map
+//# sourceMappingURL=ambit.interface.js.map

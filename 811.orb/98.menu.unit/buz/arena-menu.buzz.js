@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.arenaMenu = void 0;
 const ActMnu = require("../menu.action");
-const ActArn = require("../../01.arena.unit/arena.action");
+const ActArn = require("../../12.arena.unit/arena.action");
 const ActPut = require("../../act/input.action");
 const ActTrm = require("../../act/terminal.action");
 const ActChc = require("../../act/choice.action");

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.clockMenu = void 0;
 const ActMnu = require("../menu.action");
-const ActClk = require("../../05.clock.unit/clock.action");
+const ActClk = require("../../03.clock.unit/clock.action");
 const ActTrm = require("../../act/terminal.action");
 const ActCns = require("../../act/console.action");
 const ActChc = require("../../act/choice.action");

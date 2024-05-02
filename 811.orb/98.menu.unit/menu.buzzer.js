@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.playMenu = exports.arenaMenu = exports.ambitMenu = exports.clockMenu = exports.printMenu = exports.earthMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
+exports.arenaMenu = exports.ambitMenu = exports.clockMenu = exports.printMenu = exports.earthMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
 var _00_menu_buzz_1 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "initMenu", { enumerable: true, get: function () { return _00_menu_buzz_1.initMenu; } });
 var _00_menu_buzz_2 = require("./buz/00.menu.buzz");
@@ -19,6 +19,4 @@ var ambit_menu_buzz_1 = require("./buz/ambit-menu.buzz");
 Object.defineProperty(exports, "ambitMenu", { enumerable: true, get: function () { return ambit_menu_buzz_1.ambitMenu; } });
 var arena_menu_buzz_1 = require("./buz/arena-menu.buzz");
 Object.defineProperty(exports, "arenaMenu", { enumerable: true, get: function () { return arena_menu_buzz_1.arenaMenu; } });
-var play_menu_buzz_1 = require("./buz/play-menu.buzz");
-Object.defineProperty(exports, "playMenu", { enumerable: true, get: function () { return play_menu_buzz_1.playMenu; } });
 //# sourceMappingURL=menu.buzzer.js.map
