@@ -28,7 +28,7 @@ export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State
     ste.hunt(ActDep.LOG_DEPTH, { src: "opening reality" })
 
     idx = 'clk00'
-    var clk: TicBit = { idx, yrs: 1978, mth: 4, day: 11 }
+    var clk: TicBit = { idx, yrs: 2078, mth: 4, day: 11 }
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
     ste.hunt(ActDep.LOG_DEPTH, { src: JSON.stringify(bit) })
