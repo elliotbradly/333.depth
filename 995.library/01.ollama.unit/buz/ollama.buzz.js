@@ -34,6 +34,7 @@ const writeOllama = async (cpy, bal, ste) => {
     var output = [];
     var line = [];
     var size = 10;
+    var placement = [];
     try {
         for (var _d = true, response_1 = __asyncValues(response), response_1_1; response_1_1 = await response_1.next(), _a = response_1_1.done, !_a; _d = true) {
             _c = response_1_1.value;
@@ -52,6 +53,7 @@ const writeOllama = async (cpy, bal, ste) => {
                 fin = S(fin).replaceAll(" and ", "\nand ").s;
                 fin = fin + bit.dskBit.dat;
                 bit = await ste.bus(ActDsk.WRITE_DISK, { src: './lore/progress.txt', dat: fin });
+                placement.push(fin);
                 line = [];
             }
         }
@@ -63,7 +65,7 @@ const writeOllama = async (cpy, bal, ste) => {
         }
         finally { if (e_1) throw e_1.error; }
     }
-    bal.slv({ olmBit: { idx: "write-ollama", lst } });
+    bal.slv({ olmBit: { idx: "write-ollama", lst: output } });
     return cpy;
 };
 exports.writeOllama = writeOllama;

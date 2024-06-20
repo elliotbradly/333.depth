@@ -8,6 +8,9 @@ import * as ActSok from "../../96.socket.unit/socket.action";
 
 import * as ActSpc from "../../act/space.action"
 
+import * as ActPmt from "../../act/prompt.action"
+import * as ActOlm from "../../act/ollama.action"
+
 import * as ActPvt from "../../act/pivot.action";
 import * as ActVrt from "../../act/vurt.action";
 import * as ActDsk from "../../act/disk.action";
@@ -25,7 +28,7 @@ export const initReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
 export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
-    
+
     ste.hunt(ActDep.LOG_DEPTH, { src: "opening reality" })
 
     idx = 'clk00'
@@ -62,7 +65,7 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     //if (bit.clkBit.val == false || block.score > 1000) {
     //    bal.slv({ sokBit: { idx: "update-reality", val: 0 } });
     //    return
-   // }
+    // }
 
     //var msg = bit.clkBit.dex + ' :::: ' + block.score
     //ste.hunt(ActDep.LOG_DEPTH, { src: msg })
@@ -72,11 +75,11 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     var idx = 'clk00';
 
     var dat: TicBit = { idx }
-    dat.min = 1 *  score;
-    dat.sec = 3 *  score;
+    dat.min = 1 * score;
+    dat.sec = 3 * score;
 
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
-    var clock:TicBit = bit.clkBit.dat
+    var clock: TicBit = bit.clkBit.dat
 
     ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
 
@@ -84,6 +87,11 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     cpy.timecode = clock.frm
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
+
+    src = "describe the timecode " + cpy.timecode  + "using only twenty words"
+    bit = await ste.bus(ActPmt.WRITE_PROMPT, { src, val: 1 })
+    bit = await ste.bus(ActOlm.WRITE_OLLAMA, { src: 'committing control' })
+
 
 
     bal.slv({ sokBit: { idx: "update-reality", val: 1 } });

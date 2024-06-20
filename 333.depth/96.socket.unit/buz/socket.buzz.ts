@@ -61,30 +61,25 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
     //to check and see if there are any connections to send data out to
     //then any updating for reality should be done here
 
-    const interval = setInterval(async function ping() {
+    const interval = setTimeout(async function ping() {
 
         var count = 0
 
         var clcBit = await ste.hunt(ActCol.LIST_COLLECT, { bit: ActSok.CREATE_SOCKET })
 
         var colLst = clcBit.clcBit.lst
-        
+
         ste.hunt(ActDep.LOG_DEPTH, { src: 'watching...' + colLst.length })
 
-        if (colLst.length >= 0) {
-            bit = await ste.hunt(ActRel.UPDATE_REALITY, {}); 
-            return
-        }
-
+        if (colLst.length >= 0) { }
 
         var dex = colLst.length - 1;
-
 
         var nextSocket = async () => {
 
             if (dex < 0) {
-
-
+                bit = await ste.hunt(ActRel.UPDATE_REALITY, {});
+                setTimeout( ping, 3000 )
                 return
             }
 

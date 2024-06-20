@@ -5,12 +5,13 @@ const ActMnu = require("../../98.menu.unit/menu.action");
 const ActBus = require("../../99.bus.unit/bus.action");
 const ActLib = require("../library.action");
 const ActOlm = require("../../01.ollama.unit/ollama.action");
+const ActPmt = require("../../12.prompt.unit/prompt.action");
 const ActDsk = require("../../act/disk.action");
 const ActPvt = require("../../act/pivot.action");
 var bit, val, idx, dex, lst, dat;
 const initLibrary = async (cpy, bal, ste) => {
     if (bal.dat != null)
-        bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActLib, ActOlm], dat: bal.dat, src: bal.src });
+        bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActLib, ActOlm, ActPmt], dat: bal.dat, src: bal.src });
     if (bal.val == 1)
         patch(ste, ActMnu.INIT_MENU, bal);
     if (bal.slv != null)
@@ -20,14 +21,11 @@ const initLibrary = async (cpy, bal, ste) => {
 exports.initLibrary = initLibrary;
 const updateLibrary = async (cpy, bal, ste) => {
     var lstMsg = [];
-    debugger;
     bit = await ste.bus(ActPvt.SHIP_PIVOT, { src: '995.library' });
     lstMsg = lstMsg.concat(bit.pvtBit.lst);
-    debugger;
     idx = "../../333.depth/995.library/";
     bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/995.library/', idx });
     lstMsg = lstMsg.concat(bit.pvtBit);
-    debugger;
     //idx = "../../333.depth/812.space/";
     //bit = await ste.bus(ActDsk.COPY_DISK, { src: './812.space/', idx  });
     //lstMsg = lstMsg.concat(bit.pvtBit)

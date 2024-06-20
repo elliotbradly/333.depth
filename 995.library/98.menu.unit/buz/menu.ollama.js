@@ -23,6 +23,7 @@ const ollamaMenu = async (cpy, bal, ste) => {
             src = bit.putBit.src;
             bit = await ste.hunt(ActPmt.WRITE_PROMPT, { src, val: 1 });
             bit = await ste.hunt(ActOlm.WRITE_OLLAMA, { src: 'committing control' });
+            bit = await ste.hunt(ActMnu.PRINT_MENU, { src: "ollama complete" });
             bit = await ste.hunt(ActMnu.PRINT_MENU, bit);
             break;
         case ActOlm.WRITE_OLLAMA:
