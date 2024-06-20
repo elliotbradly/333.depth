@@ -78,6 +78,9 @@ const init = async (prt) => {
     TERMINAL = require(path.resolve('./997.terminal/index'));
     TERMINAL_ACTION = require(path.resolve('./997.terminal/00.terminal.unit/terminal.action'));
 
+    var LIBRARY = require(path.resolve('./995.library/index'));
+    var LIBRARY_ACTION = require(path.resolve('./995.library/00.library.unit/library.action'));
+
     if (pvt == false) {
 
         await TERMINAL.hunt(TERMINAL_ACTION.INIT_TERMINAL, { dat: MQTT, src: local });
@@ -86,7 +89,10 @@ const init = async (prt) => {
         
         await CONTROL.hunt( CONTROL_ACTION.INIT_CONTROL, {  dat: MQTT, src: local });
         await PIVOT.hunt(PIVOT_ACTION.INIT_PIVOT, { dat: MQTT, src: local });
+
         await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 1, dat: MQTT, src: [localBit] });
+
+        await LIBRARY.hunt( LIBRARY_ACTION.INIT_LIBRARY, { dat: MQTT, src: local });
 
     }
     else {
@@ -114,6 +120,7 @@ if (dev == false) return
 console.log("deving...")
 const { exec } = require('child_process');
 const { resolve } = require('path');
+const { LIBRARY } = require('./811.orb/val/ambit');
 
 process.chdir("../");
 
