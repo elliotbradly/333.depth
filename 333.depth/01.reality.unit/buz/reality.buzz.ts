@@ -77,18 +77,19 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     var dat: TicBit = { idx }
     dat.min = 1 * score;
     dat.sec = 3 * score;
+    dat.hrs = 2 * score;
 
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
     var clock: TicBit = bit.clkBit.dat
 
-    ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
+    //ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
 
     cpy.now = clock.now
     cpy.timecode = clock.frm
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
-    src = "describe the timecode " + cpy.timecode  + "using only twenty words"
+    src = "creatively describe the time " + clock.frm  + "using only thirty words"
     bit = await ste.bus(ActPmt.WRITE_PROMPT, { src, val: 1 })
     bit = await ste.bus(ActOlm.WRITE_OLLAMA, { src: 'committing control' })
 
