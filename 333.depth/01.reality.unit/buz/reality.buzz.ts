@@ -25,6 +25,7 @@ export const initReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
 export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
+    
     ste.hunt(ActDep.LOG_DEPTH, { src: "opening reality" })
 
     idx = 'clk00'

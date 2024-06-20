@@ -18,8 +18,8 @@ var bit, val, idx, dex, lst, dat, src;
 
 export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
-    var depthMod:DepthModel = ste.value.depth;
-    var realityMod:RealityModel = ste.value.reality;
+    var depthMod: DepthModel = ste.value.depth;
+    var realityMod: RealityModel = ste.value.reality;
 
     const WebSocket = require("ws");
 
@@ -34,7 +34,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
         this.send("heartbeat")
     }
 
-    wss.on('open', () => { ste.hunt( ActDep.LOG_DEPTH, {src: "are you open" } )   });
+    wss.on('open', () => { ste.hunt(ActDep.LOG_DEPTH, { src: "are you open" }) });
 
     wss.on("connection", async (ws) => {
 
@@ -45,16 +45,21 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         ws.on("close", async () => {
             bit = await ste.hunt(ActSok.REMOVE_SOCKET, { idx: uuid });
-            
-            ste.hunt( ActDep.LOG_DEPTH, {src: "closing..." + uuid } )
+
+            ste.hunt(ActDep.LOG_DEPTH, { src: "closing..." + uuid })
 
             uuid = null
         });
 
-        ste.hunt( ActDep.LOG_DEPTH, {src: ws.idx + ' connnected...' } )
+        ste.hunt(ActDep.LOG_DEPTH, { src: ws.idx + ' connnected...' })
 
         bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
     });
+
+    //the point is 
+    //that since you will always be running this
+    //to check and see if there are any connections to send data out to
+    //then any updating for reality should be done here
 
     const interval = setInterval(async function ping() {
 
@@ -63,16 +68,23 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
         var clcBit = await ste.hunt(ActCol.LIST_COLLECT, { bit: ActSok.CREATE_SOCKET })
 
         var colLst = clcBit.clcBit.lst
+        
+
+        if (colLst.length >= 0) {
+            ste.hunt(ActDep.LOG_DEPTH, { src: ' no one is watching...' })
+            return
+        }
+
 
         var dex = colLst.length - 1;
 
+
         var nextSocket = async () => {
 
-            if (dex < 0) { 
-               
-                if ( count != 0 || depthMod.local == true ) ste.hunt(ActRel.UPDATE_REALITY, {})
-                
-                return 
+            if (dex < 0) {
+
+
+                return
             }
 
             var itm = colLst[dex];
@@ -80,7 +92,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
             var now = realityMod.now;
             var cde = realityMod.timecode
 
-            var sokBit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: itm, dat:{now, cde} })
+            var sokBit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: itm, dat: { now, cde } })
             sokBit = sokBit.sokBit;
 
             dex -= 1
@@ -114,11 +126,11 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
     var socket = dat.bit;
 
 
-    var outData = { idx: bal.idx, dat:data } 
-    
-    socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData} ));
+    var outData = { idx: bal.idx, dat: data }
 
-    ste.hunt( ActDep.LOG_DEPTH, {src: "update socket ::: " + JSON.stringify(bal) } )
+    socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData }));
+
+    ste.hunt(ActDep.LOG_DEPTH, { src: "update socket ::: " + JSON.stringify(bal) })
 
     if (data.visible != null) dat.bit.visible = data.visible
 
@@ -153,14 +165,14 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
     bit.isAlive = true;
     bit.on('error', console.error);
     bit.on("message", (msg) => {
-        ste.hunt( ActDep.LOG_DEPTH, {src: "incoming message " + msg } )        
+        ste.hunt(ActDep.LOG_DEPTH, { src: "incoming message " + msg })
         //    patch(ste, ActSok.WRITE_SOCKET, { idx: bal.idx, src: msg })
     })
 
     var dat: SockBit = { idx: bal.idx, src: 'create', bit };
 
     //enter the arena 
-    
+
 
     //get starting location
     //get starting x 
@@ -213,14 +225,14 @@ export const removeSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
 export const deleteSocket = async (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
-    ste.hunt( ActDep.LOG_DEPTH, {src: "delete a socket" } ) 
-    
+    ste.hunt(ActDep.LOG_DEPTH, { src: "delete a socket" })
+
     bit = await ste.hunt(ActSok.READ_SOCKET, { idx: bal.idx });
     dat = bit.sokBit;
 
-    ste.hunt( ActDep.LOG_DEPTH, {src: "remove socket ::: " + dat.idx } ) 
-    ste.hunt( ActDep.LOG_DEPTH, {src: "socket data ::: " + dat.dat } )  
-    ste.hunt( ActDep.LOG_DEPTH, {src: "socket bit ::: " + dat.dat.bit } )  
+    ste.hunt(ActDep.LOG_DEPTH, { src: "remove socket ::: " + dat.idx })
+    ste.hunt(ActDep.LOG_DEPTH, { src: "socket data ::: " + dat.dat })
+    ste.hunt(ActDep.LOG_DEPTH, { src: "socket bit ::: " + dat.dat.bit })
 
     if (dat.dat.bit.terminate != null) dat.dat.bit.terminate()
 
