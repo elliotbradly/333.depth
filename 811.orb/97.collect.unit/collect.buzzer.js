@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.hashCollect = exports.listCollect = exports.dotCollect = exports.formatCollect = exports.getCollect = exports.putCollect = exports.modelCollect = exports.removeCollect = exports.deleteCollect = exports.fetchCollect = exports.emptyCollect = exports.createCollect = exports.writeCollect = exports.readCollect = exports.updateCollect = exports.initCollect = void 0;
+exports.selectCollect = exports.hashCollect = exports.listCollect = exports.dotCollect = exports.formatCollect = exports.getCollect = exports.putCollect = exports.modelCollect = exports.removeCollect = exports.deleteCollect = exports.fetchCollect = exports.emptyCollect = exports.createCollect = exports.writeCollect = exports.readCollect = exports.updateCollect = exports.initCollect = void 0;
 var collect_buzz_1 = require("./buz/collect.buzz");
 Object.defineProperty(exports, "initCollect", { enumerable: true, get: function () { return collect_buzz_1.initCollect; } });
 var collect_buzz_2 = require("./buz/collect.buzz");
@@ -33,4 +33,6 @@ var collect_buzz_15 = require("./buz/collect.buzz");
 Object.defineProperty(exports, "listCollect", { enumerable: true, get: function () { return collect_buzz_15.listCollect; } });
 var collect_buzz_16 = require("./buz/collect.buzz");
 Object.defineProperty(exports, "hashCollect", { enumerable: true, get: function () { return collect_buzz_16.hashCollect; } });
+var collect_buzz_17 = require("./buz/collect.buzz");
+Object.defineProperty(exports, "selectCollect", { enumerable: true, get: function () { return collect_buzz_17.selectCollect; } });
 //# sourceMappingURL=collect.buzzer.js.map

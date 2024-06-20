@@ -20,6 +20,8 @@ const updateClock = async (cpy, bal, ste) => {
         now.mth = 0;
     if (now.day == null)
         now.day = 0;
+    if (now.hrs == null)
+        now.hrs = 0;
     if (now.min == null)
         now.min = 0;
     if (now.sec == null)
@@ -32,6 +34,7 @@ const updateClock = async (cpy, bal, ste) => {
         years: now.yrs,
         months: now.mth,
         days: now.day,
+        hours: now.hrs,
         minutes: now.min,
         seconds: now.sec,
         weeks: now.wek,
@@ -46,6 +49,7 @@ const updateClock = async (cpy, bal, ste) => {
     ticDat.day = dt.day;
     ticDat.sec = dt.second;
     ticDat.min = dt.minute;
+    ticDat.hrs = dt.hour;
     ticDat.frm = dt.toLocaleString(luxon_1.DateTime.DATETIME_HUGE_WITH_SECONDS);
     ticDat.now = dt.valueOf();
     ticDat.bit = dt;
@@ -92,7 +96,7 @@ const readClock = async (cpy, bal, ste) => {
     var slv = bal.slv;
     if (bal.idx == null)
         bal.idx = "hex00";
-    bit = await ste.hunt(ActCol.READ_COLLECT, { idx: bal.idx, src: bal.src, bit: ActClk.READ_CLOCK });
+    bit = await ste.hunt(ActCol.READ_COLLECT, { idx: bal.idx, src: bal.src, bit: ActClk.CREATE_CLOCK });
     if (slv != null)
         slv({ clkBit: { idx: "read-clock", dat: bit.clcBit.dat } });
     return cpy;

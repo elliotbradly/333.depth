@@ -77,10 +77,12 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     var dat: TicBit = { idx }
     dat.min = 1 * score;
     dat.sec = 3 * score;
-    dat.hrs = 2 * score;
+    dat.hrs = 1.3 * score;
 
     bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
     var clock: TicBit = bit.clkBit.dat
+
+
 
     //ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
 
@@ -89,10 +91,10 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
-    src = "creatively describe the time " + clock.frm  + "using only thirty words"
+    src = "creatively describe the time " + clock.frm  + "in a large metropolitan city using only thirty words or less"
+    src += ' and replace the numeric date with something metaphorical'
     bit = await ste.bus(ActPmt.WRITE_PROMPT, { src, val: 1 })
     bit = await ste.bus(ActOlm.WRITE_OLLAMA, { src: 'committing control' })
-
 
 
     bal.slv({ sokBit: { idx: "update-reality", val: 1 } });

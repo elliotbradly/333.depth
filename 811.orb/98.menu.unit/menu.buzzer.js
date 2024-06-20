@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.arenaMenu = exports.ambitMenu = exports.clockMenu = exports.printMenu = exports.earthMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
+exports.emotionMenu = exports.axisMenu = exports.arenaMenu = exports.ambitMenu = exports.clockMenu = exports.printMenu = exports.earthMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
 var _00_menu_buzz_1 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "initMenu", { enumerable: true, get: function () { return _00_menu_buzz_1.initMenu; } });
 var _00_menu_buzz_2 = require("./buz/00.menu.buzz");
@@ -13,10 +13,14 @@ var _00_menu_buzz_5 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "earthMenu", { enumerable: true, get: function () { return _00_menu_buzz_5.earthMenu; } });
 var _00_menu_buzz_6 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "printMenu", { enumerable: true, get: function () { return _00_menu_buzz_6.printMenu; } });
-var clock_menu_buzz_1 = require("./buz/clock-menu.buzz");
-Object.defineProperty(exports, "clockMenu", { enumerable: true, get: function () { return clock_menu_buzz_1.clockMenu; } });
-var ambit_menu_buzz_1 = require("./buz/ambit-menu.buzz");
-Object.defineProperty(exports, "ambitMenu", { enumerable: true, get: function () { return ambit_menu_buzz_1.ambitMenu; } });
-var arena_menu_buzz_1 = require("./buz/arena-menu.buzz");
-Object.defineProperty(exports, "arenaMenu", { enumerable: true, get: function () { return arena_menu_buzz_1.arenaMenu; } });
+var menu_clock_buzz_1 = require("./buz/menu.clock.buzz");
+Object.defineProperty(exports, "clockMenu", { enumerable: true, get: function () { return menu_clock_buzz_1.clockMenu; } });
+var menu_ambit_buzz_1 = require("./buz/menu.ambit.buzz");
+Object.defineProperty(exports, "ambitMenu", { enumerable: true, get: function () { return menu_ambit_buzz_1.ambitMenu; } });
+var menu_arena_buzz_1 = require("./buz/menu.arena.buzz");
+Object.defineProperty(exports, "arenaMenu", { enumerable: true, get: function () { return menu_arena_buzz_1.arenaMenu; } });
+var menu_axis_buzz_1 = require("./buz/menu.axis.buzz");
+Object.defineProperty(exports, "axisMenu", { enumerable: true, get: function () { return menu_axis_buzz_1.axisMenu; } });
+var menu_emotion_buzz_1 = require("./buz/menu.emotion.buzz");
+Object.defineProperty(exports, "emotionMenu", { enumerable: true, get: function () { return menu_emotion_buzz_1.emotionMenu; } });
 //# sourceMappingURL=menu.buzzer.js.map

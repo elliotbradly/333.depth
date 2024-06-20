@@ -23,6 +23,10 @@ function reducer(model = new menu_model_1.MenuModel(), act, state) {
             return Buzz.ambitMenu(clone(model), act.bale, state);
         case Act.ARENA_MENU:
             return Buzz.arenaMenu(clone(model), act.bale, state);
+        case Act.AXIS_MENU:
+            return Buzz.axisMenu(clone(model), act.bale, state);
+        case Act.EMOTION_MENU:
+            return Buzz.emotionMenu(clone(model), act.bale, state);
         case Act.PRINT_MENU:
             return Buzz.printMenu(clone(model), act.bale, state);
         default:

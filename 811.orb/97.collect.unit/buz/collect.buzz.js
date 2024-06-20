@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.hashCollect = exports.listCollect = exports.formatCollect = exports.dotCollect = exports.emptyCollect = exports.deleteCollect = exports.modelCollect = exports.getCollect = exports.putCollect = exports.removeCollect = exports.createCollect = exports.writeCollect = exports.readCollect = exports.fetchCollect = exports.updateCollect = exports.initCollect = void 0;
+exports.hashCollect = exports.selectCollect = exports.listCollect = exports.formatCollect = exports.dotCollect = exports.emptyCollect = exports.deleteCollect = exports.modelCollect = exports.getCollect = exports.putCollect = exports.removeCollect = exports.createCollect = exports.writeCollect = exports.readCollect = exports.fetchCollect = exports.updateCollect = exports.initCollect = void 0;
 const ActCol = require("../../97.collect.unit/collect.action");
 var bit, lst, dat, idx, val, src, dex;
 const initCollect = (cpy, bal, ste) => {
@@ -91,7 +91,6 @@ const writeCollect = async (cpy, bal, ste) => {
     }
     if (dat == null && bal.slv != null)
         bal.slv({ rskBit: { idx: 'write-collect-err', src: 'no-dat' } });
-    dat;
     if (bal.slv != null)
         bal.slv({ clcBit: { idx: 'write-collect', val, dat } });
     return cpy;
@@ -214,6 +213,15 @@ const listCollect = (cpy, bal, ste) => {
     return cpy;
 };
 exports.listCollect = listCollect;
+const selectCollect = (cpy, bal, ste) => {
+    var Chance = require('chance');
+    // Instantiate Chance so it can be used
+    var chance = new Chance();
+    dat = chance.pickone(bal.lst);
+    bal.slv({ clcBit: { idx: 'select-collect', dat } });
+    return cpy;
+};
+exports.selectCollect = selectCollect;
 const hashCollect = (cpy, bal, ste) => {
     if (bal.src == null)
         bal.src = '';
@@ -222,6 +230,8 @@ const hashCollect = (cpy, bal, ste) => {
     lst.forEach((a) => {
         a = S(a).collapseWhitespace().s;
         if (a.length < 3)
+            return;
+        if (a[0] == '-')
             return;
         var hold = a.split(':');
         var dom = hold[0];

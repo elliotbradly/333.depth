@@ -62,4 +62,4 @@ exports.ambitMenu = ambitMenu;
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
 const Color = require("../../val/console-color");
 const Align = require("../../val/align");
-//# sourceMappingURL=ambit-menu.buzz.js.map
+//# sourceMappingURL=menu.ambit.buzz.js.map

@@ -39,6 +39,8 @@ function reducer(model = new collect_model_1.CollectModel(), act, state) {
             return Buzz.listCollect(clone(model), act.bale, state);
         case Act.HASH_COLLECT:
             return Buzz.hashCollect(clone(model), act.bale, state);
+        case Act.SELECT_COLLECT:
+            return Buzz.selectCollect(clone(model), act.bale, state);
         default:
             return model;
     }

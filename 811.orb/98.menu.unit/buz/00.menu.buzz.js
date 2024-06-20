@@ -24,7 +24,7 @@ const initMenu = async (cpy, bal, ste) => {
 };
 exports.initMenu = initMenu;
 const updateMenu = async (cpy, bal, ste) => {
-    lst = [ActMnu.CLOCK_MENU, ActMnu.PLAY_MENU, ActMnu.ARENA_MENU, ActMnu.AMBIT_MENU, ActOrb.UPDATE_ORB];
+    lst = [ActMnu.CLOCK_MENU, ActMnu.PLAY_MENU, ActMnu.AXIS_MENU, ActMnu.ARENA_MENU, ActMnu.AMBIT_MENU, ActOrb.UPDATE_ORB];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
@@ -34,6 +34,9 @@ const updateMenu = async (cpy, bal, ste) => {
             break;
         case ActMnu.ARENA_MENU:
             bit = await ste.hunt(ActMnu.ARENA_MENU, {});
+            break;
+        case ActMnu.AXIS_MENU:
+            bit = await ste.hunt(ActMnu.AXIS_MENU, {});
             break;
         case ActMnu.CLOCK_MENU:
             bit = await ste.hunt(ActMnu.CLOCK_MENU, {});

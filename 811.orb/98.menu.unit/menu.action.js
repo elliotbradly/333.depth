@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrintMenu = exports.PRINT_MENU = exports.PlayMenu = exports.PLAY_MENU = exports.ArenaMenu = exports.ARENA_MENU = exports.AmbitMenu = exports.AMBIT_MENU = exports.ClockMenu = exports.CLOCK_MENU = exports.ColorMenu = exports.COLOR_MENU = exports.EarthMenu = exports.EARTH_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
+exports.PrintMenu = exports.PRINT_MENU = exports.PlayMenu = exports.PLAY_MENU = exports.ArenaMenu = exports.ARENA_MENU = exports.EmotionMenu = exports.EMOTION_MENU = exports.AxisMenu = exports.AXIS_MENU = exports.AmbitMenu = exports.AMBIT_MENU = exports.ClockMenu = exports.CLOCK_MENU = exports.ColorMenu = exports.COLOR_MENU = exports.EarthMenu = exports.EARTH_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
 exports.INIT_MENU = "[Menu action] Init Menu";
 class InitMenu {
     constructor(bale) {
@@ -65,6 +65,22 @@ class AmbitMenu {
     }
 }
 exports.AmbitMenu = AmbitMenu;
+exports.AXIS_MENU = "[Ambit action] Axis Menu";
+class AxisMenu {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.AXIS_MENU;
+    }
+}
+exports.AxisMenu = AxisMenu;
+exports.EMOTION_MENU = "[Emotion action] Emotion Menu";
+class EmotionMenu {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.EMOTION_MENU;
+    }
+}
+exports.EmotionMenu = EmotionMenu;
 exports.ARENA_MENU = "[Ambit action] Arena Menu";
 class ArenaMenu {
     constructor(bale) {

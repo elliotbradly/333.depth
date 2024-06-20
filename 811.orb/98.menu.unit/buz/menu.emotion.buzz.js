@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ambitMenu = void 0;
+exports.emotionMenu = void 0;
 const ActMnu = require("../menu.action");
 const ActAmb = require("../../11.ambit.unit/ambit.action");
+const ActEmo = require("../../01.emotion.unit/emotion.action");
 const ActPut = require("../../act/input.action");
 const ActTrm = require("../../act/terminal.action");
 const ActChc = require("../../act/choice.action");
@@ -20,13 +21,13 @@ var print = async (ste, bit) => {
     ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: '------------' });
     //bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: 'open earth....' })
 };
-const ambitMenu = async (cpy, bal, ste) => {
+const emotionMenu = async (cpy, bal, ste) => {
     if (bal == null)
         bal = { idx: null };
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "Earth PIVOT V0" });
     bit = await ste.bus(ActCns.UPDATE_CONSOLE, { idx: 'cns00', src: "-----------" });
-    lst = [ActAmb.WRITE_AMBIT, ActAmb.READ_AMBIT];
+    lst = [ActEmo.WRITE_EMOTION, ActEmo.READ_EMOTION];
     bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 });
     bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat });
     src = bit.chcBit.src;
@@ -58,8 +59,8 @@ const ambitMenu = async (cpy, bal, ste) => {
     bit = await ste.hunt(ActMnu.AMBIT_MENU, {});
     return cpy;
 };
-exports.ambitMenu = ambitMenu;
+exports.emotionMenu = emotionMenu;
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
 const Color = require("../../val/console-color");
 const Align = require("../../val/align");
-//# sourceMappingURL=ambit-menu.buzz.js.map
+//# sourceMappingURL=menu.emotion.buzz.js.map

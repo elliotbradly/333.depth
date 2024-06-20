@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createRisk = exports.writeRisk = exports.readRisk = exports.loadRisk = exports.listRisk = exports.openRisk = exports.articulateRisk = exports.fashionRisk = exports.updateRisk = exports.verifyRisk = exports.initRisk = void 0;
-const ActClr = require("../../act/color.action");
 const ActSpk = require("../../act/spectrum.action");
 const ActDsk = require("../../act/disk.action");
 const ActRsk = require("../risk.action");
@@ -12,14 +11,14 @@ const initRisk = (cpy, bal, ste) => {
 };
 exports.initRisk = initRisk;
 const verifyRisk = async (cpy, bal, ste) => {
-    bit = await ste.bus(ActClr.DEGREE_COLOR, { idx: 'chromatic-marine', src: 'chromatic-straw', val: 1 });
-    var spectrum = bit.clrBit;
-    src = spectrum.src;
-    var alpha = src.split('-')[0][0];
-    var beta = src.split('-')[1][0];
-    alpha = alpha.toUpperCase();
-    beta = beta.toUpperCase();
-    idx = alpha + beta;
+    //bit = await ste.bus(ActClr.DEGREE_COLOR, { idx: 'chromatic-marine', src: 'chromatic-straw', val: 1 })
+    //  var spectrum = bit.clrBit
+    //  src = spectrum.src;
+    //  var alpha = src.split('-')[0][0]
+    //  var beta = src.split('-')[1][0]
+    //  alpha = alpha.toUpperCase()
+    //  beta = beta.toUpperCase()
+    //  idx = alpha + beta
     //you want to pull in the pool
     //up through the pool until you hit the spectrum
     debugger;
@@ -47,7 +46,7 @@ const fashionRisk = async (cpy, bal, ste) => {
 exports.fashionRisk = fashionRisk;
 5;
 const articulateRisk = async (cpy, bal, ste) => {
-    bit = await ste.bus(ActClr.DEGREE_COLOR, { idx: 'chromatic-marine', src: 'chromatic-straw', val: 1 });
+    // bit = await ste.bus(ActClr.DEGREE_COLOR, { idx: 'chromatic-marine', src: 'chromatic-straw', val: 1 })
     if (bal.slv != null)
         bal.slv({ rskBit: { idx: "articulate-risk" } });
     return cpy;
