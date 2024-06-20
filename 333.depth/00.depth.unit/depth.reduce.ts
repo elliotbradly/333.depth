@@ -28,6 +28,9 @@ case Act.RELOAD_DEPTH:
 case Act.LOG_DEPTH:
  return Buzz.logDepth(clone(model), act.bale, state);
  
+case Act.DEV_DEPTH:
+ return Buzz.devDepth(clone(model), act.bale, state);
+ 
         default:
             return model;
     }

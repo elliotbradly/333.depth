@@ -153,13 +153,13 @@ export const reloadDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
 };
 
 export const logDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
-    
-    if ( cpy.local == false ) console.log( bal.src)
+
+    if (cpy.local == false) console.log(bal.src)
     else {
         patch(ste, ActMnu.LOG_MENU, bal);
     }
 
-    bal.slv({ depBit: { idx: "log-depth"} });
+    bal.slv({ depBit: { idx: "log-depth" } });
     return cpy;
 };
 
@@ -167,6 +167,19 @@ export const logDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
 
 
+export const devDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
+
+    const { exec } = require('child_process');
+
+    exec('npx quasar dev -m electron', async (err, stdout, stderr) => {
+
+        //bit = await ste.hunt(ActMrk.DEV_MARKET, { val: 1 })
+        bal.slv({ depBit: { idx: "dev-depth", dat: stdout } });
+
+    });
+
+    return cpy;
+};
 import { DepthModel } from "../depth.model";
 import DepthBit from "../fce/depth.bit";
 import State from "../../99.core/state";

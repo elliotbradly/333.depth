@@ -1,7 +1,5 @@
 import { ref, onMounted, onUnmounted, onUpdated, inject, getCurrentInstance } from 'vue'
 
-import * as ActEng from '../../333.depth/01.engine.unit/engine.action'
-import * as ActScn from '../../333.depth/02.scene.unit/scene.action'
 
 export type HelloWorld = string | number
 
@@ -11,10 +9,20 @@ export const mount = async (value: HelloWorld) => {
   const instance = getCurrentInstance();
   const DEPTH = inject('DEPTH')
 
-  var bit = await DEPTH['hunt'](ActEng.INIT_ENGINE, {});
+  //var bit = await DEPTH['hunt'](ActEng.INIT_ENGINE, {});
 
-  var bit = await DEPTH['hunt'](ActScn.WRITE_SCENE,  {idx:'scn00', src:'playCanvas'});
-  var bit = await DEPTH['hunt'](ActScn.WRITE_SCENE,  {idx:'scn01', src:'interactiveCanvas'});
+  //var bit = await DEPTH['hunt'](ActScn.WRITE_SCENE,  {idx:'scn00', src:'playCanvas'});
+  //var bit = await DEPTH['hunt'](ActScn.WRITE_SCENE,  {idx:'scn01', src:'interactiveCanvas'});
+
+  const ws = new WebSocket('ws://localhost:1000')
+ws.onopen = () => {
+  //alert('ws opened on browser')
+  ws.send('hello world')
+}
+
+ws.onmessage = (message) => {
+  console.log(`message received`, message.data)
+}
   
   instance?.proxy?.$forceUpdate();
 

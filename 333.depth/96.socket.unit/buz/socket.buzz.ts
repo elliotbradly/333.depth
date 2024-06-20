@@ -69,9 +69,10 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         var colLst = clcBit.clcBit.lst
         
+        ste.hunt(ActDep.LOG_DEPTH, { src: 'watching...' + colLst.length })
 
         if (colLst.length >= 0) {
-            ste.hunt(ActDep.LOG_DEPTH, { src: ' no one is watching...' })
+            
             return
         }
 

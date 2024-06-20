@@ -1,9 +1,9 @@
 "use strict";
 
-const ActMap = require('../002.space/03.hexmap.unit/hexmap.action')
-const ActFoc = require('../002.space/01.focus.unit/focus.action')
-const SHAPE = require('../002.space/val/shape')
-const FOCUS = require('../002.space/val/focus')
+//const ActMap = require('../002.space/03.hexmap.unit/hexmap.action')
+//const ActFoc = require('../002.space/01.focus.unit/focus.action')
+//const SHAPE = require('../002.space/val/shape')
+//const FOCUS = require('../002.space/val/focus')
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var sim = {
@@ -38,7 +38,7 @@ var init = async ( space ) => {
 
   var idx = 'shape'
 
-  bit = await space.hunt(ActMap.SHAPE_HEXMAP, { idx, dat: { frm: SHAPE.RECTANGLE, h: 3, w: 3 } })
+  //bit = await space.hunt(ActMap.SHAPE_HEXMAP, { idx, dat: { frm: SHAPE.RECTANGLE, h: 3, w: 3 } })
   var grid = bit.mapBit.dat.dat.bit;
   bit = await space.hunt(ActMap.WRITE_HEXMAP, { idx:"map00", dat: { bit: { grid } } })
 
