@@ -174,9 +174,9 @@ export const devDepth = (cpy: DepthModel, bal: DepthBit, ste: State) => {
     exec('npx quasar dev -m electron', async (err, stdout, stderr) => {
 
         //bit = await ste.hunt(ActMrk.DEV_MARKET, { val: 1 })
-        bal.slv({ depBit: { idx: "dev-depth", dat: stdout } });
-
     });
+
+    bal.slv({ depBit: { idx: "dev-depth" } });
 
     return cpy;
 };

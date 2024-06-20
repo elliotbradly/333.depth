@@ -1,6 +1,5 @@
 import { ref, onMounted, onUnmounted, onUpdated, inject, getCurrentInstance } from 'vue'
 
-
 export type HelloWorld = string | number
 
 export const mount = async (value: HelloWorld) => {
@@ -15,15 +14,16 @@ export const mount = async (value: HelloWorld) => {
   //var bit = await DEPTH['hunt'](ActScn.WRITE_SCENE,  {idx:'scn01', src:'interactiveCanvas'});
 
   const ws = new WebSocket('ws://localhost:1000')
-ws.onopen = () => {
-  //alert('ws opened on browser')
-  ws.send('hello world')
-}
 
-ws.onmessage = (message) => {
-  console.log(`message received`, message.data)
-}
-  
+  ws.onopen = () => {
+    //alert('ws opened on browser')
+    ws.send('hello world')
+  }
+
+  ws.onmessage = (message) => {
+    console.log(`message received`, message.data)
+  }
+
   instance?.proxy?.$forceUpdate();
 
   return value

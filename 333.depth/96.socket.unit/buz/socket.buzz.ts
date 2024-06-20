@@ -72,7 +72,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
         ste.hunt(ActDep.LOG_DEPTH, { src: 'watching...' + colLst.length })
 
         if (colLst.length >= 0) {
-            
+            bit = await ste.hunt(ActRel.UPDATE_REALITY, {}); 
             return
         }
 

@@ -45,7 +45,7 @@ var updateDepth = async (ste) => {
 
 export const updateMenu = async (cpy: MenuModel, bal: MenuBit, ste: State) => {
 
-  lst = [ActMnu.REALITY_MENU, ActDep.DEV_DEPTH, ActDep.UPDATE_DEPTH, ActDep.RELOAD_DEPTH, ActDep.COMMIT_DEPTH, ActMnu.SOCKET_MENU]
+  lst = [ ActDep.DEV_DEPTH, ActMnu.REALITY_MENU, ActDep.UPDATE_DEPTH, ActDep.RELOAD_DEPTH, ActDep.COMMIT_DEPTH, ActMnu.SOCKET_MENU]
   bit = await ste.bus(ActGrd.UPDATE_GRID, { x: 0, y: 4, xSpan: 4, ySpan: 12 })
   bit = await ste.bus(ActChc.OPEN_CHOICE, { dat: { clr0: Color.BLACK, clr1: Color.YELLOW }, src: Align.VERTICAL, lst, net: bit.grdBit.dat })
 
