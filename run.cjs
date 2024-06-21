@@ -78,8 +78,6 @@ const init = async (prt) => {
     TERMINAL = require(path.resolve('./997.terminal/index'));
     TERMINAL_ACTION = require(path.resolve('./997.terminal/00.terminal.unit/terminal.action'));
 
-    var LIBRARY = require(path.resolve('./995.library/index'));
-    var LIBRARY_ACTION = require(path.resolve('./995.library/00.library.unit/library.action'));
 
     if (pvt == false) {
 
@@ -92,7 +90,6 @@ const init = async (prt) => {
 
         await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 1, dat: MQTT, src: [localBit] });
 
-        await LIBRARY.hunt( LIBRARY_ACTION.INIT_LIBRARY, { dat: MQTT, src: local });
 
     }
     else {
