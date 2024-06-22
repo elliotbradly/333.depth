@@ -29,7 +29,7 @@ export const realityMenu = async (cpy: MenuModel, bal: MenuBit, ste: State) => {
 
     case ActRel.OPEN_REALITY:
       bit = await ste.hunt(ActRel.OPEN_REALITY, { src: 'committing control' })
-      bit = await ste.hunt(ActMnu.PRINT_MENU, bit)
+      //bit = await ste.hunt(ActMnu.PRINT_MENU, bit)
       break;
 
     case ActRel.UPDATE_REALITY:

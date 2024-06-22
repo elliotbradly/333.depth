@@ -66,8 +66,8 @@ const init = async (prt) => {
     ORB = require(path.resolve('./811.orb/index'));
     ORB_ACTION = require(path.resolve('./811.orb/00.orb.unit/orb.action'));
 
-    BEING = require(path.resolve('./814.being/index'));
-    BEING_ACTION = require(path.resolve('./814.being/00.being.unit/being.action'));
+    //BEING = require(path.resolve('./814.being/index'));
+    //BEING_ACTION = require(path.resolve('./814.being/00.being.unit/being.action'));
 
     CONTROL = require(path.resolve('./900.control/index'));
     CONTROL_ACTION = require(path.resolve('./900.control/00.control.unit/control.action'));
@@ -91,7 +91,7 @@ const init = async (prt) => {
         await CONTROL.hunt( CONTROL_ACTION.INIT_CONTROL, {  dat: MQTT, src: local });
         await PIVOT.hunt(PIVOT_ACTION.INIT_PIVOT, { dat: MQTT, src: local });
 
-        await BEING.hunt(BEING_ACTION.INIT_BEING, { dat: MQTT, src: local });
+      //  await BEING.hunt(BEING_ACTION.INIT_BEING, { dat: MQTT, src: local });
 
         await DEPTH.hunt(DEPTH_ACTION.INIT_DEPTH, { val: 1, dat: MQTT, src: [localBit] });
 

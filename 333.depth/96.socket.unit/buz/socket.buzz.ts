@@ -138,6 +138,8 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
     //if ( bal.dat == null ) bal.dat = {}
+    ste.hunt(ActDep.LOG_DEPTH, { src: "create socket ::: " + JSON.stringify(bal) })
+
 
     if (bal == null) {
         bal.slv({ sokBit: { idx: "error-create-socket", src: 'no socket bale', dat: {} } });
