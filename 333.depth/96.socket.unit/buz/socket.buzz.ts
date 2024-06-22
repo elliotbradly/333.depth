@@ -124,7 +124,7 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var outData = { idx: bal.idx, dat: data }
 
-    socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData }));
+    //socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData }));
 
     ste.hunt(ActDep.LOG_DEPTH, { src: "update socket ::: " + JSON.stringify(bal) })
 
