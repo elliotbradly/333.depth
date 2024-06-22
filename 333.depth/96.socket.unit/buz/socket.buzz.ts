@@ -53,7 +53,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         ste.hunt(ActDep.LOG_DEPTH, { src: ws.idx + ' connnected...' })
 
-        bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
+        //bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
     });
 
     //the point is 
