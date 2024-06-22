@@ -19,6 +19,10 @@ function reducer(model = new menu_model_1.MenuModel(), act, state) {
             return Buzz.createMenu(clone(model), act.bale, state);
         case Act.PRINT_MENU:
             return Buzz.printMenu(clone(model), act.bale, state);
+        case Act.SPARK_MENU:
+            return Buzz.sparkMenu(clone(model), act.bale, state);
+        case Act.PASTORAL_MENU:
+            return Buzz.pastoralMenu(clone(model), act.bale, state);
         case Act.PLAYER_MENU:
             return Buzz.playerMenu(clone(model), act.bale, state);
         default:

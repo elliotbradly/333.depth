@@ -11,6 +11,7 @@ var bit, val, idx, dex, lst, dat, src;
 const initBeing = async (cpy, bal, ste) => {
     if (bal.dat != null)
         bit = await ste.hunt(ActBus.INIT_BUS, { idx: cpy.idx, lst: [ActBee, ActSpk], dat: bal.dat, src: bal.src });
+    bit = await ste.hunt(ActSpk.INIT_SPARK, {});
     if (bal.val == 1)
         patch(ste, ActMnu.INIT_MENU, bal);
     if (bal.slv != null)
@@ -22,7 +23,7 @@ const updateBeing = async (cpy, bal, ste) => {
     var lstMsg = [];
     bit = await ste.bus(ActPvt.SHIP_PIVOT, { src: '814.being' });
     lstMsg = lstMsg.concat(bit.pvtBit.lst);
-    idx = "../811.earth/814.being/";
+    idx = "../../333.depth/814.being/";
     bit = await ste.bus(ActDsk.COPY_DISK, { src: './work/814.being/', idx });
     lstMsg = lstMsg.concat(bit.pvtBit);
     bal.slv({ beeBit: { idx: "update-being", lst: lstMsg } });

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.playerMenu = void 0;
 const ActMnu = require("../menu.action");
-const ActPly = require("../../10.player.unit/player.action");
+const ActPly = require("../../90.player.unit/player.action");
 const ActChc = require("../../act/choice.action");
 const ActCns = require("../../act/console.action");
 const ActGrd = require("../../act/grid.action");

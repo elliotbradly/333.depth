@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlayerMenu = exports.PLAYER_MENU = exports.PrintMenu = exports.PRINT_MENU = exports.YieldMenu = exports.YIELD_MENU = exports.RenderMenu = exports.RENDER_MENU = exports.CreateHexmapMenu = exports.CREATE_HEXMAP_MENU = exports.HexmapMenu = exports.HEXMAP_MENU = exports.CreateMenu = exports.CREATE_MENU = exports.UpdateFocusPlayMenu = exports.UPDATE_FOCUS_PLAY_MENU = exports.FocusPlayMenu = exports.FOCUS_PLAY_MENU = exports.FocusMenu = exports.FOCUS_MENU = exports.TimeMenu = exports.TIME_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
+exports.PastoralMenu = exports.PASTORAL_MENU = exports.PlayerMenu = exports.PLAYER_MENU = exports.PrintMenu = exports.PRINT_MENU = exports.YieldMenu = exports.YIELD_MENU = exports.RenderMenu = exports.RENDER_MENU = exports.CreateHexmapMenu = exports.CREATE_HEXMAP_MENU = exports.HexmapMenu = exports.HEXMAP_MENU = exports.CreateMenu = exports.CREATE_MENU = exports.UpdateFocusPlayMenu = exports.UPDATE_FOCUS_PLAY_MENU = exports.FocusPlayMenu = exports.FOCUS_PLAY_MENU = exports.SparkMenu = exports.SPARK_MENU = exports.FocusMenu = exports.FOCUS_MENU = exports.TimeMenu = exports.TIME_MENU = exports.CloseMenu = exports.CLOSE_MENU = exports.TestMenu = exports.TEST_MENU = exports.UpdateMenu = exports.UPDATE_MENU = exports.InitMenu = exports.INIT_MENU = void 0;
 exports.INIT_MENU = "[Menu action] Init Menu";
 class InitMenu {
     constructor(bale) {
@@ -49,6 +49,14 @@ class FocusMenu {
     }
 }
 exports.FocusMenu = FocusMenu;
+exports.SPARK_MENU = "[Focus action] Spark Menu";
+class SparkMenu {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.SPARK_MENU;
+    }
+}
+exports.SparkMenu = SparkMenu;
 exports.FOCUS_PLAY_MENU = "[Focus action] Focus Play Menu";
 class FocusPlayMenu {
     constructor(bale) {
@@ -121,4 +129,12 @@ class PlayerMenu {
     }
 }
 exports.PlayerMenu = PlayerMenu;
+exports.PASTORAL_MENU = "[Render action] Pastoral Menu";
+class PastoralMenu {
+    constructor(bale) {
+        this.bale = bale;
+        this.type = exports.PASTORAL_MENU;
+    }
+}
+exports.PastoralMenu = PastoralMenu;
 //# sourceMappingURL=menu.action.js.map

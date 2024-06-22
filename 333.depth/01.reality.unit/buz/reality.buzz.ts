@@ -17,6 +17,7 @@ import * as ActDsk from "../../act/disk.action";
 import * as ActCtl from "../../act/control.action";
 import * as ActGit from "../../act/github.action";
 import * as ActClk from "../../act/clock.action";
+import * as ActSpk from "../../act/spark.action";
 
 var bit, val, idx, dex, lst, dat, src;
 
@@ -27,7 +28,6 @@ export const initReality = (cpy: RealityModel, bal: RealityBit, ste: State) => {
 
 
 export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State) => {
-
 
     ste.hunt(ActDep.LOG_DEPTH, { src: "opening reality" })
 
@@ -40,6 +40,35 @@ export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State
     bit = await ste.hunt(ActSok.INIT_SOCKET, {})
 
     if (cpy.interval != null) clearInterval(cpy.interval)
+
+
+    bit = await ste.bus(ActDsk.INDEX_DISK, { src: './data/being' })
+    lst = bit.dskBit.lst;
+
+    lst.forEach( async (a) => {
+
+        src = a;
+
+        var fs = require("fs"),
+            PNG = require("pngjs").PNG;
+
+        var data = fs.readFileSync('./data/being/' + src);
+
+        var png = PNG.sync.read(data);
+
+        var idx = 'spk000'
+
+        debugger
+
+        bit = await ste.bus(ActSpk.WRITE_SPARK, { idx, dat: png })
+
+        debugger
+
+    })
+
+
+    //build out the characters 
+
 
     //cpy.interval = setInterval(async () => {
 
@@ -83,18 +112,18 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     var clock: TicBit = bit.clkBit.dat
 
 
-
-    //ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
+    ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
 
     cpy.now = clock.now
     cpy.timecode = clock.frm
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
-    src = "creatively describe the time " + clock.frm  + "in a large metropolitan city using only thirty words or less"
-    src += ' and replace the numeric date with something metaphorical'
-    bit = await ste.bus(ActPmt.WRITE_PROMPT, { src, val: 1 })
-    bit = await ste.bus(ActOlm.WRITE_OLLAMA, { src: 'committing control' })
+    //move this into the sower 
+    //src = "creatively describe the time " + clock.frm  + "in a large metropolitan city using only thirty words or less"
+    //src += ' and replace the numeric date with something metaphorical'
+    //bit = await ste.bus(ActPmt.WRITE_PROMPT, { src, val: 1 })
+    //bit = await ste.bus(ActOlm.WRITE_OLLAMA, { src: 'committing control' })
 
 
     bal.slv({ sokBit: { idx: "update-reality", val: 1 } });

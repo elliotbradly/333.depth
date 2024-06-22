@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.playerMenu = exports.createMenu = exports.printMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
+exports.sparkMenu = exports.pastoralMenu = exports.playerMenu = exports.createMenu = exports.printMenu = exports.closeMenu = exports.testMenu = exports.updateMenu = exports.initMenu = void 0;
 var _00_menu_buzz_1 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "initMenu", { enumerable: true, get: function () { return _00_menu_buzz_1.initMenu; } });
 var _00_menu_buzz_2 = require("./buz/00.menu.buzz");
@@ -15,4 +15,8 @@ var _00_menu_buzz_6 = require("./buz/00.menu.buzz");
 Object.defineProperty(exports, "createMenu", { enumerable: true, get: function () { return _00_menu_buzz_6.createMenu; } });
 var menu_player_buzz_1 = require("./buz/menu.player.buzz");
 Object.defineProperty(exports, "playerMenu", { enumerable: true, get: function () { return menu_player_buzz_1.playerMenu; } });
+var menu_pastoral_buzz_1 = require("./buz/menu.pastoral.buzz");
+Object.defineProperty(exports, "pastoralMenu", { enumerable: true, get: function () { return menu_pastoral_buzz_1.pastoralMenu; } });
+var menu_spark_buzz_1 = require("./buz/menu.spark.buzz");
+Object.defineProperty(exports, "sparkMenu", { enumerable: true, get: function () { return menu_spark_buzz_1.sparkMenu; } });
 //# sourceMappingURL=menu.buzzer.js.map

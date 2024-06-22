@@ -1,0 +1,36 @@
+snow: 00, achromatic, AS, white, ffffff
+blood: 01,  achromatic, AB, red, ff00ff
+virid: 02,  chromatic, CV, green, ff0000 
+marine: 03,  chromatic, CM, blue, 0000ff
+straw: 04,  chromatic, CS, yello, ffff00
+ink: 05,  chromatic, CS, black, 000000
+nobel: 06,  chromatic, CS, purple, 800080
+amber: 07,  chromatic, CS, orange, ffa500 
+peach: 08,  chromatic, CS, pink, ffc0cb 
+coffee: 09,  chromatic, CS, brown, a52a2a 
+asymmetrical: 10,  achromatic, AA, grey area, 808080 
+bootlegged: 11, achromatic, BA, chartreuse, 7fff00
+criminal: 12, achromatic, CA, green neon, 39FF14
+defunct: 13, achromatic, DA, neon fuchsia, FF10F0
+execrable: 14, achromatic, EA, dark darb brown, 4a412a,
+fallacious: 15, achromatic, FA, mustard yellow, e1ad01
+grotesque: 16, achromatic, GA, slimer, aadd00
+horrible: 17, achromatic, GA, pale lime, b1ff65
+irrational: 18, achromatic, IA, dark lime, 7ebd01
+jejune: 19, achromatic, JA, puce, cc8899
+kleptomanical: 20, achromatic, KA, false puce, a57e52
+loathsome: 21, achromatic, LA, beige , a57e52
+mordant: 22, achromatic, MA, dark gray , 363737
+nasty: 23, achromatic, NA, barf green , 94ac02
+odious: 24, achromatic, OA, sybarite ,8bcbab
+profane: 25, achromatic, PA, barium , 8fff9f
+quixotic: 25, achromatic, QA, light olive , acbf69
+rapacious: 25, achromatic, RA, olive night,#333311
+slanderous: 25, achromatic, SA, salmon , ff796c
+tyrannical: 25, achromatic, TA, beige royal, cfc8b8
+unborn: 30, achromatic, UA, rustique , f5bfb2
+vehement: 31, achromatic, VA, rusted , 60372e
+worthless: 31, achromatic, WA, rusty , 96512a
+xenophobic: 31, achromatic, XA, rust , a83c09
+yucky: 31, achromatic, XA, magenta , cc338b
+zeronic: 34, achromatic, XA,  bright magenta, ff08e8

@@ -161,6 +161,12 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
     bit.isAlive = true;
     bit.on('error', console.error);
     bit.on("message", (msg) => {
+
+        //hunt or buzz the messsage 
+        //send back the response
+        var msgDat = JSON.parse( msg )
+        debugger
+
         ste.hunt(ActDep.LOG_DEPTH, { src: "incoming message " + msg })
         //    patch(ste, ActSok.WRITE_SOCKET, { idx: bal.idx, src: msg })
     })
