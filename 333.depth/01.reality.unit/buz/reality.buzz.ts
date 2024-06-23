@@ -49,6 +49,8 @@ export const openReality = async (cpy: RealityModel, bal: RealityBit, ste: State
 
         src = a;
 
+        ste.hunt(ActDep.LOG_DEPTH, { src: 'being.. ' + src  })
+
         var fs = require("fs"),
             PNG = require("pngjs").PNG;
 
