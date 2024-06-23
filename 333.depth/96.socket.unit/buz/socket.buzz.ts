@@ -160,14 +160,17 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var bit = bal.dat.bit;
 
+    debugger
+
     bit.isAlive = true;
     bit.on('error', console.error);
     bit.on("message", (msg) => {
 
+        console.log('message ' + msg )
         //hunt or buzz the messsage 
         //send back the response
         var msgDat = JSON.parse( msg )
-        debugger
+        
 
         ste.hunt(ActDep.LOG_DEPTH, { src: "incoming message " + msg })
         //    patch(ste, ActSok.WRITE_SOCKET, { idx: bal.idx, src: msg })
@@ -186,7 +189,7 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
     // open the player
     // send that data 
 
-    bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
+    //bit.send(JSON.stringify({ idx: ActCsk.OPEN_CLIENTSOCKET, bal: { idx: bal.idx } }));
 
     bal.slv({ sokBit: { idx: "create-socket", dat } });
     return cpy;

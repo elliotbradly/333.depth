@@ -75,7 +75,7 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
 
     //ste.hunt( ActDep.LOG_DEPTH, {src: "update reality"  } )
 
-    require("dotenv").config();
+    //require("dotenv").config();
 
     //bit = await ste.bus(ActClk.BLOCK_CLOCK, { idx: process.env.BLOCKFROST })
     //var block: BlockBit = JSON.parse(bit.clkBit.dat);
@@ -88,23 +88,23 @@ export const updateReality = async (cpy: RealityModel, bal: RealityBit, ste: Sta
     //var msg = bit.clkBit.dex + ' :::: ' + block.score
     //ste.hunt(ActDep.LOG_DEPTH, { src: msg })
 
-    var score = 3;
+    //var score = 3;
 
-    var idx = 'clk00';
+    //var idx = 'clk00';
 
-    var dat: TicBit = { idx }
-    dat.min = 1 * score;
-    dat.sec = 3 * score;
-    dat.hrs = 1.3 * score;
+    //var dat: TicBit = { idx }
+    //dat.min = 1 * score;
+    //dat.sec = 3 * score;
+    //dat.hrs = 1.3 * score;
 
-    bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
-    var clock: TicBit = bit.clkBit.dat
+    //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, dat })
+    //var clock: TicBit = bit.clkBit.dat
 
 
-    ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
+    //ste.hunt(ActDep.LOG_DEPTH, { src: clock.frm })
 
-    cpy.now = clock.now
-    cpy.timecode = clock.frm
+    //cpy.now = clock.now
+    //cpy.timecode = clock.frm
 
     //bit = await ste.bus(ActClk.WRITE_CLOCK, { idx, clk })
 
