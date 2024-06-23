@@ -53,7 +53,7 @@ export const initSocket = (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
         ste.hunt(ActDep.LOG_DEPTH, { src: ws.idx + ' connnected...' })
 
-        //bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
+        bit = await ste.hunt(ActSok.WRITE_SOCKET, { idx: uuid, dat: { bit: ws } });
     });
 
     //the point is 
@@ -124,7 +124,7 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var outData = { idx: bal.idx, dat: data }
 
-    //socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData }));
+    socket.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: outData }));
 
     ste.hunt(ActDep.LOG_DEPTH, { src: "update socket ::: " + JSON.stringify(bal) })
 
@@ -137,8 +137,9 @@ export const updateSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
 export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State) => {
 
+    
     //if ( bal.dat == null ) bal.dat = {}
-    ste.hunt(ActDep.LOG_DEPTH, { src: "create socket ::: " + JSON.stringify(bal) })
+    //ste.hunt(ActDep.LOG_DEPTH, { src: "create socket ::: " + JSON.stringify(bal) })
 
 
     if (bal == null) {
@@ -160,20 +161,23 @@ export const createSocket = async (cpy: SocketModel, bal: SocketBit, ste: State)
 
     var bit = bal.dat.bit;
 
-    debugger
+
 
     bit.isAlive = true;
     bit.on('error', console.error);
     bit.on("message", (msg) => {
 
-        console.log('message ' + msg )
+        //console.log('message ' + msg )
         //hunt or buzz the messsage 
         //send back the response
         var msgDat = JSON.parse( msg )
         
 
         ste.hunt(ActDep.LOG_DEPTH, { src: "incoming message " + msg })
-        //    patch(ste, ActSok.WRITE_SOCKET, { idx: bal.idx, src: msg })
+
+        //bit.send(JSON.stringify({ idx: ActCsk.UPDATE_CLIENTSOCKET, bal: {} }));
+        
+        //patch(ste, ActSok.WRITE_SOCKET, { idx: 'write-socket', src:'message' })
     })
 
     var dat: SockBit = { idx: bal.idx, src: 'create', bit };
